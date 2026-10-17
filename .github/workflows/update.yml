@@ -29,4 +29,5 @@ jobs:
           git config user.email "actions@github.com"
           git add data.json
           git diff --cached --quiet || git commit -m "価格を更新"
+          git pull --rebase -X theirs origin main
           git push
