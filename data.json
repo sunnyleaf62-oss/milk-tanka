@@ -1,6 +1,7 @@
 {
-  "updated": "2026-10-17T22:51+09:00",
+  "updated": "2026-10-17T23:08+09:00",
   "source": "楽天市場",
+  "shipping_estimate": 800,
   "products": [
     {
       "id": "hohoemi_can",
@@ -12,6 +13,9 @@
           "shop": "永康卸",
           "item_name": "明治 ほほえみ 粉ミルク 2缶パック（800g×2缶）",
           "price": 7380,
+          "postage_separate": false,
+          "shipping_estimate": 0,
+          "total": 7380,
           "count": 2,
           "ml": 11852,
           "per100": 62.3,
@@ -21,9 +25,57 @@
           "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/eikouoroshi/cabinet/others/others1/4902705122833-2b.jpg?_ex=128x128"
         },
         {
+          "shop": "青空BLUE",
+          "item_name": "(株)明治 ほほえみ 800g （大缶）",
+          "price": 3520,
+          "postage_separate": true,
+          "shipping_estimate": 800,
+          "total": 4320,
+          "count": 1,
+          "ml": 5926,
+          "per100": 72.9,
+          "point_rate": 1,
+          "per100_after_points": 72.3,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00s5sso.kqv9891c.g00s5sso.kqv99241/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Faozorablue%2F4902705116542%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Faozorablue%2Fi%2F10007868%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/aozorablue/cabinet/im040/imgrc0077974821.jpg?_ex=128x128"
+        },
+        {
+          "shop": "夢海月",
+          "item_name": "(株)明治 ほほえみ 800g （大缶）",
+          "price": 3520,
+          "postage_separate": true,
+          "shipping_estimate": 800,
+          "total": 4320,
+          "count": 1,
+          "ml": 5926,
+          "per100": 72.9,
+          "point_rate": 1,
+          "per100_after_points": 72.3,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00tbnso.kqv988d0.g00tbnso.kqv991e9/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fyumekurage%2F4902705116542%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fyumekurage%2Fi%2F10042288%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/yumekurage/cabinet/gazou15/4902705116542.jpg?_ex=128x128"
+        },
+        {
+          "shop": "ドラッグ青空",
+          "item_name": "(株)明治 ほほえみ 800g （大缶）",
+          "price": 3520,
+          "postage_separate": true,
+          "shipping_estimate": 800,
+          "total": 4320,
+          "count": 1,
+          "ml": 5926,
+          "per100": 72.9,
+          "point_rate": 1,
+          "per100_after_points": 72.3,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00qyxko.kqv98e84.g00qyxko.kqv998e5/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fdrugaozora%2F4902705116542%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fdrugaozora%2Fi%2F10010808%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/drugaozora/cabinet/im040/imgrc0103750034.jpg?_ex=128x128"
+        },
+        {
           "shop": "Larutan",
           "item_name": "明治 ほほえみ 800g ×2セット 　送料無料",
           "price": 8784,
+          "postage_separate": false,
+          "shipping_estimate": 0,
+          "total": 8784,
           "count": 2,
           "ml": 11852,
           "per100": 74.1,
@@ -32,21 +84,192 @@
           "url": "https://hb.afl.rakuten.co.jp/hgc/g00sza4o.kqv98d0d.g00sza4o.kqv99b0f/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ftokyotmkshop%2Fla72f2c9290c%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Ftokyotmkshop%2Fi%2F10011690%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
           "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/tokyotmkshop/cabinet/onesell264/la72f2c9290c.jpg?_ex=128x128"
         }
-      ]
+      ],
+      "stats": {
+        "fetched": 18,
+        "安すぎて除外": 0,
+        "使えた件数": 16
+      }
     },
     {
       "id": "hohoemi_cube",
       "brand": "明治",
       "name": "ほほえみ らくらくキューブ",
       "form": "キューブ",
-      "offers": []
+      "offers": [
+        {
+          "shop": "くらしのカタログ",
+          "item_name": "明治ほほえみ らくらくキューブ 108g (200mL分×4袋入)",
+          "price": 1009,
+          "postage_separate": true,
+          "shipping_estimate": 800,
+          "total": 1809,
+          "count": null,
+          "ml": 3200,
+          "per100": 56.5,
+          "point_rate": 1,
+          "per100_after_points": 56.2,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00uhzyo.kqv98f7b.g00uhzyo.kqv99526/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fkusuri-hagakure%2F1758977696-1-b%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fkusuri-hagakure%2Fi%2F10243312%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/kusuri-hagakure/cabinet/11106996/1758977696-1-a.jpg?_ex=128x128"
+        },
+        {
+          "shop": "カマクラストアー",
+          "item_name": "【送料無料！（地域限定）】明治ほほえみ らくらくキューブ 108g (200mL分×4袋入)",
+          "price": 1009,
+          "postage_separate": true,
+          "shipping_estimate": 800,
+          "total": 1809,
+          "count": null,
+          "ml": 3200,
+          "per100": 56.5,
+          "point_rate": 1,
+          "per100_after_points": 56.2,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00ul5wo.kqv984de.g00ul5wo.kqv995c8/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fsinca-ism%2F1758977696-1-a%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fsinca-ism%2Fi%2F10292257%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/sinca-ism/cabinet/10604981/1758977696-1-a.jpg?_ex=128x128"
+        },
+        {
+          "shop": "キノタカ屋",
+          "item_name": "明治ほほえみ らくらくキューブ 108g (200mL分×4袋入)",
+          "price": 1009,
+          "postage_separate": true,
+          "shipping_estimate": 800,
+          "total": 1809,
+          "count": null,
+          "ml": 3200,
+          "per100": 56.5,
+          "point_rate": 1,
+          "per100_after_points": 56.2,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00utuao.kqv9828e.g00utuao.kqv99e3d/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fmorion-store%2F1758977696-1-a%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fmorion-store%2Fi%2F10107643%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/morion-store/cabinet/12573238/1758977696-1-a.jpg?_ex=128x128"
+        },
+        {
+          "shop": "Pharmacie trema",
+          "item_name": "明治ほほえみ らくらくキューブ 108g (27g×4袋)[0ヵ月~1歳頃 固形タイプの粉ミルク]",
+          "price": 1110,
+          "postage_separate": true,
+          "shipping_estimate": 800,
+          "total": 1910,
+          "count": null,
+          "ml": 3200,
+          "per100": 59.7,
+          "point_rate": 1,
+          "per100_after_points": 59.3,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00uye4o.kqv98a63.g00uye4o.kqv99f96/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fpharmacie-trema%2Fmatsu0g2rxr7zw%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fpharmacie-trema%2Fi%2F10019738%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/pharmacie-trema/cabinet/rakutenpic/systempic016/b0g2rxr7zw-00.jpg?_ex=128x128"
+        },
+        {
+          "shop": "コンプモト 楽天市場店",
+          "item_name": "明治 乳児用ミルクほほえみらくらくキューブ 小箱 108g(27g×4袋) 1箱(129535) 取り寄せ商品",
+          "price": 1125,
+          "postage_separate": true,
+          "shipping_estimate": 800,
+          "total": 1925,
+          "count": null,
+          "ml": 3200,
+          "per100": 60.2,
+          "point_rate": 1,
+          "per100_after_points": 59.8,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00rfqvo.kqv98aaa.g00rfqvo.kqv997eb/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fcompmoto-r%2F4902705129535%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fcompmoto-r%2Fi%2F12565598%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/compmoto-r/cabinet/gf00151/4902705129535.jpg?_ex=128x128"
+        }
+      ],
+      "stats": {
+        "fetched": 90,
+        "内容量が読めない": 12,
+        "条件の言葉なし": 1,
+        "安すぎて除外": 21,
+        "使えた件数": 32
+      }
     },
     {
       "id": "hagukumi_can",
       "brand": "森永",
       "name": "はぐくみ 缶",
       "form": "缶",
-      "offers": []
+      "offers": [
+        {
+          "shop": "アイリスオーヤマ公式 楽天市場店",
+          "item_name": "森永 ドライミルク はぐくみ 大缶800g×2缶パック 送料無料 粉ミルク はぐくみ ベビーミルク 0〜1歳頃 ビフィズス菌 新生児 乳幼児 ラクトフェリン オリゴ糖 缶",
+          "price": 4880,
+          "postage_separate": false,
+          "shipping_estimate": 0,
+          "total": 4880,
+          "count": 2,
+          "ml": 12308,
+          "per100": 39.6,
+          "point_rate": 1,
+          "per100_after_points": 39.3,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00t3zto.kqv98b08.g00t3zto.kqv99868/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Firisplaza-r%2F7251577%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Firisplaza-r%2Fi%2F10147999%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/irisplaza-r/cabinet/11073544/12782397/12918968/7251577.jpg?_ex=128x128"
+        },
+        {
+          "shop": "暮らし健康ネット館",
+          "item_name": "粉ミルク はぐくみ 大缶 森永 森永 ドライミルク 800g×2缶パック 送料無料 ベビーミルク 0〜1歳頃 ビフィズス菌 新生児 乳幼児 ラクトフェリン オリゴ糖 缶 【D】",
+          "price": 4880,
+          "postage_separate": false,
+          "shipping_estimate": 0,
+          "total": 4880,
+          "count": 2,
+          "ml": 12308,
+          "per100": 39.6,
+          "point_rate": 1,
+          "per100_after_points": 39.3,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00qhoao.kqv98579.g00qhoao.kqv99239/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fkurashikenkou%2F7251577%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fkurashikenkou%2Fi%2F10214530%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/kurashikenkou/cabinet/11663202/12603758/7251577.jpg?_ex=128x128"
+        },
+        {
+          "shop": "快適ホームライフ",
+          "item_name": "粉ミルク 森永 大缶 はぐくみ ドライミルク 800g×2缶パック 送料無料 ベビーミルク 0〜1歳頃 ビフィズス菌 新生児 乳幼児 ラクトフェリン オリゴ糖 缶",
+          "price": 4880,
+          "postage_separate": false,
+          "shipping_estimate": 0,
+          "total": 4880,
+          "count": 2,
+          "ml": 12308,
+          "per100": 39.6,
+          "point_rate": 1,
+          "per100_after_points": 39.3,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00rqlbo.kqv98052.g00rqlbo.kqv999fd/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fk-home%2F7251577%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fk-home%2Fi%2F10086827%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/k-home/cabinet/tasya100/7251577-p.jpg?_ex=128x128"
+        },
+        {
+          "shop": "サンドラッグe-shop",
+          "item_name": "◆森永はぐくみ 大缶 800g×2",
+          "price": 4980,
+          "postage_separate": false,
+          "shipping_estimate": 0,
+          "total": 4980,
+          "count": 2,
+          "ml": 12308,
+          "per100": 40.5,
+          "point_rate": 1,
+          "per100_after_points": 40.1,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00qvyfo.kqv980d0.g00qvyfo.kqv993fd/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fsundrug%2F4902720109123%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fsundrug%2Fi%2F10055362%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/sundrug/cabinet/202512_10/4902720109123.jpg?_ex=128x128"
+        },
+        {
+          "shop": "グラムスキー薬局 楽天市場店",
+          "item_name": "森永 はぐくみ 大缶 300g/800g 0ヶ月 1歳 新生児 赤ちゃん 粉ミルク ラクトフェリン 3種類のオリゴ糖 小缶",
+          "price": 1700,
+          "postage_separate": true,
+          "shipping_estimate": 800,
+          "total": 2500,
+          "count": 1,
+          "ml": 6154,
+          "per100": 40.6,
+          "point_rate": 1,
+          "per100_after_points": 40.3,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00ufuko.kqv98ecb.g00ufuko.kqv9936a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgramsky%2Fb0fhgqqs63%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fgramsky%2Fi%2F10101031%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/gramsky/cabinet/yuragipic/systempic121/b0fhgqqs63-00.jpg?_ex=128x128"
+        }
+      ],
+      "stats": {
+        "fetched": 90,
+        "除外ワード": 5,
+        "条件の言葉なし": 15,
+        "安すぎて除外": 0,
+        "使えた件数": 63
+      }
     },
     {
       "id": "sukoyaka_can",
@@ -55,66 +278,87 @@
       "form": "缶",
       "offers": [
         {
-          "shop": "村田商店",
-          "item_name": "雪印ビーンスターク ビーンスターク すこやか M1 粉末 800g",
-          "price": 3966,
-          "count": 1,
-          "ml": 6154,
-          "per100": 64.4,
+          "shop": "ベイシア楽天市場店",
+          "item_name": "雪印ビーンスターク すこやかM1 800g （8缶） | 粉ミルク 大 缶 乳児用調整粉乳 母乳成分配合 0歳-1歳誕生日頃まで 乳児 赤ちゃん 健やか オステオポンチン シアル酸 オリゴ糖 DHA ホスファチジルセリン Bean Stalk 大容量",
+          "price": 24400,
+          "postage_separate": false,
+          "shipping_estimate": 0,
+          "total": 24400,
+          "count": 8,
+          "ml": 49231,
+          "per100": 49.6,
           "point_rate": 1,
-          "per100_after_points": 63.8,
-          "url": "https://hb.afl.rakuten.co.jp/hgc/g00us0po.kqv983ae.g00us0po.kqv990f9/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Friundou%2F20251023134351_227%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Friundou%2Fi%2F10031454%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
-          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/riundou/cabinet/r_2025102019/20251023134351_227_1.jpg?_ex=128x128"
+          "per100_after_points": 49.1,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00s0vmo.kqv9828a.g00s0vmo.kqv99ed0/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbeisia%2F4987493000389%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbeisia%2Fi%2F10057768%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/beisia/cabinet/image380/4987493000785-4_1.jpg?_ex=128x128"
         },
         {
-          "shop": "くすりのレデイハートショップplus",
-          "item_name": "ビーンスターク　すこやかM1　大缶　800g",
-          "price": 4254,
-          "count": 1,
-          "ml": 6154,
-          "per100": 69.1,
+          "shop": "楽天24 ベビー館",
+          "item_name": "ビーンスタークすこやかM1 大缶 ケース販売(800g×8缶入)【ビーンスターク すこやか】",
+          "price": 24400,
+          "postage_separate": true,
+          "shipping_estimate": 800,
+          "total": 25200,
+          "count": 8,
+          "ml": 49231,
+          "per100": 51.2,
           "point_rate": 1,
-          "per100_after_points": 68.4,
-          "url": "https://hb.afl.rakuten.co.jp/hgc/g00t4v0o.kqv98556.g00t4v0o.kqv992c6/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fladydrugplus%2F4987493000617%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fladydrugplus%2Fi%2F10130065%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
-          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/ladydrugplus/cabinet/pic2932/4987493000617_1.jpg?_ex=128x128"
+          "per100_after_points": 50.7,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00pzd4o.kqv98fd3.g00pzd4o.kqv994da/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fnetbaby%2F4987493000730%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fnetbaby%2Fi%2F10054060%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/netbaby/cabinet/730/4987493000730.jpg?_ex=128x128"
         },
         {
-          "shop": "メガヘルスマート",
-          "item_name": "【送料無料】雪印ビーンスターク　すこやかM1　大缶　800g",
-          "price": 4347,
-          "count": 1,
-          "ml": 6154,
-          "per100": 70.6,
+          "shop": "エナジードラッグ",
+          "item_name": "【送料無料！16個セット！】【ビーンスターク】すこやかM10歳〜1歳用800g（大缶）×16個セット【粉ミルク】雪印ビーンスターク",
+          "price": 52292,
+          "postage_separate": false,
+          "shipping_estimate": 0,
+          "total": 52292,
+          "count": 16,
+          "ml": 98462,
+          "per100": 53.1,
           "point_rate": 1,
-          "per100_after_points": 69.9,
-          "url": "https://hb.afl.rakuten.co.jp/hgc/g00qipco.kqv985b7.g00qipco.kqv991e2/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fmegahema%2F100220065949464694%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fmegahema%2Fi%2F10054907%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
-          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/megahema/cabinet/0002/65463155354.jpg?_ex=128x128"
+          "per100_after_points": 52.6,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00px3so.kqv98e57.g00px3so.kqv99a08/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fenergy%2Fal-4987493000389-16set%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fenergy%2Fi%2F10073379%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/energy/cabinet/baby/4987493000389-16set.jpg?_ex=128x128"
         },
         {
-          "shop": "サンフラワーJapan",
-          "item_name": "雪印ビーンスターク ビーンスターク すこやか M1 粉末 800g",
-          "price": 5670,
-          "count": 1,
-          "ml": 6154,
-          "per100": 92.1,
+          "shop": "エナジープラス",
+          "item_name": "【送料無料！16個セット！】【ビーンスターク】すこやかM10歳〜1歳用800g（大缶）×16個セット【粉ミルク】雪印ビーンスターク",
+          "price": 52292,
+          "postage_separate": false,
+          "shipping_estimate": 0,
+          "total": 52292,
+          "count": 16,
+          "ml": 98462,
+          "per100": 53.1,
           "point_rate": 1,
-          "per100_after_points": 91.2,
-          "url": "https://hb.afl.rakuten.co.jp/hgc/g00uk8go.kqv98206.g00uk8go.kqv999f0/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fsunflowerjapan%2Fsunfb4f66f3f7b%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fsunflowerjapan%2Fi%2F10042800%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
-          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/sunflowerjapan/cabinet/onesell063/sunfb4f66f3f7b_0.jpg?_ex=128x128"
+          "per100_after_points": 52.6,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00r8gqo.kqv982e5.g00r8gqo.kqv99b4b/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fenergyplus%2Fal-4987493000389-16set%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fenergyplus%2Fi%2F10039507%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/energyplus/cabinet/baby-mother/4987493000389-16set.jpg?_ex=128x128"
         },
         {
-          "shop": "ココデカウ",
-          "item_name": "雪印 ビーンスターク すこやかM1 大缶 800g ドリンク フード ベビーケア",
-          "price": 6355,
-          "count": 1,
-          "ml": 6154,
-          "per100": 103.3,
+          "shop": "クスリのアオキ2号店楽天市場店",
+          "item_name": "ビーンスタークすこやかM1　800G×6個",
+          "price": 19735,
+          "postage_separate": false,
+          "shipping_estimate": 0,
+          "total": 19735,
+          "count": 6,
+          "ml": 36923,
+          "per100": 53.4,
           "point_rate": 1,
-          "per100_after_points": 102.2,
-          "url": "https://hb.afl.rakuten.co.jp/hgc/g00qq8to.kqv98e53.g00qq8to.kqv99ec5/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fcocodecow%2Fr0642b%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fcocodecow%2Fi%2F10638750%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
-          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/cocodecow/cabinet/675/jz4081.jpg?_ex=128x128"
+          "per100_after_points": 52.9,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00ufwqo.kqv989ec.g00ufwqo.kqv998b9/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fkusuriaoki-r-2%2F60000000021873%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fkusuriaoki-r-2%2Fi%2F10039356%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/kusuriaoki-r-2/cabinet/pic2852/60000000021873_1.jpg?_ex=128x128"
         }
-      ]
+      ],
+      "stats": {
+        "fetched": 83,
+        "除外ワード": 4,
+        "安すぎて除外": 0,
+        "使えた件数": 33
+      }
     },
     {
       "id": "haihai_can",
@@ -123,30 +367,86 @@
       "form": "缶",
       "offers": [
         {
-          "shop": "EasyLifeShop",
-          "item_name": "【和光堂】 レーベンスミルク はいはい 810g 粉ミルク 粉末 [0か月から1歳頃] ベビーミルク DHA・アラキドン酸配合 送料無料",
-          "price": 2556,
-          "count": 1,
-          "ml": 6231,
-          "per100": 41.0,
+          "shop": "マツモトキヨシ楽天市場店",
+          "item_name": "和光堂 レーベンスミルクはいはい 810g×2",
+          "price": 4622,
+          "postage_separate": false,
+          "shipping_estimate": 0,
+          "total": 4622,
+          "count": 2,
+          "ml": 12462,
+          "per100": 37.1,
           "point_rate": 1,
-          "per100_after_points": 40.6,
-          "url": "https://hb.afl.rakuten.co.jp/hgc/g00us84o.kqv98efe.g00us84o.kqv99a07/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Feasylifeshop%2Fmud0edb18b7f%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Feasylifeshop%2Fi%2F10020871%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
-          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/easylifeshop/cabinet/onesell053/mud0edb18b7f_0.jpg?_ex=128x128"
+          "per100_after_points": 36.7,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00rqszo.kqv981c6.g00rqszo.kqv999fd/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fmatsukiyo%2F4987244600059%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fmatsukiyo%2Fi%2F10534602%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/matsukiyo/cabinet/d0079/4987244600059_1.jpg?_ex=128x128"
         },
         {
-          "shop": "ここでまーと 楽天市場店",
-          "item_name": "和光堂 レーベンスミルク はいはい 810g 粉ミルク 粉末 0ヶ月から1歳頃 ベビーミルク DHA・アラキドン酸配合",
-          "price": 2677,
-          "count": 1,
-          "ml": 6231,
-          "per100": 43.0,
+          "shop": "サンドラッグe-shop",
+          "item_name": "◆和光堂 レーベンスミルク はいはい 0ヶ月〜 810g×2缶",
+          "price": 4680,
+          "postage_separate": false,
+          "shipping_estimate": 0,
+          "total": 4680,
+          "count": 2,
+          "ml": 12462,
+          "per100": 37.6,
           "point_rate": 1,
-          "per100_after_points": 42.5,
-          "url": "https://hb.afl.rakuten.co.jp/hgc/g00unc6o.kqv982a5.g00unc6o.kqv99ea2/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fkokodemart%2F20241020065944_190%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fkokodemart%2Fi%2F10040546%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
-          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/kokodemart/cabinet/r_2024100248/20241020065944_190_1.jpg?_ex=128x128"
+          "per100_after_points": 37.2,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00qvyfo.kqv980d0.g00qvyfo.kqv993fd/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fsundrug%2F4987244600059%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fsundrug%2Fi%2F10083919%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/sundrug/cabinet/60/4987244600059.jpg?_ex=128x128"
+        },
+        {
+          "shop": "ドラッグキリン楽天市場店",
+          "item_name": "【在庫のみ】秋の生活応援フェア！ 送料無料 和光堂 レーベンスミルク はいはい 810g×2缶パック 粉ミルク 粉末 [0ヶ月から1歳頃] ベビーミルク DHA・アラキドン酸配合 【軽減税率対象】",
+          "price": 4799,
+          "postage_separate": false,
+          "shipping_estimate": 0,
+          "total": 4799,
+          "count": 2,
+          "ml": 12462,
+          "per100": 38.5,
+          "point_rate": 1,
+          "per100_after_points": 38.1,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00rwxpo.kqv98602.g00rwxpo.kqv99a16/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fdrugkirin%2F4987244600059%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fdrugkirin%2Fi%2F10084037%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/drugkirin/cabinet/imgdir71/4987244600059_1.jpg?_ex=128x128"
+        },
+        {
+          "shop": "健康の森-7 楽天市場支店",
+          "item_name": "和光堂 レーベンスミルクはいはい 810g×2",
+          "price": 4860,
+          "postage_separate": false,
+          "shipping_estimate": 0,
+          "total": 4860,
+          "count": 2,
+          "ml": 12462,
+          "per100": 39.0,
+          "point_rate": 1,
+          "per100_after_points": 38.6,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00s404o.kqv983d3.g00s404o.kqv990ec/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fkenkounomori7%2F4987244600059%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fkenkounomori7%2Fi%2F10001760%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/kenkounomori7/cabinet/sukincea/4987244600059-00.jpg?_ex=128x128"
+        },
+        {
+          "shop": "楽天ビック(ビックカメラ×楽天)",
+          "item_name": "アサヒグループ食品｜Asahi Group Foods 和光堂 レーベンスミルク はいはい 810g×2缶",
+          "price": 4880,
+          "postage_separate": false,
+          "shipping_estimate": 0,
+          "total": 4880,
+          "count": 2,
+          "ml": 12462,
+          "per100": 39.2,
+          "point_rate": 2,
+          "per100_after_points": 38.4,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00r7ldo.kqv9886f.g00r7ldo.kqv99f23/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbiccamera%2F4987244600059%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbiccamera%2Fi%2F13707655%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/biccamera/cabinet/product/6931/00000009921166_a01.jpg?_ex=128x128"
         }
-      ]
+      ],
+      "stats": {
+        "fetched": 90,
+        "安すぎて除外": 0,
+        "使えた件数": 69
+      }
     },
     {
       "id": "hohoemi_liquid",
@@ -155,9 +455,27 @@
       "form": "液体",
       "offers": [
         {
+          "shop": "グラムスキー薬局 楽天市場店",
+          "item_name": "明治ほほえみ らくらくミルク 240ml 12缶/24缶 オリジナルおしりふき付き らくらくミルク240ml 0ヶ月から1歳",
+          "price": 5340,
+          "postage_separate": true,
+          "shipping_estimate": 800,
+          "total": 6140,
+          "count": 24,
+          "ml": 5760,
+          "per100": 106.6,
+          "point_rate": 1,
+          "per100_after_points": 105.7,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00ufuko.kqv98ecb.g00ufuko.kqv9936a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgramsky%2Fb0h3z3br37%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fgramsky%2Fi%2F10097070%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/gramsky/cabinet/yuragipic/systempic224/b0h3z3br37-00.jpg?_ex=128x128"
+        },
+        {
           "shop": "健康デパート",
           "item_name": "明治 ほほえみ らくらくミルク 240ml×24本送料無料",
           "price": 7160,
+          "postage_separate": false,
+          "shipping_estimate": 0,
+          "total": 7160,
           "count": 24,
           "ml": 5760,
           "per100": 124.3,
@@ -170,6 +488,9 @@
           "shop": "サンドラッグe-shop",
           "item_name": "◆明治 ほほえみ らくらくミルク 240ml 【24個セット】",
           "price": 7200,
+          "postage_separate": false,
+          "shipping_estimate": 0,
+          "total": 7200,
           "count": 24,
           "ml": 5760,
           "per100": 125.0,
@@ -182,6 +503,9 @@
           "shop": "ぱーそなるたのめーる",
           "item_name": "【お取寄せ品】 明治　乳児用ミルク　ほほえみ　らくらくミルク　240mL　缶　1ケース（24本） 【送料無料】",
           "price": 7464,
+          "postage_separate": false,
+          "shipping_estimate": 0,
+          "total": 7464,
           "count": 24,
           "ml": 5760,
           "per100": 129.6,
@@ -194,6 +518,9 @@
           "shop": "ベイシア楽天市場店",
           "item_name": "明治 ほほえみ らくらくミルク 240ml×24個 | 液体ミルク 乳児用 赤ちゃん 非常食 防災備蓄 授乳 時短 ベビー用品",
           "price": 7488,
+          "postage_separate": false,
+          "shipping_estimate": 0,
+          "total": 7488,
           "count": 24,
           "ml": 5760,
           "per100": 130.0,
@@ -201,20 +528,14 @@
           "per100_after_points": 128.7,
           "url": "https://hb.afl.rakuten.co.jp/hgc/g00s0vmo.kqv9828a.g00s0vmo.kqv99ed0/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fbeisia%2F4902705130678-24%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fbeisia%2Fi%2F10180942%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
           "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/beisia/cabinet/image345/4902705130678-24_1.jpg?_ex=128x128"
-        },
-        {
-          "shop": "クスリのアオキ2号店楽天市場店",
-          "item_name": "明治ほほえみらくらくミルク240ML×24個",
-          "price": 7698,
-          "count": 24,
-          "ml": 5760,
-          "per100": 133.6,
-          "point_rate": 1,
-          "per100_after_points": 132.3,
-          "url": "https://hb.afl.rakuten.co.jp/hgc/g00ufwqo.kqv989ec.g00ufwqo.kqv998b9/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fkusuriaoki-r-2%2F60000000018611%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fkusuriaoki-r-2%2Fi%2F10036110%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
-          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/kusuriaoki-r-2/cabinet/pic2815/60000000018611_1.jpg?_ex=128x128"
         }
-      ]
+      ],
+      "stats": {
+        "fetched": 59,
+        "除外ワード": 3,
+        "安すぎて除外": 0,
+        "使えた件数": 32
+      }
     }
   ]
 }
