@@ -16,7 +16,9 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: 楽天とYahoo!から価格を取得
+      - name: Amazon用ライブラリを入れる
+        run: pip install "python-amazon-paapi==7.1.0"
+      - name: 楽天・Yahoo!・Amazonから価格を取得
         env:
           RAKUTEN_APP_ID: ${{ secrets.RAKUTEN_APP_ID }}
           RAKUTEN_ACCESS_KEY: ${{ secrets.RAKUTEN_ACCESS_KEY }}
@@ -25,6 +27,10 @@ jobs:
           YAHOO_CLIENT_ID: ${{ secrets.YAHOO_CLIENT_ID }}
           VC_SID: ${{ secrets.VC_SID }}
           VC_PID: ${{ secrets.VC_PID }}
+          AMAZON_CREDENTIAL_ID: ${{ secrets.AMAZON_CREDENTIAL_ID }}
+          AMAZON_CREDENTIAL_SECRET: ${{ secrets.AMAZON_CREDENTIAL_SECRET }}
+          AMAZON_API_VERSION: ${{ secrets.AMAZON_API_VERSION }}
+          AMAZON_PARTNER_TAG: ${{ secrets.AMAZON_PARTNER_TAG }}
         run: python fetch_prices.py
       - name: data.json を保存
         run: |

@@ -11,6 +11,10 @@
     YAHOO_CLIENT_ID       Yahoo!デベロッパーネットワークのClient ID
     VC_SID / VC_PID       バリューコマースのYahoo!ショッピング用 sid と pid
                           （未設定でも動くが、リンクに報酬が付かない）
+  Amazon（未設定ならAmazonはスキップ）
+    AMAZON_CREDENTIAL_ID / AMAZON_CREDENTIAL_SECRET  Creators APIの認証情報
+    AMAZON_API_VERSION    認証情報のバージョン（例 3.3）
+    AMAZON_PARTNER_TAG    アソシエイトのトラッキングID（例 xxxx-22）
 """
 import json
 import os
@@ -31,9 +35,10 @@ YAHOO_URL = "https://shopping.yahooapis.jp/ShoppingWebService/V3/itemSearch"
 
 JST = timezone(timedelta(hours=9))
 HERE = os.path.dirname(os.path.abspath(__file__))
-TOP_N = 8            # 商品ごとに残すショップ数（楽天とYahoo!の合計）
+TOP_N = 10           # 商品ごとに残すショップ数（全モールの合計）
 RAKUTEN_PAGES = 3    # 楽天: 1ページ30件
 YAHOO_PAGES = 2      # Yahoo!: 1ページ50件
+AMAZON_PAGES = 3     # Amazon: 1ページ10件
 WAIT_SEC = 1.2       # APIへのアクセス間隔（どちらも1秒1回まで）
 # 送料の金額はAPIでわからないため、送料無料でない出品にはこの目安額を足す
 SHIPPING_ESTIMATE = 800
@@ -153,6 +158,62 @@ def yahoo_items(product, cfg):
     return out
 
 
+# ================= Amazon（Creators API） =================
+def _get(obj, *path):
+    for p in path:
+        if obj is None:
+            return None
+        obj = obj[p] if isinstance(p, int) else getattr(obj, p, None)
+    return obj
+
+
+def amazon_items(product, cfg):
+    from amazon_creatorsapi import AmazonCreatorsApi, Country
+    from amazon_creatorsapi.models import SortBy
+
+    if "client" not in cfg:
+        cfg["client"] = AmazonCreatorsApi(
+            credential_id=cfg["credential_id"], credential_secret=cfg["credential_secret"],
+            version=cfg["version"], tag=cfg["tag"], country=Country.JP)
+    api = cfg["client"]
+    out = []
+    for page in range(1, AMAZON_PAGES + 1):
+        if page > 1:
+            time.sleep(WAIT_SEC)
+        try:
+            res = api.search_items(keywords=product["keyword"], item_count=10, item_page=page,
+                                   sort_by=SortBy.PRICE_COLON_LOW_TO_HIGH)
+        except Exception as e:
+            if type(e).__name__ == "ItemsNotFoundError":
+                break
+            raise
+        items = _get(res, "items") or []
+        for it in items:
+            listings = _get(it, "offers_v2", "listings") or []
+            if not listings:
+                continue
+            lst = listings[0]
+            amount = _get(lst, "price", "money", "amount")
+            if not amount:
+                continue
+            merchant = _get(lst, "merchant_info", "name") or "Amazon"
+            out.append({
+                "mall": "Amazon",
+                "name": _get(it, "item_info", "title", "display_value") or "",
+                "price": int(round(float(amount))),
+                # Amazon販売分は送料無料として扱い、他の出品者は目安送料を足す
+                "free_shipping": "amazon" in merchant.lower(),
+                "shop": merchant,
+                "url": _get(it, "detail_page_url") or "",
+                "image": _get(it, "images", "primary", "medium", "url")
+                         or _get(it, "images", "primary", "large", "url") or "",
+                "point_rate": 1,
+            })
+        if len(items) < 10:
+            break
+    return out
+
+
 # ================= 内容量の読み取り =================
 COUNT_PATTERNS = [
     r"[×xX✕*]\s*(\d{1,2})\s*(?:缶|個|本|袋|箱|パック|セット)?",
@@ -252,9 +313,13 @@ def main():
     yh = {"client_id": env("YAHOO_CLIENT_ID"), "vc_sid": env("VC_SID"), "vc_pid": env("VC_PID")}
     use_rakuten = all(rk[k] for k in ("app_id", "access_key", "referer"))
     use_yahoo = bool(yh["client_id"])
-    if not (use_rakuten or use_yahoo):
+    az = {"credential_id": env("AMAZON_CREDENTIAL_ID"), "credential_secret": env("AMAZON_CREDENTIAL_SECRET"),
+          "version": env("AMAZON_API_VERSION") or "3.3", "tag": env("AMAZON_PARTNER_TAG")}
+    use_amazon = all(az[k] for k in ("credential_id", "credential_secret", "tag"))
+    if not (use_rakuten or use_yahoo or use_amazon):
         sys.exit("楽天かYahoo!のキーが設定されていません")
-    print(f"楽天: {'ON' if use_rakuten else 'OFF'} / Yahoo!: {'ON' if use_yahoo else 'OFF'}")
+    print(f"楽天: {'ON' if use_rakuten else 'OFF'} / Yahoo!: {'ON' if use_yahoo else 'OFF'}"
+          f" / Amazon: {'ON' if use_amazon else 'OFF'}")
 
     with open(os.path.join(HERE, "products.json"), encoding="utf-8") as f:
         products = json.load(f)
@@ -263,7 +328,8 @@ def main():
     for p in products:
         raw, errors = [], {}
         for mall, on, fn, cfg in (("楽天", use_rakuten, rakuten_items, rk),
-                                  ("Yahoo!", use_yahoo, yahoo_items, yh)):
+                                  ("Yahoo!", use_yahoo, yahoo_items, yh),
+                                  ("Amazon", use_amazon, amazon_items, az)):
             if not on:
                 continue
             time.sleep(WAIT_SEC)
@@ -281,7 +347,7 @@ def main():
         result.append({**meta, "offers": offers, "stats": stats})
 
     out = {"updated": datetime.now(JST).isoformat(timespec="minutes"),
-           "sources": [m for m, on in (("楽天市場", use_rakuten), ("Yahoo!ショッピング", use_yahoo)) if on],
+           "sources": [m for m, on in (("楽天市場", use_rakuten), ("Yahoo!ショッピング", use_yahoo), ("Amazon", use_amazon)) if on],
            "shipping_estimate": SHIPPING_ESTIMATE, "products": result}
     with open(os.path.join(HERE, "data.json"), "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=2)

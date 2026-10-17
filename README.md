@@ -3,7 +3,7 @@
 楽天市場の全ショップから粉ミルクの価格を集め、100mlあたりの単価が安い順に `data.json` へ書き出します。
 
 ## ファイル
-- `fetch_prices.py`：楽天とYahoo!から価格を取ってくる本体
+- `fetch_prices.py`：楽天・Yahoo!・Amazonから価格を取ってくる本体
 - `products.json`：比較する商品の一覧（ここに追加すれば商品が増えます）
 - `.github/workflows/update.yml`：GitHubで毎朝自動実行する設定
 
@@ -16,8 +16,11 @@
 | RAKUTEN_REFERER | 許可されたウェブサイトに入れたURL（`https://sunnyleaf62-oss.github.io/`） |
 | YAHOO_CLIENT_ID | Yahoo!デベロッパーネットワークのClient ID（未設定ならYahoo!はスキップ） |
 | VC_SID / VC_PID | バリューコマースのYahoo!ショッピング用 sid と pid |
+| AMAZON_CREDENTIAL_ID / AMAZON_CREDENTIAL_SECRET | Creators APIの認証情報（未設定ならAmazonはスキップ） |
+| AMAZON_API_VERSION | 認証情報のバージョン（例 3.3） |
+| AMAZON_PARTNER_TAG | アソシエイトのトラッキングID（例 xxxx-22） |
 
-GitHubで使う場合は、リポジトリの Settings → Secrets and variables → Actions に4つとも登録します。コードやファイルにキーを直接書かないでください。
+GitHubで使う場合は、リポジトリの Settings → Secrets and variables → Actions に必要なものを登録します。コードやファイルにキーを直接書かないでください。
 
 ## 集め方のルール
 - 商品名に `must` の言葉が全部入っていて、`ng` の言葉が入っていない出品だけを使います
