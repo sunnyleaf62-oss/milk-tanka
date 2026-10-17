@@ -1,120 +1,80 @@
 [
-  {
-    "id": "hohoemi_can",
-    "brand": "明治",
-    "name": "ほほえみ 缶",
-    "form": "缶",
-    "keyword": "明治 ほほえみ 800g",
-    "must": [
-      "ほほえみ",
-      "800"
-    ],
-    "ng": [
-      "キューブ",
-      "らくらくミルク",
-      "ステップ",
-      "空き缶",
-      "中古",
-      "フォローアップ"
-    ],
-    "unit_g": 800,
-    "g_per_100ml": 13.5,
-    "min_price": 1500
-  },
-  {
-    "id": "hohoemi_cube",
-    "brand": "明治",
-    "name": "ほほえみ らくらくキューブ",
-    "form": "キューブ",
-    "keyword": "明治 ほほえみ らくらくキューブ",
-    "must": [
-      "ほほえみ",
-      "キューブ"
-    ],
-    "ng": [
-      "ステップ",
-      "中古",
-      "ケース単品"
-    ],
-    "g_per_100ml": 13.5,
-    "min_price": 1000,
-    "parse_size": true
-  },
-  {
-    "id": "hagukumi_can",
-    "brand": "森永",
-    "name": "はぐくみ 缶",
-    "form": "缶",
-    "keyword": "森永 はぐくみ 大缶",
-    "must": [
-      "はぐくみ",
-      "800"
-    ],
-    "ng": [
-      "チルミル",
-      "空き缶",
-      "中古"
-    ],
-    "unit_g": 800,
-    "g_per_100ml": 13,
-    "min_price": 1500
-  },
-  {
-    "id": "sukoyaka_can",
-    "brand": "雪印ビーンスターク",
-    "name": "すこやかM1 缶",
-    "form": "缶",
-    "keyword": "すこやかM1 800g",
-    "must": [
-      "すこやか",
-      "800"
-    ],
-    "ng": [
-      "スティック",
-      "つよいこ",
-      "空き缶",
-      "中古"
-    ],
-    "unit_g": 800,
-    "g_per_100ml": 13,
-    "min_price": 1500
-  },
-  {
-    "id": "haihai_can",
-    "brand": "和光堂",
-    "name": "はいはい 缶",
-    "form": "缶",
-    "keyword": "和光堂 はいはい 810g",
-    "must": [
-      "はいはい",
-      "810"
-    ],
-    "ng": [
-      "ぐんぐん",
-      "空き缶",
-      "中古"
-    ],
-    "unit_g": 810,
-    "g_per_100ml": 13,
-    "min_price": 1400
-  },
-  {
-    "id": "hohoemi_liquid",
-    "brand": "明治",
-    "name": "ほほえみ らくらくミルク 240ml",
-    "form": "液体",
-    "keyword": "明治 ほほえみ らくらくミルク 240ml",
-    "must": [
-      "らくらくミルク",
-      "240"
-    ],
-    "ng": [
-      "中古",
-      "アタッチメント",
-      "乳首"
-    ],
-    "unit_ml": 240,
-    "default_count": 24,
-    "min_price": 2500
-  }
+  {"id": "hohoemi_powder", "target": "乳児用", "brand": "明治", "name": "ほほえみ", "form": "粉ミルク",
+   "keyword": "明治 ほほえみ 粉ミルク 大缶", "must": ["ほほえみ"],
+   "ng": ["キューブ", "らくらくミルク", "ステップ", "空き缶", "空缶", "中古", "スプーン"],
+   "g_per_100ml": 13.5, "min_price": 1500, "parse_size": true},
+  {"id": "hohoemi_cube", "target": "乳児用", "brand": "明治", "name": "ほほえみ らくらくキューブ", "form": "キューブ",
+   "keyword": "明治 ほほえみ らくらくキューブ", "must": ["ほほえみ", "キューブ"],
+   "ng": ["ステップ", "中古", "ケース単品"],
+   "g_per_100ml": 13.5, "min_price": 1000, "parse_size": true},
+  {"id": "hagukumi_powder", "target": "乳児用", "brand": "森永", "name": "はぐくみ", "form": "粉ミルク",
+   "keyword": "森永 はぐくみ 粉ミルク", "must": ["はぐくみ"],
+   "ng": ["チルミル", "E赤ちゃん", "Eアカチャン", "液体", "パウチ", "スティック", "空き缶", "空缶", "中古"],
+   "g_per_100ml": 13, "min_price": 1500, "parse_size": true},
+  {"id": "e_akachan_powder", "target": "乳児用", "brand": "森永", "name": "E赤ちゃん", "form": "粉ミルク",
+   "keyword": "森永 E赤ちゃん 粉ミルク", "must": [], "must_any": ["E赤ちゃん", "Eあかちゃん", "Eアカチャン", "E 赤ちゃん"],
+   "ng": ["はぐくみ", "チルミル", "スティック", "空き缶", "空缶", "中古"],
+   "g_per_100ml": 13, "min_price": 1500, "parse_size": true},
+  {"id": "sukoyaka_powder", "target": "乳児用", "brand": "雪印ビーンスターク", "name": "すこやかM1", "form": "粉ミルク",
+   "keyword": "すこやかM1 大缶 800g", "must": ["すこやか"],
+   "ng": ["スティック", "つよいこ", "液体", "空き缶", "空缶", "中古"],
+   "g_per_100ml": 13, "min_price": 1500, "parse_size": true},
+  {"id": "sukoyaka_stick", "target": "乳児用", "brand": "雪印ビーンスターク", "name": "すこやかM1 スティック", "form": "スティック",
+   "keyword": "すこやかM1 スティック", "must": ["すこやか", "スティック"],
+   "ng": ["つよいこ", "中古"],
+   "g_per_100ml": 13, "min_price": 500, "parse_size": true},
+  {"id": "haihai_powder", "target": "乳児用", "brand": "和光堂", "name": "はいはい", "form": "粉ミルク",
+   "keyword": "和光堂 はいはい 810g", "must": ["はいはい"],
+   "ng": ["ぐんぐん", "空き缶", "空缶", "中古"],
+   "g_per_100ml": 13, "min_price": 1400, "parse_size": true},
+  {"id": "icreo_balance", "target": "乳児用", "brand": "アイクレオ", "name": "バランスミルク", "form": "粉ミルク",
+   "keyword": "アイクレオ バランスミルク", "must": ["バランスミルク"],
+   "ng": ["スティック", "グローアップ", "空き缶", "空缶", "中古"],
+   "g_per_100ml": 12.7, "min_price": 1500, "parse_size": true},
+
+  {"id": "hohoemi_liquid", "target": "乳児用", "brand": "明治", "name": "ほほえみ らくらくミルク", "form": "液体",
+   "keyword": "明治 ほほえみ らくらくミルク", "must": ["ほほえみ", "らくらくミルク"],
+   "ng": ["ステップ", "中古", "アタッチメント", "乳首", "防災セット"],
+   "liquid": true, "min_price": 1000},
+  {"id": "icreo_liquid", "target": "乳児用", "brand": "アイクレオ", "name": "赤ちゃんミルク", "form": "液体",
+   "keyword": "アイクレオ 赤ちゃんミルク 125ml", "must": ["アイクレオ", "赤ちゃんミルク"],
+   "ng": ["中古", "乳首"],
+   "liquid": true, "min_price": 1000},
+  {"id": "sukoyaka_liquid", "target": "乳児用", "brand": "雪印ビーンスターク", "name": "すこやかM1 液体ミルク", "form": "液体",
+   "keyword": "すこやかM1 液体ミルク", "must": ["すこやか", "液体"],
+   "ng": ["中古", "乳首"],
+   "liquid": true, "min_price": 800},
+  {"id": "hagukumi_liquid", "target": "乳児用", "brand": "森永", "name": "はぐくみ 液体ミルク", "form": "液体",
+   "keyword": "森永 はぐくみ 液体ミルク", "must": ["はぐくみ", "液体"],
+   "ng": ["中古", "乳首"],
+   "liquid": true, "min_price": 800},
+
+  {"id": "step_powder", "target": "フォローアップ", "brand": "明治", "name": "ステップ", "form": "粉ミルク",
+   "keyword": "明治 ステップ 粉ミルク 大缶", "must": ["ステップ"],
+   "ng": ["キューブ", "らくらくミルク", "ほほえみ", "空き缶", "空缶", "中古"],
+   "g_per_100ml": 14, "min_price": 1200, "parse_size": true},
+  {"id": "step_cube", "target": "フォローアップ", "brand": "明治", "name": "ステップ らくらくキューブ", "form": "キューブ",
+   "keyword": "明治 ステップ らくらくキューブ", "must": ["ステップ", "キューブ"],
+   "ng": ["ほほえみ", "中古"],
+   "g_per_100ml": 14, "min_price": 800, "parse_size": true},
+  {"id": "gungun_powder", "target": "フォローアップ", "brand": "和光堂", "name": "ぐんぐん", "form": "粉ミルク",
+   "keyword": "和光堂 ぐんぐん 830g", "must": ["ぐんぐん"],
+   "ng": ["はいはい", "スティック", "空き缶", "空缶", "中古"],
+   "g_per_100ml": 14, "min_price": 1200, "parse_size": true},
+  {"id": "chilmil_powder", "target": "フォローアップ", "brand": "森永", "name": "チルミル", "form": "粉ミルク",
+   "keyword": "森永 チルミル 粉ミルク", "must": ["チルミル"],
+   "ng": ["スティック", "はぐくみ", "空き缶", "空缶", "中古"],
+   "g_per_100ml": 14, "g_note": "スティック1本14g＝100ml分から算出", "min_price": 1200, "parse_size": true},
+  {"id": "tsuyoiko_powder", "target": "フォローアップ", "brand": "雪印ビーンスターク", "name": "つよいこ", "form": "粉ミルク",
+   "keyword": "ビーンスターク つよいこ 800g", "must": ["つよいこ"],
+   "ng": ["スティック", "すこやか", "空き缶", "空缶", "中古"],
+   "g_per_100ml": 14, "g_note": "スティック1本14g＝100ml分から算出", "min_price": 1200, "parse_size": true},
+  {"id": "icreo_growup", "target": "フォローアップ", "brand": "アイクレオ", "name": "グローアップミルク", "form": "粉ミルク",
+   "keyword": "アイクレオ グローアップミルク", "must": ["グローアップ"],
+   "ng": ["スティック", "空き缶", "空缶", "中古"],
+   "g_per_100ml": 13.6, "min_price": 1500, "parse_size": true},
+  {"id": "step_liquid", "target": "フォローアップ", "brand": "明治", "name": "ステップ らくらくミルク", "form": "液体",
+   "keyword": "明治 ステップ らくらくミルク", "must": ["ステップ", "らくらくミルク"],
+   "ng": ["ほほえみ", "中古"],
+   "liquid": true, "min_price": 1000}
 ]
