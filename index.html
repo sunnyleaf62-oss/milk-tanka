@@ -103,9 +103,11 @@ footer{font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:
   </header>
 
   <section class="panel" aria-label="絞り込み">
+    <div class="label">ミルクの種類</div>
+    <div class="chips" id="targets"></div>
     <div class="label">タイプ</div>
     <div class="chips" id="forms"></div>
-    <div class="label">赤ちゃんの月齢（1ヶ月のミルク代を計算）</div>
+    <div class="label" id="agelabel">赤ちゃんの月齢（1ヶ月のミルク代を計算）</div>
     <div class="age">
       <select id="age" aria-label="月齢">
         <option value="0">0〜1ヶ月</option>
@@ -127,23 +129,43 @@ footer{font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:
     <div>表示価格は上記の更新日時時点の各モールの価格で、変わる可能性があります。購入時は各ショップの表示価格をご確認ください。<br>最新の価格・在庫は各ショップのページでご確認ください。</div>
     <div>100mlあたり単価 ＝ 送料込み価格 ÷ 作れる量 × 100。粉ミルクは各商品の標準調乳濃度で換算しています。</div>
     <div>「送料目安込み」は送料別の商品に目安として<span id="shipest">800</span>円を足した価格です。実際の送料はお住まいの地域やショップにより異なります。</div>
-    <div>1ヶ月のミルク代は完全ミルクの場合のおおよその目安です。量はミルク缶の表示や医師・助産師の指示に従ってください。</div>
+    <div>フォローアップミルクは1日約400mlとして計算しています。1ヶ月のミルク代は完全ミルクの場合のおおよその目安です。量はミルク缶の表示や医師・助産師の指示に従ってください。</div>
   </footer>
 </div>
 
 <script>
-const DAILY = {0:650,1:800,2:950,6:800,9:600};   // 1日の目安ml
-const FORMS = ["すべて","缶","キューブ","スティック","液体"];
-let DATA = null, form = "すべて";
-try{ form = localStorage.getItem("milk-form") || form }catch(e){}
+const DAILY = {0:650,1:800,2:950,6:800,9:600};   // 乳児用ミルクの1日の目安ml
+const FOLLOW_DAILY = 400;                        // フォローアップミルクの1日の目安ml
+const TARGETS = [["乳児用","乳児用（0ヶ月〜）"],["フォローアップ","フォローアップ（9ヶ月〜3歳）"]];
+const FORMS = ["すべて","粉ミルク","キューブ","スティック","液体"];
+let DATA = null, form = "すべて", target = "乳児用";
+try{ form = localStorage.getItem("milk-form") || form; target = localStorage.getItem("milk-target") || target }catch(e){}
+if (!FORMS.includes(form)) form = "すべて";
+const pForm = p => p.form === "缶" ? "粉ミルク" : p.form;
+const pTarget = p => p.target || "乳児用";
 
 const yen = n => Math.round(n).toLocaleString("ja-JP");
 const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const daily = () => DAILY[document.getElementById("age").value];
+const daily = () => target === "フォローアップ" ? FOLLOW_DAILY : DAILY[document.getElementById("age").value];
 const monthCost = per100 => per100 / 100 * daily() * 30;
 
+function renderTargets(){
+  const box = document.getElementById("targets"); box.innerHTML = "";
+  TARGETS.forEach(([v,label])=>{
+    const b = document.createElement("button");
+    b.className="chip"; b.type="button"; b.textContent=label;
+    b.setAttribute("aria-pressed", v===target);
+    b.onclick=()=>{ target=v; try{localStorage.setItem("milk-target",v)}catch(e){} render(); };
+    box.appendChild(b);
+  });
+  const follow = target === "フォローアップ";
+  document.getElementById("age").hidden = follow;
+  document.getElementById("agelabel").textContent = follow ? "1ヶ月のミルク代の計算" : "赤ちゃんの月齢（1ヶ月のミルク代を計算）";
+}
+
 function renderForms(){
-  const present = new Set((DATA?.products||[]).map(p=>p.form));
+  const present = new Set((DATA?.products||[]).filter(p=>pTarget(p)===target).map(pForm));
+  if (DATA && form !== "すべて" && !present.has(form)) form = "すべて";
   const box = document.getElementById("forms"); box.innerHTML = "";
   FORMS.filter(f => f==="すべて" || present.has(f)).forEach(f=>{
     const b = document.createElement("button");
@@ -163,12 +185,13 @@ function badges(o){
 }
 
 function render(){
+  renderTargets();
   renderForms();
   document.getElementById("daily").textContent = `1日 約${daily()}ml × 30日で計算`;
   const list = document.getElementById("list"); list.innerHTML = "";
   if (!DATA) return;
   const rows = DATA.products
-    .filter(p => p.offers && p.offers.length && (form==="すべて" || p.form===form))
+    .filter(p => p.offers && p.offers.length && pTarget(p)===target && (form==="すべて" || pForm(p)===form))
     .sort((a,b) => a.offers[0].per100 - b.offers[0].per100);
 
   rows.forEach((p,i)=>{
@@ -183,7 +206,7 @@ function render(){
         <div class="rank" aria-label="${i+1}位">${i+1}</div>
         ${o.image ? `<img class="thumb" src="${esc(o.image)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">` : `<div class="thumb"></div>`}
         <div class="info">
-          <div class="brand">${esc(p.brand)}・${esc(p.form)}</div>
+          <div class="brand">${esc(p.brand)}・${esc(pForm(p))}</div>
           <div class="name">${esc(p.name)}</div>
           <div class="badges">${badges(o)}</div>
         </div>

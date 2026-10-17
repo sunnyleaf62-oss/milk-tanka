@@ -238,22 +238,50 @@ def parse_count(name, unit_number):
 
 
 def parse_total_grams(name):
+    """粉ミルク・キューブ・スティック用。商品名から合計グラムを読む"""
     t = nfkc(name)
     big = [int(x) for x in re.findall(r"(\d{3,4})\s*g", t, flags=re.I)]
     if big:
         g = max(big)
+        # 「1560g(780g×2缶)」のように合計と内訳が両方あるときは合計だけを使う
+        if any(abs(g - o * k) <= 2 for o in set(big) if o < g for k in range(2, 49)):
+            return g
+        # 「400g×2袋」（詰め替え）は袋数を掛ける
+        bag = re.search(rf"{g}\s*g\s*[×xX*]\s*(\d{{1,2}})\s*袋", t, flags=re.I)
+        if bag:
+            rest = t[bag.end():]
+            more = re.search(r"[×xX*]\s*(\d{1,2})\s*(?:箱|個|セット|パック)", rest)
+            return g * int(bag.group(1)) * (int(more.group(1)) if more else 1)
+        # 「108g (200mL分×4袋入)」「560g (28g×20袋)」の袋数は内訳なので掛けない
         t2 = re.sub(r"\d+\s*ml分?\s*[×xX*]\s*\d+\s*袋入?", " ", t, flags=re.I)
         t2 = re.sub(r"\d+\s*袋", " ", t2)
         return g * (parse_count(t2, g) or 1)
     m = re.search(r"(\d+(?:\.\d+)?)\s*g\s*[×xX*]\s*(\d+)", t, flags=re.I)
     if m:
-        return float(m.group(1)) * int(m.group(2))
+        total = float(m.group(1)) * int(m.group(2))
+        rest = t[m.end():]
+        box = re.search(r"[×xX*]\s*(\d{1,2})\s*(?:箱|個|セット|パック)", rest)
+        return total * (int(box.group(1)) if box else 1)
     return None
+
+
+def parse_total_ml(name, default_count=1):
+    """液体ミルク用。「200ml×24本」などから合計mlを読む"""
+    t = nfkc(name)
+    t = re.sub(r"\d+\s*ml分", " ", t, flags=re.I)
+    sizes = [int(x) for x in re.findall(r"(\d{2,3})\s*ml", t, flags=re.I)]
+    if not sizes:
+        return None
+    unit = max(set(sizes), key=sizes.count)
+    return unit * (parse_count(t, unit) or default_count)
 
 
 def to_offer(product, it, stats):
     name, norm = it["name"], nfkc(it["name"])
-    if not all(nfkc(w) in norm for w in product["must"]):
+    if not all(nfkc(w) in norm for w in product.get("must", [])):
+        stats["条件の言葉なし"] += 1
+        return None
+    if product.get("must_any") and not any(nfkc(w) in norm for w in product["must_any"]):
         stats["条件の言葉なし"] += 1
         return None
     if any(nfkc(w) in norm for w in product.get("ng", [])):
@@ -266,7 +294,13 @@ def to_offer(product, it, stats):
         return None
 
     unit_number = product.get("unit_g") or product.get("unit_ml")
-    if product.get("parse_size"):
+    count = None
+    if product.get("liquid"):
+        ml = parse_total_ml(name)
+        if not ml:
+            stats["内容量が読めない"] += 1
+            return None
+    elif product.get("parse_size"):
         grams = parse_total_grams(name)
         if not grams:
             stats["内容量が読めない"] += 1
@@ -343,7 +377,7 @@ def main():
         if errors:
             stats["errors"] = errors
         print(f"OK  {p['brand']} {p['name']}: {stats}")
-        meta = {k: p[k] for k in ("id", "brand", "name", "form")}
+        meta = {k: p[k] for k in ("id", "target", "brand", "name", "form", "g_per_100ml", "g_note") if k in p}
         result.append({**meta, "offers": offers, "stats": stats})
 
     out = {"updated": datetime.now(JST).isoformat(timespec="minutes"),
