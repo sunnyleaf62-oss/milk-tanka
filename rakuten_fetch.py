@@ -20,6 +20,7 @@ import unicodedata
 import urllib.error
 import urllib.parse
 import urllib.request
+from collections import Counter
 from datetime import datetime, timedelta, timezone
 
 # 2026年の新API。バージョンが廃止されたら新しい日付に書き換える
@@ -28,9 +29,12 @@ API_BASE = "https://openapi.rakuten.co.jp/ichibams/api/IchibaItem/Search/"
 
 JST = timezone(timedelta(hours=9))
 HERE = os.path.dirname(os.path.abspath(__file__))
-TOP_N = 5          # 商品ごとに残すショップ数
-EXCLUDE_POSTAGE_SEPARATE = True   # 送料別の出品を除外する
-WAIT_SEC = 1.2     # APIへのアクセス間隔（QPS 1 以内）
+TOP_N = 5            # 商品ごとに残すショップ数
+PAGES = 3            # 1商品あたり何ページ（1ページ30件）見るか
+WAIT_SEC = 1.2       # APIへのアクセス間隔（QPS 1 以内）
+# 楽天APIは「送料別」かどうかしか返さず、送料の金額はわからない。
+# そのため送料別の出品には、この目安額を足して比較する
+SHIPPING_ESTIMATE = 800
 
 
 def env(name, required=True):
@@ -59,6 +63,10 @@ def call_api(params, referer):
     raise RuntimeError(last_err)
 
 
+def nfkc(s):
+    return unicodedata.normalize("NFKC", s)
+
+
 # ---------- 商品名から「何缶・何本入りか」を読み取る ----------
 COUNT_PATTERNS = [
     r"[×xX✕*]\s*(\d{1,2})\s*(?:缶|個|本|袋|箱|パック|セット)?",
@@ -68,7 +76,7 @@ COUNT_PATTERNS = [
 
 
 def parse_count(name, unit_number):
-    t = unicodedata.normalize("NFKC", name)
+    t = nfkc(name)
     # 「800g」「240ml」など内容量そのものの数字は取り除く
     t = re.sub(rf"{unit_number}\s*(?:g|ml|グラム)", " ", t, flags=re.I)
     found = []
@@ -87,47 +95,84 @@ def parse_count(name, unit_number):
     return max(found)
 
 
+def parse_total_grams(name):
+    """キューブなど内容量がいろいろな商品用。商品名から合計グラムを読む"""
+    t = nfkc(name)
+    big = [int(x) for x in re.findall(r"(\d{3,4})\s*g", t, flags=re.I)]
+    if big:
+        g = max(big)
+        return g * (parse_count(name, g) or 1)
+    m = re.search(r"(\d+(?:\.\d+)?)\s*g\s*[×xX*]\s*(\d+)", t, flags=re.I)
+    if m:
+        return float(m.group(1)) * int(m.group(2))
+    return None
+
+
+def fetch_items(product, app_id, access_key, aff_id, referer):
+    items = []
+    for page in range(1, PAGES + 1):
+        params = {
+            "applicationId": app_id,
+            "accessKey": access_key,
+            "keyword": product["keyword"],
+            "NGKeyword": "中古 空き缶 空缶",
+            "sort": "+itemPrice",
+            "minPrice": product.get("min_price", 1),
+            "availability": 1,
+            "hits": 30,
+            "page": page,
+            "imageFlag": 1,
+            "format": "json",
+            "formatVersion": 2,
+        }
+        if aff_id:
+            params["affiliateId"] = aff_id
+        if page > 1:
+            time.sleep(WAIT_SEC)
+        data = call_api(params, referer)
+        got = data.get("Items") or data.get("items") or []
+        items += [it.get("Item", it) for it in got]
+        if page >= int(data.get("pageCount", 1) or 1):
+            break
+    return items
+
+
 def collect(product, app_id, access_key, aff_id, referer):
-    params = {
-        "applicationId": app_id,
-        "accessKey": access_key,
-        "keyword": product["keyword"],
-        "NGKeyword": "中古 空き缶 空缶",
-        "sort": "+itemPrice",
-        "minPrice": product.get("min_price", 1),
-        "availability": 1,
-        "hits": 30,
-        "imageFlag": 1,
-        "format": "json",
-        "formatVersion": 2,
-    }
-    if aff_id:
-        params["affiliateId"] = aff_id
-    data = call_api(params, referer)
-    items = data.get("Items") or data.get("items") or []
+    items = fetch_items(product, app_id, access_key, aff_id, referer)
+    stats = Counter(fetched=len(items))
 
     offers = []
     unit_number = product.get("unit_g") or product.get("unit_ml")
     for it in items:
-        it = it.get("Item", it)   # formatVersion=1 で返ってきた場合にも対応
         name = it.get("itemName", "")
-        norm = unicodedata.normalize("NFKC", name)
-        if not all(unicodedata.normalize("NFKC", w) in norm for w in product["must"]):
+        norm = nfkc(name)
+        if not all(nfkc(w) in norm for w in product["must"]):
+            stats["条件の言葉なし"] += 1
             continue
-        if any(unicodedata.normalize("NFKC", w) in norm for w in product.get("ng", [])):
-            continue
-        postage_separate = it.get("postageFlag") == 1
-        if EXCLUDE_POSTAGE_SEPARATE and postage_separate:
+        if any(nfkc(w) in norm for w in product.get("ng", [])):
+            stats["除外ワード"] += 1
             continue
 
-        count = parse_count(name, unit_number) or product.get("default_count", 1)
-        if "unit_g" in product:
-            ml = product["unit_g"] * count / product["g_per_100ml"] * 100
+        if product.get("parse_size"):
+            grams = parse_total_grams(name)
+            if not grams:
+                stats["内容量が読めない"] += 1
+                continue
+            ml = grams / product["g_per_100ml"] * 100
+            count = None
         else:
-            ml = product["unit_ml"] * count
+            count = parse_count(name, unit_number) or product.get("default_count", 1)
+            if "unit_g" in product:
+                ml = product["unit_g"] * count / product["g_per_100ml"] * 100
+            else:
+                ml = product["unit_ml"] * count
+
         price = int(it.get("itemPrice", 0))
         if not price:
             continue
+        postage_separate = it.get("postageFlag") == 1
+        shipping = SHIPPING_ESTIMATE if postage_separate else 0
+        total = price + shipping
         point_rate = int(it.get("pointRate", 1) or 1)
         imgs = it.get("mediumImageUrls") or []
         img = imgs[0] if imgs else ""
@@ -137,11 +182,14 @@ def collect(product, app_id, access_key, aff_id, referer):
             "shop": it.get("shopName", ""),
             "item_name": name,
             "price": price,
+            "postage_separate": postage_separate,
+            "shipping_estimate": shipping,
+            "total": total,
             "count": count,
             "ml": round(ml),
-            "per100": round(price / ml * 100, 1),
+            "per100": round(total / ml * 100, 1),
             "point_rate": point_rate,
-            "per100_after_points": round(price * (1 - point_rate / 100) / ml * 100, 1),
+            "per100_after_points": round((total - price * point_rate / 100) / ml * 100, 1),
             "url": it.get("affiliateUrl") or it.get("itemUrl", ""),
             "image": img,
         })
@@ -149,10 +197,17 @@ def collect(product, app_id, access_key, aff_id, referer):
     # 個数の読み違いで極端に安く見えるものを除く（中央値の6割未満）
     if len(offers) >= 3:
         med = statistics.median(o["per100"] for o in offers)
+        before = len(offers)
         offers = [o for o in offers if o["per100"] >= med * 0.6]
+        stats["安すぎて除外"] += before - len(offers)
 
-    offers.sort(key=lambda o: o["per100"])
-    return offers[:TOP_N]
+    # 同じショップの重複は一番安いものだけ残す
+    best = {}
+    for o in sorted(offers, key=lambda o: o["per100"]):
+        best.setdefault(o["shop"], o)
+    offers = sorted(best.values(), key=lambda o: o["per100"])
+    stats["使えた件数"] = len(offers)
+    return offers[:TOP_N], dict(stats)
 
 
 def main():
@@ -169,16 +224,17 @@ def main():
         if i:
             time.sleep(WAIT_SEC)
         try:
-            offers = collect(p, app_id, access_key, aff_id, referer)
-            print(f"OK  {p['brand']} {p['name']}: {len(offers)}件")
+            offers, stats = collect(p, app_id, access_key, aff_id, referer)
+            print(f"OK  {p['brand']} {p['name']}: {stats}")
         except Exception as e:
-            offers = []
+            offers, stats = [], {"error": str(e)[:300]}
             print(f"NG  {p['brand']} {p['name']}: {e}")
         meta = {k: p[k] for k in ("id", "brand", "name", "form")}
-        result.append({**meta, "offers": offers})
+        result.append({**meta, "offers": offers, "stats": stats})
 
     out = {"updated": datetime.now(JST).isoformat(timespec="minutes"),
-           "source": "楽天市場", "products": result}
+           "source": "楽天市場", "shipping_estimate": SHIPPING_ESTIMATE,
+           "products": result}
     with open(os.path.join(HERE, "data.json"), "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=2)
     print("data.json を書き出しました")
