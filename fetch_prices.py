@@ -1,0 +1,292 @@
+"""
+ミルク単価くらべ: 楽天市場とYahoo!ショッピングから粉ミルクの価格を集めて data.json を作る
+
+環境変数（GitHubのSecretsに登録。コードに直接書かないこと）
+  楽天
+    RAKUTEN_APP_ID        アプリケーションID
+    RAKUTEN_ACCESS_KEY    アクセスキー
+    RAKUTEN_AFFILIATE_ID  アフィリエイトID
+    RAKUTEN_REFERER       楽天のアプリ登録で許可したサイトのURL
+  Yahoo!ショッピング（未設定ならYahoo!はスキップ）
+    YAHOO_CLIENT_ID       Yahoo!デベロッパーネットワークのClient ID
+    VC_SID / VC_PID       バリューコマースのYahoo!ショッピング用 sid と pid
+                          （未設定でも動くが、リンクに報酬が付かない）
+"""
+import json
+import os
+import re
+import statistics
+import sys
+import time
+import unicodedata
+import urllib.error
+import urllib.parse
+import urllib.request
+from collections import Counter
+from datetime import datetime, timedelta, timezone
+
+RAKUTEN_VERSIONS = ["20260701", "20220601"]
+RAKUTEN_BASE = "https://openapi.rakuten.co.jp/ichibams/api/IchibaItem/Search/"
+YAHOO_URL = "https://shopping.yahooapis.jp/ShoppingWebService/V3/itemSearch"
+
+JST = timezone(timedelta(hours=9))
+HERE = os.path.dirname(os.path.abspath(__file__))
+TOP_N = 8            # 商品ごとに残すショップ数（楽天とYahoo!の合計）
+RAKUTEN_PAGES = 3    # 楽天: 1ページ30件
+YAHOO_PAGES = 2      # Yahoo!: 1ページ50件
+WAIT_SEC = 1.2       # APIへのアクセス間隔（どちらも1秒1回まで）
+# 送料の金額はAPIでわからないため、送料無料でない出品にはこの目安額を足す
+SHIPPING_ESTIMATE = 800
+
+
+def env(name, required=False):
+    v = os.environ.get(name, "").strip()
+    if required and not v:
+        sys.exit(f"環境変数 {name} が設定されていません")
+    return v
+
+
+def get_json(url, headers=None):
+    req = urllib.request.Request(url, headers={"User-Agent": "milk-tanka/1.0", **(headers or {})})
+    with urllib.request.urlopen(req, timeout=20) as r:
+        return json.load(r)
+
+
+def nfkc(s):
+    return unicodedata.normalize("NFKC", s)
+
+
+# ================= 楽天 =================
+def rakuten_call(params, referer):
+    headers = {"Referer": referer, "Origin": referer.rstrip("/")}
+    last_err = None
+    for ver in RAKUTEN_VERSIONS:
+        url = RAKUTEN_BASE + ver + "?" + urllib.parse.urlencode(params)
+        try:
+            return get_json(url, headers)
+        except urllib.error.HTTPError as e:
+            last_err = f"HTTP {e.code} ({ver}): {e.read().decode('utf-8', 'replace')[:300]}"
+            if e.code == 404:
+                continue
+            break
+    raise RuntimeError(last_err)
+
+
+def rakuten_items(product, cfg):
+    out = []
+    for page in range(1, RAKUTEN_PAGES + 1):
+        params = {
+            "applicationId": cfg["app_id"], "accessKey": cfg["access_key"],
+            "keyword": product["keyword"], "NGKeyword": "中古 空き缶 空缶",
+            "sort": "+itemPrice", "minPrice": product.get("min_price", 1),
+            "availability": 1, "hits": 30, "page": page, "imageFlag": 1,
+            "format": "json", "formatVersion": 2,
+        }
+        if cfg["aff_id"]:
+            params["affiliateId"] = cfg["aff_id"]
+        if page > 1:
+            time.sleep(WAIT_SEC)
+        data = rakuten_call(params, cfg["referer"])
+        for it in data.get("Items") or data.get("items") or []:
+            it = it.get("Item", it)
+            imgs = it.get("mediumImageUrls") or []
+            img = imgs[0] if imgs else ""
+            if isinstance(img, dict):
+                img = img.get("imageUrl", "")
+            out.append({
+                "mall": "楽天",
+                "name": it.get("itemName", ""),
+                "price": int(it.get("itemPrice", 0) or 0),
+                "free_shipping": it.get("postageFlag") == 0,
+                "shop": it.get("shopName", ""),
+                "url": it.get("affiliateUrl") or it.get("itemUrl", ""),
+                "image": img,
+                "point_rate": int(it.get("pointRate", 1) or 1),
+            })
+        if page >= int(data.get("pageCount", 1) or 1):
+            break
+    return out
+
+
+# ================= Yahoo!ショッピング =================
+def vc_link(url, sid, pid):
+    if not (sid and pid):
+        return url
+    return ("https://ck.jp.ap.valuecommerce.com/servlet/referral?"
+            f"sid={sid}&pid={pid}&vc_url=" + urllib.parse.quote(url, safe=""))
+
+
+def yahoo_items(product, cfg):
+    out = []
+    for page in range(YAHOO_PAGES):
+        params = {
+            "appid": cfg["client_id"], "query": product["keyword"],
+            "results": 50, "start": 1 + page * 50, "sort": "+price",
+            "price_from": product.get("min_price", 1), "in_stock": "true",
+            "image_size": 146,
+        }
+        if page:
+            time.sleep(WAIT_SEC)
+        try:
+            data = get_json(YAHOO_URL + "?" + urllib.parse.urlencode(params))
+        except urllib.error.HTTPError as e:
+            raise RuntimeError(f"HTTP {e.code}: {e.read().decode('utf-8', 'replace')[:300]}")
+        hits = data.get("hits") or []
+        for h in hits:
+            name = h.get("name", "")
+            if any(w in name for w in ("中古", "空き缶", "空缶")):
+                continue
+            ship = (h.get("shipping") or {}).get("code")
+            img = h.get("image") or {}
+            out.append({
+                "mall": "Yahoo!",
+                "name": name,
+                "price": int(h.get("price", 0) or 0),
+                "free_shipping": ship == 2,          # 2 = 送料無料
+                "shop": (h.get("seller") or {}).get("name", ""),
+                "url": vc_link(h.get("url", ""), cfg["vc_sid"], cfg["vc_pid"]),
+                "image": img.get("medium") or img.get("small") or "",
+                "point_rate": int((h.get("point") or {}).get("times", 1) or 1),
+            })
+        if len(hits) < 50:
+            break
+    return out
+
+
+# ================= 内容量の読み取り =================
+COUNT_PATTERNS = [
+    r"[×xX✕*]\s*(\d{1,2})\s*(?:缶|個|本|袋|箱|パック|セット)?",
+    r"(\d{1,2})\s*(?:缶|個|本|箱|パック)\s*(?:セット|入り?|組)?",
+    r"(\d{1,2})\s*セット",
+]
+CHOICE_PATTERN = r"\d+\s*(?:缶|本|個|箱|袋)\s*(?:/|／|・|or)\s*\d+\s*(?:缶|本|個|箱|袋)"
+
+
+def parse_count(name, unit_number):
+    t = nfkc(name)
+    t = re.sub(rf"{unit_number}\s*(?:g|ml|グラム)", " ", t, flags=re.I)
+    found = [int(m.group(1)) for p in COUNT_PATTERNS for m in re.finditer(p, t)
+             if 1 <= int(m.group(1)) <= 48]
+    if not found:
+        return None
+    hon = [int(x) for x in re.findall(r"(\d{1,2})\s*本", t)]
+    hako = [int(x) for x in re.findall(r"[×xX*]?\s*(\d{1,2})\s*(?:箱|ケース)", t)]
+    if hon and hako:
+        return max(hon) * max(hako)
+    return max(found)
+
+
+def parse_total_grams(name):
+    t = nfkc(name)
+    big = [int(x) for x in re.findall(r"(\d{3,4})\s*g", t, flags=re.I)]
+    if big:
+        g = max(big)
+        t2 = re.sub(r"\d+\s*ml分?\s*[×xX*]\s*\d+\s*袋入?", " ", t, flags=re.I)
+        t2 = re.sub(r"\d+\s*袋", " ", t2)
+        return g * (parse_count(t2, g) or 1)
+    m = re.search(r"(\d+(?:\.\d+)?)\s*g\s*[×xX*]\s*(\d+)", t, flags=re.I)
+    if m:
+        return float(m.group(1)) * int(m.group(2))
+    return None
+
+
+def to_offer(product, it, stats):
+    name, norm = it["name"], nfkc(it["name"])
+    if not all(nfkc(w) in norm for w in product["must"]):
+        stats["条件の言葉なし"] += 1
+        return None
+    if any(nfkc(w) in norm for w in product.get("ng", [])):
+        stats["除外ワード"] += 1
+        return None
+    if re.search(CHOICE_PATTERN, norm):
+        stats["数量を選ぶ出品"] += 1
+        return None
+    if not it["price"]:
+        return None
+
+    unit_number = product.get("unit_g") or product.get("unit_ml")
+    if product.get("parse_size"):
+        grams = parse_total_grams(name)
+        if not grams:
+            stats["内容量が読めない"] += 1
+            return None
+        ml, count = grams / product["g_per_100ml"] * 100, None
+    else:
+        count = parse_count(name, unit_number) or product.get("default_count", 1)
+        ml = (product["unit_g"] * count / product["g_per_100ml"] * 100
+              if "unit_g" in product else product["unit_ml"] * count)
+
+    shipping = 0 if it["free_shipping"] else SHIPPING_ESTIMATE
+    total = it["price"] + shipping
+    pr = it["point_rate"]
+    return {
+        "mall": it["mall"], "shop": it["shop"], "item_name": name,
+        "price": it["price"], "postage_separate": not it["free_shipping"],
+        "shipping_estimate": shipping, "total": total, "count": count,
+        "ml": round(ml), "per100": round(total / ml * 100, 1),
+        "point_rate": pr,
+        "per100_after_points": round((total - it["price"] * pr / 100) / ml * 100, 1),
+        "url": it["url"], "image": it["image"],
+    }
+
+
+def build(product, raw_items):
+    stats = Counter(fetched=len(raw_items))
+    offers = [o for o in (to_offer(product, it, stats) for it in raw_items) if o]
+    if len(offers) >= 3:
+        med = statistics.median(o["per100"] for o in offers)
+        before = len(offers)
+        offers = [o for o in offers if o["per100"] >= med * 0.6]
+        stats["安すぎて除外"] += before - len(offers)
+    best = {}
+    for o in sorted(offers, key=lambda o: o["per100"]):
+        best.setdefault((o["mall"], o["shop"]), o)
+    offers = sorted(best.values(), key=lambda o: o["per100"])
+    stats["使えた件数"] = len(offers)
+    return offers[:TOP_N], dict(stats)
+
+
+def main():
+    rk = {"app_id": env("RAKUTEN_APP_ID"), "access_key": env("RAKUTEN_ACCESS_KEY"),
+          "aff_id": env("RAKUTEN_AFFILIATE_ID"), "referer": env("RAKUTEN_REFERER")}
+    yh = {"client_id": env("YAHOO_CLIENT_ID"), "vc_sid": env("VC_SID"), "vc_pid": env("VC_PID")}
+    use_rakuten = all(rk[k] for k in ("app_id", "access_key", "referer"))
+    use_yahoo = bool(yh["client_id"])
+    if not (use_rakuten or use_yahoo):
+        sys.exit("楽天かYahoo!のキーが設定されていません")
+    print(f"楽天: {'ON' if use_rakuten else 'OFF'} / Yahoo!: {'ON' if use_yahoo else 'OFF'}")
+
+    with open(os.path.join(HERE, "products.json"), encoding="utf-8") as f:
+        products = json.load(f)
+
+    result = []
+    for p in products:
+        raw, errors = [], {}
+        for mall, on, fn, cfg in (("楽天", use_rakuten, rakuten_items, rk),
+                                  ("Yahoo!", use_yahoo, yahoo_items, yh)):
+            if not on:
+                continue
+            time.sleep(WAIT_SEC)
+            try:
+                raw += fn(p, cfg)
+            except Exception as e:
+                errors[mall] = str(e)[:300]
+                print(f"NG  {mall} {p['brand']} {p['name']}: {e}")
+        offers, stats = build(p, raw)
+        stats["malls"] = Counter(o["mall"] for o in offers)
+        if errors:
+            stats["errors"] = errors
+        print(f"OK  {p['brand']} {p['name']}: {stats}")
+        meta = {k: p[k] for k in ("id", "brand", "name", "form")}
+        result.append({**meta, "offers": offers, "stats": stats})
+
+    out = {"updated": datetime.now(JST).isoformat(timespec="minutes"),
+           "sources": [m for m, on in (("楽天市場", use_rakuten), ("Yahoo!ショッピング", use_yahoo)) if on],
+           "shipping_estimate": SHIPPING_ESTIMATE, "products": result}
+    with open(os.path.join(HERE, "data.json"), "w", encoding="utf-8") as f:
+        json.dump(out, f, ensure_ascii=False, indent=2)
+    print("data.json を書き出しました")
+
+
+if __name__ == "__main__":
+    main()

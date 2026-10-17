@@ -1,19 +1,21 @@
-# ミルク単価くらべ：楽天価格の自動取得
+# ミルク単価くらべ：楽天・Yahoo!価格の自動取得
 
 楽天市場の全ショップから粉ミルクの価格を集め、100mlあたりの単価が安い順に `data.json` へ書き出します。
 
 ## ファイル
-- `rakuten_fetch.py`：価格を取ってくる本体
+- `fetch_prices.py`：楽天とYahoo!から価格を取ってくる本体
 - `products.json`：比較する商品の一覧（ここに追加すれば商品が増えます）
 - `.github/workflows/update.yml`：GitHubで毎朝自動実行する設定
 
-## 必要な4つの値
+## 必要な値
 | 名前 | 中身 |
 |---|---|
 | RAKUTEN_APP_ID | Rakuten Developersのアプリケーション ID |
 | RAKUTEN_ACCESS_KEY | 同じ画面のアクセスキー（人に見せない） |
 | RAKUTEN_AFFILIATE_ID | 同じ画面のアフィリエイトID |
-| RAKUTEN_REFERER | 許可されたウェブサイトに入れたURL（例 `https://www.threads.com/`） |
+| RAKUTEN_REFERER | 許可されたウェブサイトに入れたURL（`https://sunnyleaf62-oss.github.io/`） |
+| YAHOO_CLIENT_ID | Yahoo!デベロッパーネットワークのClient ID（未設定ならYahoo!はスキップ） |
+| VC_SID / VC_PID | バリューコマースのYahoo!ショッピング用 sid と pid |
 
 GitHubで使う場合は、リポジトリの Settings → Secrets and variables → Actions に4つとも登録します。コードやファイルにキーを直接書かないでください。
 

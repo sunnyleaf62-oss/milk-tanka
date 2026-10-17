@@ -16,13 +16,16 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-      - name: 楽天から価格を取得
+      - name: 楽天とYahoo!から価格を取得
         env:
           RAKUTEN_APP_ID: ${{ secrets.RAKUTEN_APP_ID }}
           RAKUTEN_ACCESS_KEY: ${{ secrets.RAKUTEN_ACCESS_KEY }}
           RAKUTEN_AFFILIATE_ID: ${{ secrets.RAKUTEN_AFFILIATE_ID }}
           RAKUTEN_REFERER: ${{ secrets.RAKUTEN_REFERER }}
-        run: python rakuten_fetch.py
+          YAHOO_CLIENT_ID: ${{ secrets.YAHOO_CLIENT_ID }}
+          VC_SID: ${{ secrets.VC_SID }}
+          VC_PID: ${{ secrets.VC_PID }}
+        run: python fetch_prices.py
       - name: data.json を保存
         run: |
           git config user.name "github-actions"
