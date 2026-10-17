@@ -8,6 +8,7 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="icon" type="image/png" sizes="32x32" href="favicon.png">
 <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
+<meta name="theme-color" content="#A9DBF8">
 <meta name="apple-mobile-web-app-title" content="ミルク単価">
 <meta name="description" content="粉ミルク・キューブ・液体ミルクを楽天市場の全ショップから集め、送料込みの100mlあたり単価で毎日比較します。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -15,20 +16,20 @@
 <style>
 /* Layout: 1カラムのランキング。上に条件パネル、各商品カードは「順位｜商品と最安ショップ｜100ml単価」、他ショップは折りたたみ */
 :root{
-  --bg:#F3F6F7; --surface:#FFFFFF; --ink:#16303A; --muted:#5E7480; --line:#DCE5E8;
-  --accent:#0E7C73; --accent-soft:#DDF1EE; --gold:#F2C14E; --gold-ink:#5A4300;
+  --bg:#EEF6FC; --surface:#FFFFFF; --ink:#15324A; --muted:#587089; --line:#D3E4F1;
+  --accent:#1C74BC; --accent-soft:#DCEFFC; --gold:#F2C14E; --gold-ink:#5A4300;
   --silver:#C9D3D8; --bronze:#E2A77A; --warn:#9A5B00; --warn-soft:#FFF1D9; --btn-ink:#FFFFFF;
   --f-display:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Noto Sans JP",sans-serif;
   --f-body:"Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
   color-scheme:light;
 }
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
-  --bg:#0F1A1E; --surface:#16252B; --ink:#E6F0F2; --muted:#93A9B2; --line:#26383F;
-  --accent:#4CC3B6; --accent-soft:#173B38; --gold:#E7B93F; --gold-ink:#2B2000;
+  --bg:#0D1822; --surface:#14232F; --ink:#E5F0F8; --muted:#92A9BC; --line:#233748;
+  --accent:#6BBFF0; --accent-soft:#15324A; --gold:#E7B93F; --gold-ink:#2B2000;
   --silver:#6F8188; --bronze:#A8714A; --warn:#F2B866; --warn-soft:#3A2C14; --btn-ink:#0F1A1E; color-scheme:dark}}
 :root[data-theme="dark"]{
-  --bg:#0F1A1E; --surface:#16252B; --ink:#E6F0F2; --muted:#93A9B2; --line:#26383F;
-  --accent:#4CC3B6; --accent-soft:#173B38; --gold:#E7B93F; --gold-ink:#2B2000;
+  --bg:#0D1822; --surface:#14232F; --ink:#E5F0F8; --muted:#92A9BC; --line:#233748;
+  --accent:#6BBFF0; --accent-soft:#15324A; --gold:#E7B93F; --gold-ink:#2B2000;
   --silver:#6F8188; --bronze:#A8714A; --warn:#F2B866; --warn-soft:#3A2C14; --btn-ink:#0F1A1E; color-scheme:dark}
 *{box-sizing:border-box}
 html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
