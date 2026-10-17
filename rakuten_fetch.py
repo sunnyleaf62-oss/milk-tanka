@@ -101,7 +101,10 @@ def parse_total_grams(name):
     big = [int(x) for x in re.findall(r"(\d{3,4})\s*g", t, flags=re.I)]
     if big:
         g = max(big)
-        return g * (parse_count(name, g) or 1)
+        # 「108g (200mL分×4袋入)」の袋数は内容量の内訳なので掛けない
+        t2 = re.sub(r"\d+\s*ml分?\s*[×xX*]\s*\d+\s*袋入?", " ", t, flags=re.I)
+        t2 = re.sub(r"\d+\s*袋", " ", t2)
+        return g * (parse_count(t2, g) or 1)
     m = re.search(r"(\d+(?:\.\d+)?)\s*g\s*[×xX*]\s*(\d+)", t, flags=re.I)
     if m:
         return float(m.group(1)) * int(m.group(2))
@@ -151,6 +154,10 @@ def collect(product, app_id, access_key, aff_id, referer):
             continue
         if any(nfkc(w) in norm for w in product.get("ng", [])):
             stats["除外ワード"] += 1
+            continue
+        # 「12缶/24缶」のように数量を選ぶ出品は価格がどれのものかわからないので除外
+        if re.search(r"\d+\s*(?:缶|本|個|箱|袋)\s*(?:/|／|・|or)\s*\d+\s*(?:缶|本|個|箱|袋)", norm):
+            stats["数量を選ぶ出品"] += 1
             continue
 
         if product.get("parse_size"):
