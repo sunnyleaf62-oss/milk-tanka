@@ -34,7 +34,7 @@ img{max-width:100%}
 .wrap{max-width:760px;margin:0 auto;padding-block:20px 48px;
   padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
   display:flex;flex-direction:column;gap:16px}
-.pr{font-size:11px;color:var(--muted)}
+.pr{font-size:10px;color:var(--muted);letter-spacing:.02em}
 header{display:flex;flex-direction:column;gap:4px}
 h1{font-family:var(--f-display);font-weight:900;font-size:clamp(28px,7vw,40px);line-height:1.2;margin:0;text-wrap:balance}
 h1 span{color:var(--accent)}
@@ -95,7 +95,7 @@ footer{font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:
 </head>
 <body>
 <div class="wrap">
-  <div class="pr">当サイトはアフィリエイト広告（楽天アフィリエイト・バリューコマース・Amazonアソシエイト）を利用しています。Amazonのアソシエイトとして、当サイトは適格販売により収入を得ています。</div>
+  <div class="pr">（当ページのリンクには広告が含まれています）</div>
   <header>
     <h1>ミルク<span>単価</span>くらべ</h1>
     <p class="sub"><span id="sources">楽天市場</span>の全ショップから集めて、送料込みの「100mlあたり」で毎日比較</p>
@@ -123,6 +123,7 @@ footer{font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:
   <div class="msg" id="msg" hidden></div>
 
   <footer>
+    <div>当サイトは楽天アフィリエイト・バリューコマース・Amazonアソシエイトを利用しています。Amazonのアソシエイトとして、当サイトは適格販売により収入を得ています。</div>
     <div>表示価格は上記の更新日時時点の各モールの価格で、変わる可能性があります。購入時は各ショップの表示価格をご確認ください。<br>最新の価格・在庫は各ショップのページでご確認ください。</div>
     <div>100mlあたり単価 ＝ 送料込み価格 ÷ 作れる量 × 100。粉ミルクは各商品の標準調乳濃度で換算しています。</div>
     <div>「送料目安込み」は送料別の商品に目安として<span id="shipest">800</span>円を足した価格です。実際の送料はお住まいの地域やショップにより異なります。</div>
