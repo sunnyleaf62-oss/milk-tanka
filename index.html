@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ミルク単価くらべ</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="粉ミルク・キューブ・液体ミルクを楽天市場の全ショップから集め、送料込みの100mlあたり単価で毎日比較します。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap">
+<style>
+/* Layout: 1カラムのランキング。上に条件パネル、各商品カードは「順位｜商品と最安ショップ｜100ml単価」、他ショップは折りたたみ */
+:root{
+  --bg:#F3F6F7; --surface:#FFFFFF; --ink:#16303A; --muted:#5E7480; --line:#DCE5E8;
+  --accent:#0E7C73; --accent-soft:#DDF1EE; --gold:#F2C14E; --gold-ink:#5A4300;
+  --silver:#C9D3D8; --bronze:#E2A77A; --warn:#9A5B00; --warn-soft:#FFF1D9; --btn-ink:#FFFFFF;
+  --f-display:"Zen Maru Gothic","Hiragino Maru Gothic ProN","Noto Sans JP",sans-serif;
+  --f-body:"Noto Sans JP","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0F1A1E; --surface:#16252B; --ink:#E6F0F2; --muted:#93A9B2; --line:#26383F;
+  --accent:#4CC3B6; --accent-soft:#173B38; --gold:#E7B93F; --gold-ink:#2B2000;
+  --silver:#6F8188; --bronze:#A8714A; --warn:#F2B866; --warn-soft:#3A2C14; --btn-ink:#0F1A1E; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F1A1E; --surface:#16252B; --ink:#E6F0F2; --muted:#93A9B2; --line:#26383F;
+  --accent:#4CC3B6; --accent-soft:#173B38; --gold:#E7B93F; --gold-ink:#2B2000;
+  --silver:#6F8188; --bronze:#A8714A; --warn:#F2B866; --warn-soft:#3A2C14; --btn-ink:#0F1A1E; color-scheme:dark}
+*{box-sizing:border-box}
+html{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.6}
+img{max-width:100%}
+[hidden]{display:none!important}
+.wrap{max-width:760px;margin:0 auto;padding-block:20px 48px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));
+  display:flex;flex-direction:column;gap:16px}
+.pr{font-size:11px;color:var(--muted)}
+header{display:flex;flex-direction:column;gap:4px}
+h1{font-family:var(--f-display);font-weight:900;font-size:clamp(28px,7vw,40px);line-height:1.2;margin:0;text-wrap:balance}
+h1 span{color:var(--accent)}
+.sub{color:var(--muted);margin:0}
+.updated{font-size:13px;font-weight:700;color:var(--accent)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.label{font-size:12px;letter-spacing:.06em;color:var(--muted);font-weight:700}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:inherit;font-size:14px;border:1px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:6px 14px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--btn-ink);font-weight:700}
+.chip:focus-visible,select:focus-visible,a:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.age{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+select{font:inherit;padding:6px 10px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--ink)}
+.daily{font-size:13px;color:var(--muted)}
+.list{display:flex;flex-direction:column;gap:12px;margin:0;padding:0;list-style:none}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:10px}
+.card.r1{border-color:var(--gold)}
+.top{display:grid;grid-template-columns:40px 64px 1fr auto;gap:12px;align-items:center}
+.rank{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;font-family:var(--f-display);font-weight:900;font-size:18px;background:var(--bg);color:var(--muted)}
+.r1 .rank{background:var(--gold);color:var(--gold-ink)}
+.r2 .rank{background:var(--silver);color:var(--ink)}
+.r3 .rank{background:var(--bronze);color:var(--ink)}
+.thumb{width:64px;height:64px;border-radius:10px;background:var(--bg);object-fit:contain;border:1px solid var(--line)}
+.info{min-width:0;display:flex;flex-direction:column;gap:2px}
+.brand{font-size:12px;color:var(--muted);font-weight:700}
+.name{font-weight:700;line-height:1.4}
+.badges{display:flex;flex-wrap:wrap;gap:4px}
+.badge{font-size:11px;font-weight:700;border-radius:6px;padding:1px 7px;background:var(--accent-soft);color:var(--accent)}
+.badge.ship{background:var(--warn-soft);color:var(--warn)}
+.price{text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:2px}
+.unit{font-family:var(--f-display);font-weight:900;font-size:26px;line-height:1;font-variant-numeric:tabular-nums}
+.unit small{font-size:12px;font-weight:700;color:var(--muted);margin-left:2px}
+.month{font-size:12px;color:var(--muted);font-variant-numeric:tabular-nums}
+.best{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 12px;border-top:1px dashed var(--line);padding-top:10px}
+.shopline{min-width:0;font-size:13px;color:var(--muted)}
+.shopline b{color:var(--ink)}
+.btn{display:inline-block;text-decoration:none;font-weight:700;font-size:14px;background:var(--accent);color:var(--btn-ink);border-radius:10px;padding:8px 14px;white-space:nowrap}
+.btn:hover{filter:brightness(1.08)}
+details{font-size:13px}
+summary{cursor:pointer;color:var(--accent);font-weight:700}
+.others{list-style:none;margin:8px 0 0;padding:0;display:flex;flex-direction:column;gap:6px}
+.others li{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:baseline;padding:6px 0;border-bottom:1px solid var(--line)}
+.others a{color:var(--ink);text-decoration:none;min-width:0;overflow-wrap:anywhere}
+.others a:hover{text-decoration:underline}
+.others .v{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}
+.summary{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;font-size:14px}
+.summary b{font-family:var(--f-display);font-size:20px;color:var(--accent);font-variant-numeric:tabular-nums}
+.msg{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;text-align:center;color:var(--muted)}
+footer{font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--line);padding-top:14px}
+@media (max-width:480px){
+  .top{grid-template-columns:34px 52px 1fr}
+  .rank{width:34px;height:34px;font-size:16px}
+  .thumb{width:52px;height:52px}
+  .price{grid-column:1 / -1;flex-direction:row;align-items:baseline;justify-content:flex-end;gap:10px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="pr">当サイトはアフィリエイト広告（楽天アフィリエイト）を利用しています</div>
+  <header>
+    <h1>ミルク<span>単価</span>くらべ</h1>
+    <p class="sub">楽天市場の全ショップから集めて、送料込みの「100mlあたり」で毎日比較</p>
+    <div class="updated" id="updated">価格データを読み込み中…</div>
+  </header>
+
+  <section class="panel" aria-label="絞り込み">
+    <div class="label">タイプ</div>
+    <div class="chips" id="forms"></div>
+    <div class="label">赤ちゃんの月齢（1ヶ月のミルク代を計算）</div>
+    <div class="age">
+      <select id="age" aria-label="月齢">
+        <option value="0">0〜1ヶ月</option>
+        <option value="1">1〜2ヶ月</option>
+        <option value="2" selected>2〜6ヶ月</option>
+        <option value="6">6〜9ヶ月</option>
+        <option value="9">9〜12ヶ月</option>
+      </select>
+      <span class="daily" id="daily"></span>
+    </div>
+  </section>
+
+  <div class="summary" id="summary"></div>
+  <ol class="list" id="list"></ol>
+  <div class="msg" id="msg" hidden></div>
+
+  <footer>
+    <div>表示価格は更新時点の楽天市場の価格です。最新の価格・在庫は各ショップのページでご確認ください。</div>
+    <div>100mlあたり単価 ＝ 送料込み価格 ÷ 作れる量 × 100。粉ミルクは各商品の標準調乳濃度で換算しています。</div>
+    <div>「送料目安込み」は送料別の商品に目安として<span id="shipest">800</span>円を足した価格です。実際の送料はお住まいの地域やショップにより異なります。</div>
+    <div>1ヶ月のミルク代は完全ミルクの場合のおおよその目安です。量はミルク缶の表示や医師・助産師の指示に従ってください。</div>
+  </footer>
+</div>
+
+<script>
+const DAILY = {0:650,1:800,2:950,6:800,9:600};   // 1日の目安ml
+const FORMS = ["すべて","缶","キューブ","スティック","液体"];
+let DATA = null, form = "すべて";
+try{ form = localStorage.getItem("milk-form") || form }catch(e){}
+
+const yen = n => Math.round(n).toLocaleString("ja-JP");
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const daily = () => DAILY[document.getElementById("age").value];
+const monthCost = per100 => per100 / 100 * daily() * 30;
+
+function renderForms(){
+  const present = new Set((DATA?.products||[]).map(p=>p.form));
+  const box = document.getElementById("forms"); box.innerHTML = "";
+  FORMS.filter(f => f==="すべて" || present.has(f)).forEach(f=>{
+    const b = document.createElement("button");
+    b.className="chip"; b.type="button"; b.textContent=f;
+    b.setAttribute("aria-pressed", f===form);
+    b.onclick=()=>{ form=f; try{localStorage.setItem("milk-form",f)}catch(e){} render(); };
+    box.appendChild(b);
+  });
+}
+
+function badges(o){
+  let h = "";
+  if (o.postage_separate) h += `<span class="badge ship">送料目安込み</span>`;
+  else h += `<span class="badge">送料込み</span>`;
+  if (o.point_rate > 1) h += `<span class="badge">ポイント${o.point_rate}倍</span>`;
+  return h;
+}
+
+function render(){
+  renderForms();
+  document.getElementById("daily").textContent = `1日 約${daily()}ml × 30日で計算`;
+  const list = document.getElementById("list"); list.innerHTML = "";
+  if (!DATA) return;
+  const rows = DATA.products
+    .filter(p => p.offers && p.offers.length && (form==="すべて" || p.form===form))
+    .sort((a,b) => a.offers[0].per100 - b.offers[0].per100);
+
+  rows.forEach((p,i)=>{
+    const o = p.offers[0];
+    const li = document.createElement("li");
+    li.className = "card" + (i<3 ? " r"+(i+1) : "");
+    const others = p.offers.slice(1).map(x => `
+      <li><a href="${esc(x.url)}" target="_blank" rel="noopener sponsored">${esc(x.shop)}<br><span class="daily">¥${yen(x.total)}${x.postage_separate?"（送料目安込み）":""}</span></a>
+      <span class="v">${x.per100.toFixed(1)}円</span></li>`).join("");
+    li.innerHTML = `
+      <div class="top">
+        <div class="rank" aria-label="${i+1}位">${i+1}</div>
+        ${o.image ? `<img class="thumb" src="${esc(o.image)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">` : `<div class="thumb"></div>`}
+        <div class="info">
+          <div class="brand">${esc(p.brand)}・${esc(p.form)}</div>
+          <div class="name">${esc(p.name)}</div>
+          <div class="badges">${badges(o)}</div>
+        </div>
+        <div class="price">
+          <div class="unit">${o.per100.toFixed(1)}<small>円/100ml</small></div>
+          <div class="month">1ヶ月 約¥${yen(monthCost(o.per100))}</div>
+        </div>
+      </div>
+      <div class="best">
+        <div class="shopline">最安ショップ <b>${esc(o.shop)}</b><br>¥${yen(o.total)}・約${yen(o.ml)}ml分</div>
+        <a class="btn" href="${esc(o.url)}" target="_blank" rel="noopener sponsored">楽天で見る</a>
+      </div>
+      ${others ? `<details><summary>ほかのショップ（${p.offers.length-1}件）</summary><ul class="others">${others}</ul></details>` : ""}`;
+    list.appendChild(li);
+  });
+
+  const s = document.getElementById("summary");
+  s.innerHTML = rows.length
+    ? `いちばんお得なのは<strong>${esc(rows[0].brand)} ${esc(rows[0].name)}</strong><span>1ヶ月 約<b>¥${yen(monthCost(rows[0].offers[0].per100))}</b></span>`
+    : "";
+  const msg = document.getElementById("msg");
+  msg.hidden = rows.length > 0;
+  msg.textContent = "この条件に合う商品はまだありません。";
+}
+
+function fmtUpdated(iso){
+  const d = new Date(iso);
+  if (isNaN(d)) return iso;
+  return `${d.getMonth()+1}月${d.getDate()}日 ${d.getHours()}:${String(d.getMinutes()).padStart(2,"0")} 更新`;
+}
+
+document.getElementById("age").addEventListener("change", render);
+fetch("data.json", {cache:"no-cache"})
+  .then(r => { if(!r.ok) throw new Error(r.status); return r.json(); })
+  .then(d => {
+    DATA = d;
+    document.getElementById("updated").textContent = fmtUpdated(d.updated);
+    if (d.shipping_estimate) document.getElementById("shipest").textContent = d.shipping_estimate;
+    render();
+  })
+  .catch(() => {
+    document.getElementById("updated").textContent = "価格データを読み込めませんでした";
+    const msg = document.getElementById("msg");
+    msg.hidden = false;
+    msg.textContent = "時間をおいて再読み込みしてください。";
+    render();
+  });
+render();
+</script>
+</body>
+</html>
