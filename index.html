@@ -10,6 +10,14 @@
 <link rel="icon" type="image/png" sizes="512x512" href="icon-512.png">
 <meta name="theme-color" content="#A9DBF8">
 <meta name="apple-mobile-web-app-title" content="ミルク単価">
+<meta property="og:type" content="website">
+<meta property="og:title" content="ミルク単価くらべ">
+<meta property="og:description" content="粉ミルク・キューブ・液体ミルクを楽天・Yahoo!・Amazonから集めて、送料込みの「100mlあたり」で毎日比較。">
+<meta property="og:url" content="https://sunnyleaf62-oss.github.io/milk-tanka/">
+<meta property="og:image" content="https://sunnyleaf62-oss.github.io/milk-tanka/img/ogp.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="description" content="粉ミルク・キューブ・液体ミルクを楽天市場の全ショップから集め、送料込みの100mlあたり単価で毎日比較します。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic:wght@500;700;900&family=Noto+Sans+JP:wght@400;500;700&display=swap">
@@ -88,6 +96,9 @@ summary{cursor:pointer;color:var(--accent);font-weight:700}
 .summary{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;font-size:14px}
 .summary b{font-family:var(--f-display);font-size:20px;color:var(--accent);font-variant-numeric:tabular-nums}
 .msg{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;text-align:center;color:var(--muted)}
+.xpromo{display:block;border-radius:18px;overflow:hidden;margin-top:8px}
+.xpromo img{display:block;width:100%;height:auto}
+.xpromo:active{transform:translateY(1px)}
 footer{font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--line);padding-top:14px}
 @media (max-width:480px){
   .top{grid-template-columns:34px 52px 1fr}
@@ -128,6 +139,10 @@ footer{font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:
   <div class="summary" id="summary"></div>
   <ol class="list" id="list"></ol>
   <div class="msg" id="msg" hidden></div>
+
+  <a class="xpromo" href="https://sunnyleaf62-oss.github.io/omutsu-tanka/">
+    <img src="img/omutsu-banner.webp" alt="おむつ単価くらべ：楽天・Yahoo!・Amazonから集めて送料込みの1枚あたりで毎日比較。今すぐ最安値をチェック" width="1200" height="450" loading="lazy">
+  </a>
 
   <footer>
     <div>Amazonのアソシエイトとして、当サイトは適格販売により収入を得ています。</div>
