@@ -20,7 +20,8 @@
   ],
   "g_per_100ml": 13.5,
   "min_price": 1500,
-  "parse_size": true
+  "parse_size": true,
+  "shop_keyword": "ほほえみ"
  },
  {
   "id": "hohoemi_cube",
@@ -40,7 +41,8 @@
   ],
   "g_per_100ml": 13.5,
   "min_price": 1000,
-  "parse_size": true
+  "parse_size": true,
+  "shop_keyword": "ほほえみ キューブ"
  },
  {
   "id": "hagukumi_powder",
@@ -65,7 +67,8 @@
   ],
   "g_per_100ml": 13,
   "min_price": 1500,
-  "parse_size": true
+  "parse_size": true,
+  "shop_keyword": "はぐくみ"
  },
  {
   "id": "e_akachan_powder",
@@ -91,7 +94,8 @@
   ],
   "g_per_100ml": 13,
   "min_price": 1500,
-  "parse_size": true
+  "parse_size": true,
+  "shop_keyword": "E赤ちゃん"
  },
  {
   "id": "sukoyaka_powder",
@@ -113,7 +117,8 @@
   ],
   "g_per_100ml": 13,
   "min_price": 1500,
-  "parse_size": true
+  "parse_size": true,
+  "shop_keyword": "すこやか"
  },
  {
   "id": "sukoyaka_stick",
@@ -132,7 +137,8 @@
   ],
   "g_per_100ml": 13,
   "min_price": 500,
-  "parse_size": true
+  "parse_size": true,
+  "shop_keyword": "すこやか スティック"
  },
  {
   "id": "haihai_powder",
@@ -152,7 +158,8 @@
   ],
   "g_per_100ml": 13,
   "min_price": 1400,
-  "parse_size": true
+  "parse_size": true,
+  "shop_keyword": "はいはい"
  },
  {
   "id": "icreo_balance",
@@ -173,7 +180,8 @@
   ],
   "g_per_100ml": 12.7,
   "min_price": 1500,
-  "parse_size": true
+  "parse_size": true,
+  "shop_keyword": "アイクレオ バランスミルク"
  },
  {
   "id": "hohoemi_liquid",
@@ -194,7 +202,8 @@
    "防災セット"
   ],
   "liquid": true,
-  "min_price": 1000
+  "min_price": 1000,
+  "shop_keyword": "ほほえみ らくらくミルク"
  },
  {
   "id": "icreo_liquid",
@@ -212,7 +221,8 @@
    "乳首"
   ],
   "liquid": true,
-  "min_price": 1000
+  "min_price": 1000,
+  "shop_keyword": "アイクレオ 赤ちゃんミルク"
  },
  {
   "id": "sukoyaka_liquid",
@@ -230,7 +240,8 @@
    "乳首"
   ],
   "liquid": true,
-  "min_price": 800
+  "min_price": 800,
+  "shop_keyword": "すこやか 液体"
  },
  {
   "id": "hagukumi_liquid",
@@ -248,7 +259,8 @@
    "乳首"
   ],
   "liquid": true,
-  "min_price": 800
+  "min_price": 800,
+  "shop_keyword": "はぐくみ 液体"
  },
  {
   "id": "step_powder",
@@ -270,7 +282,8 @@
   ],
   "g_per_100ml": 14,
   "min_price": 1200,
-  "parse_size": true
+  "parse_size": true,
+  "shop_keyword": "ステップ"
  },
  {
   "id": "step_cube",
@@ -289,7 +302,8 @@
   ],
   "g_per_100ml": 14,
   "min_price": 800,
-  "parse_size": true
+  "parse_size": true,
+  "shop_keyword": "ステップ キューブ"
  },
  {
   "id": "gungun_powder",
@@ -310,7 +324,8 @@
   ],
   "g_per_100ml": 14,
   "min_price": 1200,
-  "parse_size": true
+  "parse_size": true,
+  "shop_keyword": "ぐんぐん"
  },
  {
   "id": "chilmil_powder",
@@ -332,7 +347,8 @@
   "g_per_100ml": 14,
   "g_note": "すりきり1さじ約5.6gで40ml（パッケージ表示）",
   "min_price": 1200,
-  "parse_size": true
+  "parse_size": true,
+  "shop_keyword": "チルミル"
  },
  {
   "id": "tsuyoiko_powder",
@@ -354,7 +370,8 @@
   "g_per_100ml": 14,
   "g_note": "すりきり1さじ約5.6gで40ml（パッケージ表示）",
   "min_price": 1200,
-  "parse_size": true
+  "parse_size": true,
+  "shop_keyword": "つよいこ"
  },
  {
   "id": "icreo_growup",
@@ -374,7 +391,8 @@
   ],
   "g_per_100ml": 13.6,
   "min_price": 1500,
-  "parse_size": true
+  "parse_size": true,
+  "shop_keyword": "グローアップミルク"
  },
  {
   "id": "step_liquid",
@@ -392,6 +410,7 @@
    "中古"
   ],
   "liquid": true,
-  "min_price": 1000
+  "min_price": 1000,
+  "shop_keyword": "ステップ らくらくミルク"
  }
 ]

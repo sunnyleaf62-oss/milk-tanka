@@ -1,0 +1,31 @@
+{
+ "shop_coupons": [
+  {
+   "shop_prefix": "楽天24",
+   "shop_code": "netbaby",
+   "until": "2026-11-02T09:59+09:00",
+   "note": "楽天24グループのクーポン（1,000円以上で700円OFF・10,000円以上で1,500円OFF／1回の注文に1枚・1人3回まで・併用不可・商品ページで取得）",
+   "tiers": [
+    {
+     "min_price": 1000,
+     "amount": 700
+    },
+    {
+     "min_price": 10000,
+     "amount": 1500
+    }
+   ]
+  }
+ ],
+ "events": [
+  {
+   "start": "2026-10-18T10:00+09:00",
+   "end": "2026-10-21T09:59+09:00",
+   "title": "楽天「育児の日」開催中",
+   "text": "エントリーでベビー用品のポイントアップ（楽天24 ベビー館など対象ショップ限定）。",
+   "note": "買い物の前にエントリーが必要です（楽天24 ベビー館など対象ショップ限定）",
+   "image": "img/192-banner.jpg",
+   "url": "https://hb.afl.rakuten.co.jp/hgc/589314bc.bddfa8b8.589314bd.ed2be359/?pc=https%3A%2F%2Fevent.rakuten.co.jp%2Fbaby%2F192campaign%2F&m=https%3A%2F%2Fevent.rakuten.co.jp%2Fbaby%2F192campaign%2F"
+  }
+ ]
+}
