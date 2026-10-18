@@ -85,11 +85,13 @@ select{font:inherit;padding:6px 10px;border-radius:8px;border:1px solid var(--li
 .badge.ship{background:var(--warn-soft);color:var(--warn)}
 .badge.coupon{background:var(--gold);color:var(--gold-ink)}
 .cnote{display:block;font-size:11px;color:var(--muted);margin-top:2px}
-.events{display:flex;flex-direction:column;gap:12px}
-.evimg{display:block;border-radius:18px;overflow:hidden;box-shadow:0 2px 0 rgba(0,0,0,.08)}
+.events{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-items:start}
+.events>.ev:only-child{grid-column:1/-1;width:72%;justify-self:center}
+.events>:not(.ev){grid-column:1/-1}
+.evimg{display:block;border-radius:12px;overflow:hidden;box-shadow:0 2px 0 rgba(0,0,0,.08)}
 .evimg img{display:block;width:100%;height:auto}
 .evimg:active{transform:translateY(1px)}
-.evnote{font-size:12px;color:var(--muted);margin-top:4px;text-align:center}
+.evnote{font-size:11px;color:var(--muted);margin-top:3px;text-align:center;line-height:1.4}
 .price{text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:2px}
 .unit{font-family:var(--f-display);font-weight:900;font-size:26px;line-height:1;font-variant-numeric:tabular-nums}
 .unit small{font-size:12px;font-weight:700;color:var(--muted);margin-left:2px}
@@ -276,7 +278,7 @@ function renderEvents(){
   const now = Date.now(), f = iso => { const d = new Date(iso); return `${d.getMonth()+1}/${d.getDate()} ${d.getHours()}:${String(d.getMinutes()).padStart(2,"0")}`; };
   const ev = (DATA?.events || []).filter(e => (!e.start || new Date(e.start) <= now) && (!e.end || new Date(e.end) > now) && e.image && e.url);
   document.getElementById("events").innerHTML = ev.map(e =>
-    `<a class="evimg" href="${esc(e.url)}" target="_blank" rel="noopener sponsored"><img src="${esc(e.image)}" alt="${esc(e.title)}：${esc(e.text)}" width="${e.w||1200}" height="${e.h||450}"></a><div class="evnote">${e.end ? f(e.end) + "まで・" : ""}${esc(e.note || "")}</div>`).join("");
+    `<div class="ev"><a class="evimg" href="${esc(e.url)}" target="_blank" rel="noopener sponsored"><img src="${esc(e.image)}" alt="${esc(e.title)}：${esc(e.text)}" width="${e.w||1200}" height="${e.h||450}"></a><div class="evnote">${e.end ? f(e.end) + "まで" : ""}${e.short ? "・" + esc(e.short) : ""}</div></div>`).join("");
 }
 
 function fmtUpdated(iso){
