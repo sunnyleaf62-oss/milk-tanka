@@ -370,7 +370,12 @@ def to_offer(product, it, stats):
 def build(product, raw_items):
     stats = Counter(fetched=len(raw_items))
     offers = [o for o in (to_offer(product, it, stats) for it in raw_items) if o]
-    if len(offers) >= 3:
+    if product.get("min_per100"):
+        # 液体ミルクは割高な単品出品が多く中央値が当てにならないので、下限の単価で読み違いを除く
+        before = len(offers)
+        offers = [o for o in offers if o["per100"] >= product["min_per100"]]
+        stats["安すぎて除外"] += before - len(offers)
+    elif len(offers) >= 3:
         med = statistics.median(o["per100"] for o in offers)
         before = len(offers)
         offers = [o for o in offers if o["per100"] >= med * 0.6]
@@ -411,6 +416,9 @@ def main():
             time.sleep(WAIT_SEC)
             try:
                 raw += fn(p, cfg)
+                for kw in p.get("extra_keywords", []):
+                    time.sleep(WAIT_SEC)
+                    raw += fn({**p, "keyword": kw}, cfg)
                 if mall == "楽天":
                     for code in SHOP_SEARCH:
                         time.sleep(WAIT_SEC)
