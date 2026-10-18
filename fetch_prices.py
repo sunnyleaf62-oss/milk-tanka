@@ -326,7 +326,7 @@ def to_offer(product, it, stats):
     if any(nfkc(w) in norm for w in product.get("ng", [])):
         stats["除外ワード"] += 1
         return None
-    if re.search(CHOICE_PATTERN, norm):
+    if re.search(CHOICE_PATTERN, norm) or re.search(r"[×xX*]\s*\d+\s*(?:缶|本|個|袋|箱)\s*[/／]\s*\d", norm):
         stats["数量を選ぶ出品"] += 1
         return None
     if not it["price"]:
