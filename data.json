@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-18T19:32+09:00",
+  "updated": "2026-10-18T19:39+09:00",
   "sources": [
     "楽天市場",
     "Yahoo!ショッピング",
@@ -1830,11 +1830,11 @@
         }
       ],
       "stats": {
-        "fetched": 44,
-        "条件の言葉なし": 14,
+        "fetched": 42,
+        "条件の言葉なし": 12,
         "内容量が読めない": 2,
         "安すぎて除外": 0,
-        "使えた件数": 20,
+        "使えた件数": 21,
         "malls": {
           "Yahoo!": 5,
           "楽天": 4,
@@ -2243,8 +2243,8 @@
         }
       ],
       "stats": {
-        "fetched": 169,
-        "条件の言葉なし": 26,
+        "fetched": 170,
+        "条件の言葉なし": 27,
         "内容量が読めない": 12,
         "除外ワード": 5,
         "安すぎて除外": 1,
@@ -3169,10 +3169,10 @@
         }
       ],
       "stats": {
-        "fetched": 213,
-        "除外ワード": 55,
+        "fetched": 206,
+        "除外ワード": 54,
         "内容量が読めない": 8,
-        "条件の言葉なし": 13,
+        "条件の言葉なし": 7,
         "安すぎて除外": 0,
         "使えた件数": 110,
         "malls": {
@@ -3373,7 +3373,8 @@
       "text": "エントリーでベビー用品のポイントアップ（楽天24 ベビー館など対象ショップ限定）。",
       "note": "買い物の前にエントリーが必要です（楽天24 ベビー館など対象ショップ限定）",
       "image": "img/192-banner.jpg",
-      "url": "https://hb.afl.rakuten.co.jp/hgc/589314bc.bddfa8b8.589314bd.ed2be359/?pc=https%3A%2F%2Fevent.rakuten.co.jp%2Fbaby%2F192campaign%2F&m=https%3A%2F%2Fevent.rakuten.co.jp%2Fbaby%2F192campaign%2F"
+      "url": "https://hb.afl.rakuten.co.jp/hgc/589314bc.bddfa8b8.589314bd.ed2be359/?pc=https%3A%2F%2Fevent.rakuten.co.jp%2Fbaby%2F192campaign%2F&m=https%3A%2F%2Fevent.rakuten.co.jp%2Fbaby%2F192campaign%2F",
+      "short": "要エントリー"
     },
     {
       "start": "2026-10-16T00:00+09:00",
@@ -3384,7 +3385,8 @@
       "url": "https://www.amazon.co.jp/primeappreciation?tag=milk-tanka-22",
       "image": "img/prime-banner.jpg",
       "w": 1200,
-      "h": 552
+      "h": 552,
+      "short": "Amazon"
     }
   ]
 }
