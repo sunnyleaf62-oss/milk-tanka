@@ -125,7 +125,9 @@ summary{cursor:pointer;color:var(--accent);font-weight:700}
 .sprice{display:flex;flex-direction:column;align-items:flex-end;gap:5px}
 .sprice .u{font-family:var(--f-display);font-weight:900;font-size:19px;line-height:1;white-space:nowrap;font-variant-numeric:tabular-nums}
 .sprice .u small{font-size:10px;color:var(--muted);font-weight:700;margin-left:1px}
-.btn.sm{font-size:12px;padding:5px 10px;border-radius:8px}
+.tlink{font-size:12px;font-weight:700;color:var(--accent);text-decoration:underline;text-underline-offset:3px;white-space:nowrap}
+.tlink::after{content:" ›"}
+.tlink:hover{opacity:.8}
 .more>summary{font-size:13px;margin-top:2px}
 .more .shops{margin-top:8px}
 .cnotes{font-size:11px;color:var(--muted)}
@@ -135,7 +137,10 @@ summary{cursor:pointer;color:var(--accent);font-weight:700}
 .cmp .v{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
 .cmp .mk{color:var(--muted);font-size:11px;margin-right:6px}
 .msg{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;text-align:center;color:var(--muted)}
-.xpromo{display:block;border-radius:18px;overflow:hidden;margin-top:8px}
+.sister{margin-top:8px}
+.sister-h{font-size:12px;font-weight:700;color:var(--muted);letter-spacing:.04em;margin:0 2px 8px}
+.sister-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.xpromo{display:block;border-radius:12px;overflow:hidden}
 .xpromo img{display:block;width:100%;height:auto}
 .xpromo:active{transform:translateY(1px)}
 footer{font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:6px;border-top:1px solid var(--line);padding-top:14px}
@@ -186,12 +191,17 @@ footer{font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:
   </section>
   <div class="msg" id="msg" hidden></div>
 
+  <section class="sister" aria-label="姉妹サイト">
+    <div class="sister-h">姉妹サイトはこちら</div>
+    <div class="sister-row">
   <a class="xpromo" href="https://sunnyleaf62-oss.github.io/omutsu-tanka/">
     <img src="img/omutsu-banner.webp" alt="おむつ単価くらべ：楽天・Yahoo!・Amazonから集めて送料込みの1枚あたりで毎日比較。今すぐ最安値をチェック" width="1200" height="450" loading="lazy">
   </a>
   <a class="xpromo" href="https://sunnyleaf62-oss.github.io/mama-note/">
     <img src="img/mamanote-banner.webp" alt="ママノート：妊娠中の記録と準備を、ひとつに。アプリを開く" width="1200" height="450" loading="lazy">
   </a>
+    </div>
+  </section>
 
   <footer>
     <div>Amazonのアソシエイトとして、当サイトは適格販売により収入を得ています。</div>
@@ -279,7 +289,7 @@ function shopRow(x,i){
       <div class="sdet">¥${yen(x.total)}${x.coupon?`（クーポン${yen(x.coupon)}円引き後）`:""}・約${yen(x.ml)}ml分</div>
       <div class="badges">${badges(x)}</div></div>
     <div class="sprice"><span class="u">${x.per100.toFixed(1)}<small>円/100ml</small></span>
-      <a class="btn sm" href="${esc(x.url)}" target="_blank" rel="noopener sponsored">${esc(x.mall||"楽天")}で見る</a></div>
+      <a class="tlink" href="${esc(x.url)}" target="_blank" rel="noopener sponsored">${esc(x.mall||"楽天")}で見る</a></div>
   </li>`;
 }
 
