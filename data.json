@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-18T19:16+09:00",
+  "updated": "2026-10-18T19:22+09:00",
   "sources": [
     "楽天市場",
     "Yahoo!ショッピング",
@@ -363,9 +363,9 @@
         }
       ],
       "stats": {
-        "fetched": 219,
+        "fetched": 220,
         "内容量が読めない": 29,
-        "条件の言葉なし": 10,
+        "条件の言葉なし": 11,
         "安すぎて除外": 5,
         "使えた件数": 103,
         "malls": {
@@ -1096,9 +1096,9 @@
         }
       ],
       "stats": {
-        "fetched": 217,
+        "fetched": 218,
         "内容量が読めない": 14,
-        "条件の言葉なし": 25,
+        "条件の言葉なし": 26,
         "安すぎて除外": 32,
         "使えた件数": 57,
         "malls": {
@@ -1830,8 +1830,8 @@
         }
       ],
       "stats": {
-        "fetched": 44,
-        "条件の言葉なし": 14,
+        "fetched": 42,
+        "条件の言葉なし": 12,
         "内容量が読めない": 2,
         "安すぎて除外": 0,
         "使えた件数": 20,
@@ -2243,8 +2243,8 @@
         }
       ],
       "stats": {
-        "fetched": 169,
-        "条件の言葉なし": 26,
+        "fetched": 167,
+        "条件の言葉なし": 24,
         "内容量が読めない": 12,
         "除外ワード": 5,
         "安すぎて除外": 1,
@@ -2984,10 +2984,9 @@
         }
       ],
       "stats": {
-        "fetched": 174,
+        "fetched": 173,
         "除外ワード": 25,
         "内容量が読めない": 2,
-        "条件の言葉なし": 1,
         "安すぎて除外": 0,
         "使えた件数": 67,
         "malls": {
@@ -3192,22 +3191,6 @@
       "offers": [
         {
           "mall": "楽天",
-          "shop": "グラムスキー薬局 楽天市場店",
-          "item_name": "明治ステップ らくらくミルク240ml 1歳 3歳頃 240ml×12缶/240ml×24缶",
-          "price": 3670,
-          "postage_separate": true,
-          "shipping_estimate": 800,
-          "total": 4470,
-          "count": null,
-          "ml": 5760,
-          "per100": 77.6,
-          "point_rate": 1,
-          "per100_after_points": 77.0,
-          "url": "https://hb.afl.rakuten.co.jp/hgc/g00ufuko.kqv98ecb.g00ufuko.kqv9936a/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fgramsky%2Fb0h3zc27p2%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fgramsky%2Fi%2F10097161%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
-          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/gramsky/cabinet/yuragipic/systempic224/b0h3zc27p2-00.jpg?_ex=128x128"
-        },
-        {
-          "mall": "楽天",
           "shop": "コジマ楽天市場店",
           "item_name": "明治　ステップ らくらくミルク240ml×24本 ステップ",
           "price": 4870,
@@ -3351,13 +3334,30 @@
           "per100_after_points": 106.9,
           "url": "https://hb.afl.rakuten.co.jp/hgc/g00us84o.kqv98efe.g00us84o.kqv99a07/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Feasylifeshop%2Fmu526357b077%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Feasylifeshop%2Fi%2F10021118%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
           "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/easylifeshop/cabinet/onesell054/mu526357b077_0.jpg?_ex=128x128"
+        },
+        {
+          "mall": "楽天",
+          "shop": "ぱーそなるたのめーる",
+          "item_name": "【お取寄せ品】 明治　幼児用ミルク　ステップ　らくらくミルク　240mL　缶　1ケース（24本） 【送料無料】",
+          "price": 6220,
+          "postage_separate": false,
+          "shipping_estimate": 0,
+          "total": 6220,
+          "count": null,
+          "ml": 5760,
+          "per100": 108.0,
+          "point_rate": 1,
+          "per100_after_points": 106.9,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00qpdqo.kqv98082.g00qpdqo.kqv993ab/?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fp-tano%2F967-4008%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fp-tano%2Fi%2F10668537%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/p-tano/cabinet/shohin900_21/967-4008.jpg?_ex=128x128"
         }
       ],
       "stats": {
         "fetched": 197,
+        "数量を選ぶ出品": 1,
         "条件の言葉なし": 67,
         "安すぎて除外": 0,
-        "使えた件数": 41,
+        "使えた件数": 40,
         "malls": {
           "楽天": 9,
           "Yahoo!": 1
