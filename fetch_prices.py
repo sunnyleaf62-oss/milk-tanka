@@ -77,9 +77,9 @@ def rakuten_call(params, referer):
     raise RuntimeError(last_err)
 
 
-def rakuten_items(product, cfg):
+def rakuten_items(product, cfg, shop_code=None):
     out = []
-    for page in range(1, RAKUTEN_PAGES + 1):
+    for page in range(1, (1 if shop_code else RAKUTEN_PAGES) + 1):
         params = {
             "applicationId": cfg["app_id"], "accessKey": cfg["access_key"],
             "keyword": product["keyword"], "NGKeyword": "中古 空き缶 空缶",
@@ -89,6 +89,9 @@ def rakuten_items(product, cfg):
         }
         if cfg["aff_id"]:
             params["affiliateId"] = cfg["aff_id"]
+        if shop_code:
+            params["shopCode"] = shop_code
+            params["keyword"] = product.get("shop_keyword") or product["keyword"].replace("大缶", "").strip()
         if page > 1:
             time.sleep(WAIT_SEC)
         data = rakuten_call(params, cfg["referer"])
@@ -240,6 +243,11 @@ def parse_count(name, unit_number):
 def parse_total_grams(name):
     """粉ミルク・キューブ・スティック用。商品名から合計グラムを読む"""
     t = nfkc(name)
+    # 「2缶入×3セット(1缶810g)」「2袋入×4箱(1袋400g)」＝ 入数 × セット数 × 1個の量
+    per = re.search(r"1\s*(?:缶|袋|個|本|箱)\s*(\d{3,4})\s*g", t, flags=re.I)
+    nest = re.search(r"(\d{1,2})\s*(?:缶|袋|個|本)\s*入?\s*[×xX✕*]\s*(\d{1,2})\s*(?:個)?\s*(?:セット|箱|ケース|個|パック)", t)
+    if per and nest:
+        return int(per.group(1)) * int(nest.group(1)) * int(nest.group(2))
     big = [int(x) for x in re.findall(r"(\d{3,4})\s*g", t, flags=re.I)]
     if big:
         g = max(big)
@@ -274,6 +282,37 @@ def parse_total_ml(name, default_count=1):
         return None
     unit = max(set(sizes), key=sizes.count)
     return unit * (parse_count(t, unit) or default_count)
+
+
+# ================= ショップのクーポン（deals.json） =================
+def load_deals():
+    path = os.path.join(HERE, "deals.json")
+    if not os.path.exists(path):
+        return {}
+    with open(path, encoding="utf-8") as f:
+        return json.load(f)
+
+
+DEALS = load_deals()
+SHOP_SEARCH = [s["shop_code"] for s in DEALS.get("shop_coupons", []) if s.get("shop_code")]
+
+
+def shop_coupon(it):
+    """楽天24などショップ全体のクーポン。金額の条件に合う一番大きいものを1枚だけ使う。
+    翌朝の更新まで表示が残るので、期限の24時間前を過ぎたら使わない"""
+    if it["mall"] != "楽天":
+        return 0, ""
+    soon = datetime.now(JST) + timedelta(hours=24)
+    best = (0, "")
+    for sc in DEALS.get("shop_coupons", []):
+        if not it["shop"].startswith(sc["shop_prefix"]):
+            continue
+        if sc.get("until") and datetime.fromisoformat(sc["until"]) <= soon:
+            continue
+        for tier in sc["tiers"]:
+            if it["price"] >= tier["min_price"] and tier["amount"] > best[0]:
+                best = (tier["amount"], sc["note"])
+    return best
 
 
 def to_offer(product, it, stats):
@@ -313,6 +352,8 @@ def to_offer(product, it, stats):
 
     shipping = 0 if it["free_shipping"] else SHIPPING_ESTIMATE
     total = it["price"] + shipping
+    coupon, coupon_note = shop_coupon(it)
+    total -= coupon
     pr = it["point_rate"]
     return {
         "mall": it["mall"], "shop": it["shop"], "item_name": name,
@@ -320,8 +361,9 @@ def to_offer(product, it, stats):
         "shipping_estimate": shipping, "total": total, "count": count,
         "ml": round(ml), "per100": round(total / ml * 100, 1),
         "point_rate": pr,
-        "per100_after_points": round((total - it["price"] * pr / 100) / ml * 100, 1),
+        "per100_after_points": round((total - (it["price"] - coupon) * pr / 100) / ml * 100, 1),
         "url": it["url"], "image": it["image"],
+        **({"coupon": coupon, "coupon_note": coupon_note} if coupon else {}),
     }
 
 
@@ -369,6 +411,10 @@ def main():
             time.sleep(WAIT_SEC)
             try:
                 raw += fn(p, cfg)
+                if mall == "楽天":
+                    for code in SHOP_SEARCH:
+                        time.sleep(WAIT_SEC)
+                        raw += fn(p, cfg, code)
             except Exception as e:
                 errors[mall] = str(e)[:300]
                 print(f"NG  {mall} {p['brand']} {p['name']}: {e}")
@@ -382,7 +428,8 @@ def main():
 
     out = {"updated": datetime.now(JST).isoformat(timespec="minutes"),
            "sources": [m for m, on in (("楽天市場", use_rakuten), ("Yahoo!ショッピング", use_yahoo), ("Amazon", use_amazon)) if on],
-           "shipping_estimate": SHIPPING_ESTIMATE, "products": result}
+           "shipping_estimate": SHIPPING_ESTIMATE, "products": result,
+           "events": DEALS.get("events", [])}
     with open(os.path.join(HERE, "data.json"), "w", encoding="utf-8") as f:
         json.dump(out, f, ensure_ascii=False, indent=2)
     print("data.json を書き出しました")

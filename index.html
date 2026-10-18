@@ -83,6 +83,12 @@ select{font:inherit;padding:6px 10px;border-radius:8px;border:1px solid var(--li
 .badges{display:flex;flex-wrap:wrap;gap:4px}
 .badge{font-size:11px;font-weight:700;border-radius:6px;padding:1px 7px;background:var(--accent-soft);color:var(--accent)}
 .badge.ship{background:var(--warn-soft);color:var(--warn)}
+.badge.coupon{background:var(--gold);color:var(--gold-ink)}
+.cnote{display:block;font-size:11px;color:var(--muted);margin-top:2px}
+.evimg{display:block;border-radius:18px;overflow:hidden;box-shadow:0 2px 0 rgba(0,0,0,.08)}
+.evimg img{display:block;width:100%;height:auto}
+.evimg:active{transform:translateY(1px)}
+.evnote{font-size:12px;color:var(--muted);margin-top:4px;text-align:center}
 .price{text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:2px}
 .unit{font-family:var(--f-display);font-weight:900;font-size:26px;line-height:1;font-variant-numeric:tabular-nums}
 .unit small{font-size:12px;font-weight:700;color:var(--muted);margin-left:2px}
@@ -124,6 +130,8 @@ footer{font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:
     <div class="updated" id="updated">価格データを読み込み中…</div>
   </header>
 
+  <div id="events"></div>
+
   <section class="panel" aria-label="絞り込み">
     <div class="label">ミルクの種類</div>
     <div class="chips" id="targets"></div>
@@ -157,6 +165,7 @@ footer{font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:
     <div>Amazonのアソシエイトとして、当サイトは適格販売により収入を得ています。</div>
     <div>表示価格は上記の更新日時時点の各モールの価格で、変わる可能性があります。購入時は各ショップの表示価格をご確認ください。<br>最新の価格・在庫は各ショップのページでご確認ください。</div>
     <div>100mlあたり単価 ＝ 送料込み価格 ÷ 作れる量 × 100。粉ミルクは各商品の標準調乳濃度で換算しています。</div>
+    <div>「クーポン込み」は、楽天24などのショップで配布中のクーポン（金額の条件に合う1枚）を差し引いた価格です。クーポンは先着・回数限定のことがあり、商品ページで取得してから購入してください。</div>
     <div>「送料目安込み」は送料別の商品に目安として<span id="shipest">800</span>円を足した価格です。実際の送料はお住まいの地域やショップにより異なります。</div>
     <div>フォローアップミルクは1日約400mlとして計算しています。1ヶ月のミルク代は完全ミルクの場合のおおよその目安です。量はミルク缶の表示や医師・助産師の指示に従ってください。</div>
   </footer>
@@ -209,6 +218,7 @@ function badges(o){
   let h = "";
   if (o.postage_separate) h += `<span class="badge ship">送料目安込み</span>`;
   else h += `<span class="badge">送料込み</span>`;
+  if (o.coupon) h += `<span class="badge coupon">${yen(o.coupon)}円OFFクーポン込み</span>`;
   if (o.point_rate > 1) h += `<span class="badge">ポイント${o.point_rate}倍</span>`;
   return h;
 }
@@ -228,7 +238,7 @@ function render(){
     const li = document.createElement("li");
     li.className = "card" + (i<3 ? " r"+(i+1) : "");
     const others = p.offers.slice(1).map(x => `
-      <li><a href="${esc(x.url)}" target="_blank" rel="noopener sponsored">${esc(x.shop)}<span class="daily">（${esc(x.mall||"楽天")}）</span><br><span class="daily">¥${yen(x.total)}${x.postage_separate?"（送料目安込み）":""}</span></a>
+      <li><a href="${esc(x.url)}" target="_blank" rel="noopener sponsored">${esc(x.shop)}<span class="daily">（${esc(x.mall||"楽天")}）</span><br><span class="daily">¥${yen(x.total)}${x.postage_separate?"（送料目安込み）":""}${x.coupon?`（クーポン${yen(x.coupon)}円引き後）`:""}</span></a>
       <span class="v">${x.per100.toFixed(1)}円</span></li>`).join("");
     li.innerHTML = `
       <div class="top">
@@ -245,7 +255,7 @@ function render(){
         </div>
       </div>
       <div class="best">
-        <div class="shopline">最安ショップ <b>${esc(o.shop)}</b>（${esc(o.mall||"楽天")}）<br>¥${yen(o.total)}・約${yen(o.ml)}ml分</div>
+        <div class="shopline">最安ショップ <b>${esc(o.shop)}</b>（${esc(o.mall||"楽天")}）<br>¥${yen(o.total)}${o.coupon ? `（クーポン${yen(o.coupon)}円引き後）` : ""}・約${yen(o.ml)}ml分${o.coupon ? `<span class="cnote">${esc(o.coupon_note)}</span>` : ""}</div>
         <a class="btn" href="${esc(o.url)}" target="_blank" rel="noopener sponsored">${esc(o.mall||"楽天")}で見る</a>
       </div>
       ${others ? `<details><summary>ほかのショップ（${p.offers.length-1}件）</summary><ul class="others">${others}</ul></details>` : ""}`;
@@ -259,6 +269,13 @@ function render(){
   const msg = document.getElementById("msg");
   msg.hidden = rows.length > 0;
   msg.textContent = "この条件に合う商品はまだありません。";
+}
+
+function renderEvents(){
+  const now = Date.now(), f = iso => { const d = new Date(iso); return `${d.getMonth()+1}/${d.getDate()} ${d.getHours()}:${String(d.getMinutes()).padStart(2,"0")}`; };
+  const ev = (DATA?.events || []).filter(e => (!e.start || new Date(e.start) <= now) && (!e.end || new Date(e.end) > now) && e.image && e.url);
+  document.getElementById("events").innerHTML = ev.map(e =>
+    `<a class="evimg" href="${esc(e.url)}" target="_blank" rel="noopener sponsored"><img src="${esc(e.image)}" alt="${esc(e.title)}：${esc(e.text)}" width="1200" height="450"></a><div class="evnote">${e.end ? f(e.end) + "まで・" : ""}${esc(e.note || "")}</div>`).join("");
 }
 
 function fmtUpdated(iso){
@@ -275,6 +292,7 @@ fetch("data.json", {cache:"no-cache"})
     document.getElementById("updated").textContent = fmtUpdated(d.updated);
     if (d.shipping_estimate) document.getElementById("shipest").textContent = d.shipping_estimate;
     if (d.sources && d.sources.length) document.getElementById("sources").textContent = d.sources.join("・");
+    renderEvents();
     render();
   })
   .catch(() => {
