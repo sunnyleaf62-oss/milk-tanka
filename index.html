@@ -110,6 +110,30 @@ summary{cursor:pointer;color:var(--accent);font-weight:700}
 .others .v{font-variant-numeric:tabular-nums;font-weight:700;white-space:nowrap}
 .summary{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:baseline;font-size:14px}
 .summary b{font-family:var(--f-display);font-size:20px;color:var(--accent);font-variant-numeric:tabular-nums}
+.prod{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px;display:flex;flex-direction:column;gap:10px;margin-bottom:14px}
+.phead{display:grid;grid-template-columns:56px 1fr auto;gap:12px;align-items:center}
+.phead .thumb{width:56px;height:56px}
+.shops{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+.srow{display:grid;grid-template-columns:26px 1fr auto;gap:10px;align-items:center;padding:10px;border:1px solid var(--line);border-radius:12px;background:var(--bg)}
+.srow.top1{border-color:var(--gold);background:var(--surface)}
+.srow .sr{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-family:var(--f-display);font-weight:900;font-size:13px;background:var(--surface);color:var(--muted)}
+.srow.top1 .sr{background:var(--gold);color:var(--gold-ink)}
+.sinfo{min-width:0;font-size:13px;line-height:1.45}
+.sinfo b{font-size:14px;overflow-wrap:anywhere}
+.sinfo .sdet{color:var(--muted);font-size:12px}
+.sinfo .badges{margin-top:3px}
+.sprice{display:flex;flex-direction:column;align-items:flex-end;gap:5px}
+.sprice .u{font-family:var(--f-display);font-weight:900;font-size:19px;line-height:1;white-space:nowrap;font-variant-numeric:tabular-nums}
+.sprice .u small{font-size:10px;color:var(--muted);font-weight:700;margin-left:1px}
+.btn.sm{font-size:12px;padding:5px 10px;border-radius:8px}
+.more>summary{font-size:13px;margin-top:2px}
+.more .shops{margin-top:8px}
+.cnotes{font-size:11px;color:var(--muted)}
+.cmp{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.cmp button{all:unset;cursor:pointer;display:grid;grid-template-columns:1fr auto;gap:8px;width:100%;box-sizing:border-box;padding:8px 2px;border-bottom:1px solid var(--line);font-size:13px}
+.cmp button:focus-visible{outline:2px solid var(--accent)}
+.cmp .v{font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+.cmp .mk{color:var(--muted);font-size:11px;margin-right:6px}
 .msg{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:20px;text-align:center;color:var(--muted)}
 .xpromo{display:block;border-radius:18px;overflow:hidden;margin-top:8px}
 .xpromo img{display:block;width:100%;height:auto}
@@ -138,6 +162,8 @@ footer{font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:
   <section class="panel" aria-label="絞り込み">
     <div class="label">ミルクの種類</div>
     <div class="chips" id="targets"></div>
+    <div class="label">メーカー</div>
+    <div class="chips" id="makers"></div>
     <div class="label">タイプ</div>
     <div class="chips" id="forms"></div>
     <div class="label" id="agelabel">赤ちゃんの月齢（1ヶ月のミルク代を計算）</div>
@@ -153,8 +179,11 @@ footer{font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:
     </div>
   </section>
 
-  <div class="summary" id="summary"></div>
-  <ol class="list" id="list"></ol>
+  <div id="list"></div>
+  <section class="panel others-all" id="cmpbox" hidden>
+    <div class="label">ほかのメーカーの最安（タップで切り替え）</div>
+    <ul class="cmp" id="cmp"></ul>
+  </section>
   <div class="msg" id="msg" hidden></div>
 
   <a class="xpromo" href="https://sunnyleaf62-oss.github.io/omutsu-tanka/">
@@ -179,7 +208,10 @@ const DAILY = {0:650,1:800,2:950,6:800,9:600};   // 乳児用ミルクの1日の
 const FOLLOW_DAILY = 400;                        // フォローアップミルクの1日の目安ml
 const TARGETS = [["乳児用","乳児用（0ヶ月〜）"],["フォローアップ","フォローアップ（9ヶ月〜3歳）"]];
 const FORMS = ["すべて","粉ミルク","キューブ","スティック","液体"];
-let DATA = null, form = "すべて", target = "乳児用";
+let DATA = null, form = "すべて", target = "乳児用", maker = "";
+const MAKERS = ["明治","森永","雪印ビーンスターク","和光堂","アイクレオ"];
+const makerLabel = m => m === "雪印ビーンスターク" ? "ビーンスターク" : m;
+try{ maker = localStorage.getItem("milk-maker") || "" }catch(e){}
 try{ form = localStorage.getItem("milk-form") || form; target = localStorage.getItem("milk-target") || target }catch(e){}
 if (!FORMS.includes(form)) form = "すべて";
 const pForm = p => p.form === "缶" ? "粉ミルク" : p.form;
@@ -226,51 +258,65 @@ function badges(o){
   return h;
 }
 
+function renderMakers(){
+  const have = new Set((DATA?.products||[]).filter(p=>pTarget(p)===target && p.offers && p.offers.length && (form==="すべて"||pForm(p)===form)).map(p=>p.brand));
+  const list = MAKERS.filter(m => !DATA || have.has(m));
+  if (!list.includes(maker)) maker = list[0] || "";
+  const box = document.getElementById("makers"); box.innerHTML = "";
+  list.forEach(m=>{
+    const b = document.createElement("button");
+    b.className="chip"; b.type="button"; b.textContent=makerLabel(m);
+    b.setAttribute("aria-pressed", m===maker);
+    b.onclick=()=>{ maker=m; try{localStorage.setItem("milk-maker",m)}catch(e){} render(); };
+    box.appendChild(b);
+  });
+}
+
+function shopRow(x,i){
+  return `<li class="srow${i===0?" top1":""}">
+    <span class="sr">${i+1}</span>
+    <div class="sinfo"><b>${esc(x.shop)}</b> <span class="daily">${esc(x.mall||"楽天")}</span>
+      <div class="sdet">¥${yen(x.total)}${x.coupon?`（クーポン${yen(x.coupon)}円引き後）`:""}・約${yen(x.ml)}ml分</div>
+      <div class="badges">${badges(x)}</div></div>
+    <div class="sprice"><span class="u">${x.per100.toFixed(1)}<small>円/100ml</small></span>
+      <a class="btn sm" href="${esc(x.url)}" target="_blank" rel="noopener sponsored">${esc(x.mall||"楽天")}で見る</a></div>
+  </li>`;
+}
+
 function render(){
   renderTargets();
   renderForms();
+  renderMakers();
   document.getElementById("daily").textContent = `1日 約${daily()}ml × 30日で計算`;
   const list = document.getElementById("list"); list.innerHTML = "";
   if (!DATA) return;
-  const rows = DATA.products
-    .filter(p => p.offers && p.offers.length && pTarget(p)===target && (form==="すべて" || pForm(p)===form))
+  const inScope = p => p.offers && p.offers.length && pTarget(p)===target && (form==="すべて" || pForm(p)===form);
+  const prods = DATA.products.filter(p => inScope(p) && p.brand===maker)
     .sort((a,b) => a.offers[0].per100 - b.offers[0].per100);
 
-  rows.forEach((p,i)=>{
-    const o = p.offers[0];
-    const li = document.createElement("li");
-    li.className = "card" + (i<3 ? " r"+(i+1) : "");
-    const others = p.offers.slice(1).map(x => `
-      <li><a href="${esc(x.url)}" target="_blank" rel="noopener sponsored">${esc(x.shop)}<span class="daily">（${esc(x.mall||"楽天")}）</span><br><span class="daily">¥${yen(x.total)}${x.postage_separate?"（送料目安込み）":""}${x.coupon?`（クーポン${yen(x.coupon)}円引き後）`:""}</span></a>
-      <span class="v">${x.per100.toFixed(1)}円</span></li>`).join("");
-    li.innerHTML = `
-      <div class="top">
-        <div class="rank" aria-label="${i+1}位">${i+1}</div>
+  list.innerHTML = prods.map(p => {
+    const o = p.offers[0], top = p.offers.slice(0,5), rest = p.offers.slice(5);
+    const notes = [...new Set(p.offers.filter(x=>x.coupon).map(x=>x.coupon_note))];
+    return `<section class="prod">
+      <div class="phead">
         ${o.image ? `<img class="thumb" src="${esc(o.image)}" alt="" loading="lazy" onerror="this.style.visibility='hidden'">` : `<div class="thumb"></div>`}
-        <div class="info">
-          <div class="brand">${esc(p.brand)}・${esc(pForm(p))}</div>
-          <div class="name">${esc(p.name)}</div>
-          <div class="badges">${badges(o)}</div>
-        </div>
-        <div class="price">
-          <div class="unit">${o.per100.toFixed(1)}<small>円/100ml</small></div>
-          <div class="month">1ヶ月 約¥${yen(monthCost(o.per100))}</div>
-        </div>
+        <div class="info"><div class="brand">${esc(makerLabel(p.brand))}・${esc(pForm(p))}</div><div class="name">${esc(p.name)}</div></div>
+        <div class="price"><div class="unit">${o.per100.toFixed(1)}<small>円/100ml〜</small></div><div class="month">1ヶ月 約¥${yen(monthCost(o.per100))}</div></div>
       </div>
-      <div class="best">
-        <div class="shopline">最安ショップ <b>${esc(o.shop)}</b>（${esc(o.mall||"楽天")}）<br>¥${yen(o.total)}${o.coupon ? `（クーポン${yen(o.coupon)}円引き後）` : ""}・約${yen(o.ml)}ml分${o.coupon ? `<span class="cnote">${esc(o.coupon_note)}</span>` : ""}</div>
-        <a class="btn" href="${esc(o.url)}" target="_blank" rel="noopener sponsored">${esc(o.mall||"楽天")}で見る</a>
-      </div>
-      ${others ? `<details><summary>ほかのショップ（${p.offers.length-1}件）</summary><ul class="others">${others}</ul></details>` : ""}`;
-    list.appendChild(li);
-  });
+      <ol class="shops">${top.map(shopRow).join("")}</ol>
+      ${rest.length ? `<details class="more"><summary>ほかのショップ（${rest.length}件）</summary><ol class="shops" start="6">${rest.map((x,i)=>shopRow(x,i+5)).join("")}</ol></details>` : ""}
+      ${notes.length ? `<div class="cnotes">${notes.map(esc).join("<br>")}</div>` : ""}
+    </section>`;
+  }).join("");
 
-  const s = document.getElementById("summary");
-  s.innerHTML = rows.length
-    ? `いちばんお得なのは<strong>${esc(rows[0].brand)} ${esc(rows[0].name)}</strong><span>1ヶ月 約<b>¥${yen(monthCost(rows[0].offers[0].per100))}</b></span>`
-    : "";
+  const others = DATA.products.filter(p => inScope(p) && p.brand!==maker).sort((a,b)=>a.offers[0].per100-b.offers[0].per100);
+  document.getElementById("cmpbox").hidden = !others.length;
+  const cmp = document.getElementById("cmp");
+  cmp.innerHTML = others.map(p => `<li><button type="button" data-m="${esc(p.brand)}"><span><span class="mk">${esc(makerLabel(p.brand))}</span>${esc(p.name)}</span><span class="v">${p.offers[0].per100.toFixed(1)}円〜</span></button></li>`).join("");
+  cmp.querySelectorAll("button").forEach(b => b.onclick = () => { maker = b.dataset.m; try{localStorage.setItem("milk-maker",maker)}catch(e){} render(); document.getElementById("makers").scrollIntoView({behavior:"smooth",block:"center"}); });
+
   const msg = document.getElementById("msg");
-  msg.hidden = rows.length > 0;
+  msg.hidden = prods.length > 0;
   msg.textContent = "この条件に合う商品はまだありません。";
 }
 

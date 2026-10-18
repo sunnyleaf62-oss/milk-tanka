@@ -350,6 +350,9 @@ def to_offer(product, it, stats):
         ml = (product["unit_g"] * count / product["g_per_100ml"] * 100
               if "unit_g" in product else product["unit_ml"] * count)
 
+    # 楽天24（ベビー館など）はAPI上「送料別」でも実際は送料無料のため、目安送料を足さない
+    if it["mall"] == "楽天" and it["shop"].startswith("楽天24") and it["price"] >= 1000:
+        it = {**it, "free_shipping": True}
     shipping = 0 if it["free_shipping"] else SHIPPING_ESTIMATE
     total = it["price"] + shipping
     coupon, coupon_note = shop_coupon(it)
