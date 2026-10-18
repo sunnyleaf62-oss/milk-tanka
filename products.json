@@ -203,7 +203,8 @@
   ],
   "liquid": true,
   "min_price": 1000,
-  "shop_keyword": "ほほえみ らくらくミルク"
+  "shop_keyword": "ほほえみ らくらくミルク",
+  "min_per100": 70
  },
  {
   "id": "icreo_liquid",
@@ -222,7 +223,8 @@
   ],
   "liquid": true,
   "min_price": 1000,
-  "shop_keyword": "アイクレオ 赤ちゃんミルク"
+  "shop_keyword": "アイクレオ 赤ちゃんミルク",
+  "min_per100": 70
  },
  {
   "id": "sukoyaka_liquid",
@@ -241,7 +243,12 @@
   ],
   "liquid": true,
   "min_price": 800,
-  "shop_keyword": "すこやか 液体"
+  "shop_keyword": "すこやか 液体",
+  "min_per100": 70,
+  "extra_keywords": [
+   "すこやかM1 液体ミルク 24本",
+   "すこやか 液体ミルク ケース"
+  ]
  },
  {
   "id": "hagukumi_liquid",
@@ -260,7 +267,11 @@
   ],
   "liquid": true,
   "min_price": 800,
-  "shop_keyword": "はぐくみ 液体"
+  "shop_keyword": "はぐくみ 液体",
+  "min_per100": 70,
+  "extra_keywords": [
+   "はぐくみ 液体ミルク 24本"
+  ]
  },
  {
   "id": "step_powder",
@@ -411,6 +422,7 @@
   ],
   "liquid": true,
   "min_price": 1000,
-  "shop_keyword": "ステップ らくらくミルク"
+  "shop_keyword": "ステップ らくらくミルク",
+  "min_per100": 70
  }
 ]
