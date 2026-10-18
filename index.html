@@ -85,6 +85,7 @@ select{font:inherit;padding:6px 10px;border-radius:8px;border:1px solid var(--li
 .badge.ship{background:var(--warn-soft);color:var(--warn)}
 .badge.coupon{background:var(--gold);color:var(--gold-ink)}
 .cnote{display:block;font-size:11px;color:var(--muted);margin-top:2px}
+.events{display:flex;flex-direction:column;gap:12px}
 .evimg{display:block;border-radius:18px;overflow:hidden;box-shadow:0 2px 0 rgba(0,0,0,.08)}
 .evimg img{display:block;width:100%;height:auto}
 .evimg:active{transform:translateY(1px)}
@@ -130,7 +131,7 @@ footer{font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:
     <div class="updated" id="updated">価格データを読み込み中…</div>
   </header>
 
-  <div id="events"></div>
+  <div id="events" class="events"></div>
 
   <section class="panel" aria-label="絞り込み">
     <div class="label">ミルクの種類</div>
@@ -275,7 +276,7 @@ function renderEvents(){
   const now = Date.now(), f = iso => { const d = new Date(iso); return `${d.getMonth()+1}/${d.getDate()} ${d.getHours()}:${String(d.getMinutes()).padStart(2,"0")}`; };
   const ev = (DATA?.events || []).filter(e => (!e.start || new Date(e.start) <= now) && (!e.end || new Date(e.end) > now) && e.image && e.url);
   document.getElementById("events").innerHTML = ev.map(e =>
-    `<a class="evimg" href="${esc(e.url)}" target="_blank" rel="noopener sponsored"><img src="${esc(e.image)}" alt="${esc(e.title)}：${esc(e.text)}" width="1200" height="450"></a><div class="evnote">${e.end ? f(e.end) + "まで・" : ""}${esc(e.note || "")}</div>`).join("");
+    `<a class="evimg" href="${esc(e.url)}" target="_blank" rel="noopener sponsored"><img src="${esc(e.image)}" alt="${esc(e.title)}：${esc(e.text)}" width="${e.w||1200}" height="${e.h||450}"></a><div class="evnote">${e.end ? f(e.end) + "まで・" : ""}${esc(e.note || "")}</div>`).join("");
 }
 
 function fmtUpdated(iso){
