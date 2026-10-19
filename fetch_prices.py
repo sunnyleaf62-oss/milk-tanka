@@ -223,10 +223,15 @@ def amazon_items(product, cfg):
     if pins:
         time.sleep(WAIT_SEC)
         by_asin = {pin["asin"]: pin for pin in pins}
+        notes = cfg.setdefault("pin_notes", {})
+        for a in by_asin:
+            notes[a] = "見つからない"
         try:
             for it in api.get_items(list(by_asin)) or []:
                 x = _amazon_item(it)
                 pin = by_asin.get(_get(it, "asin"))
+                if pin:
+                    notes[pin["asin"]] = f"取得OK {x['price']}円" if x else "価格・在庫の情報なし（売り切れ等）"
                 if x and pin:
                     x["pinned"] = True
                     for k in ("grams", "ml"):
@@ -456,6 +461,9 @@ def main():
                 print(f"NG  {mall} {p['brand']} {p['name']}: {e}")
         offers, stats = build(p, raw)
         stats["malls"] = Counter(o["mall"] for o in offers)
+        pin_ids = [a["asin"] if isinstance(a, dict) else a for a in p.get("amazon_asins", [])]
+        if pin_ids and use_amazon:
+            stats["amazon_asins"] = {a: az.get("pin_notes", {}).get(a, "未取得") for a in pin_ids}
         if errors:
             stats["errors"] = errors
         print(f"OK  {p['brand']} {p['name']}: {stats}")
