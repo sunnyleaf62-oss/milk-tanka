@@ -170,6 +170,29 @@ def _get(obj, *path):
     return obj
 
 
+def _amazon_item(it):
+    listings = _get(it, "offers_v2", "listings") or []
+    if not listings:
+        return None
+    lst = listings[0]
+    amount = _get(lst, "price", "money", "amount")
+    if not amount:
+        return None
+    merchant = _get(lst, "merchant_info", "name") or "Amazon"
+    return {
+        "mall": "Amazon",
+        "name": _get(it, "item_info", "title", "display_value") or "",
+        "price": int(round(float(amount))),
+        # Amazon販売分は送料無料として扱い、他の出品者は目安送料を足す
+        "free_shipping": "amazon" in merchant.lower(),
+        "shop": merchant,
+        "url": _get(it, "detail_page_url") or "",
+        "image": _get(it, "images", "primary", "medium", "url")
+                 or _get(it, "images", "primary", "large", "url") or "",
+        "point_rate": 1,
+    }
+
+
 def amazon_items(product, cfg):
     from amazon_creatorsapi import AmazonCreatorsApi, Country
     from amazon_creatorsapi.models import SortBy
@@ -191,29 +214,28 @@ def amazon_items(product, cfg):
                 break
             raise
         items = _get(res, "items") or []
-        for it in items:
-            listings = _get(it, "offers_v2", "listings") or []
-            if not listings:
-                continue
-            lst = listings[0]
-            amount = _get(lst, "price", "money", "amount")
-            if not amount:
-                continue
-            merchant = _get(lst, "merchant_info", "name") or "Amazon"
-            out.append({
-                "mall": "Amazon",
-                "name": _get(it, "item_info", "title", "display_value") or "",
-                "price": int(round(float(amount))),
-                # Amazon販売分は送料無料として扱い、他の出品者は目安送料を足す
-                "free_shipping": "amazon" in merchant.lower(),
-                "shop": merchant,
-                "url": _get(it, "detail_page_url") or "",
-                "image": _get(it, "images", "primary", "medium", "url")
-                         or _get(it, "images", "primary", "large", "url") or "",
-                "point_rate": 1,
-            })
+        out += [x for x in (_amazon_item(it) for it in items) if x]
         if len(items) < 10:
             break
+    # products.json の amazon_asins：検索に出てこないセール品などをASINで直接取りにいく
+    #   文字列（ASINだけ）か {"asin": ..., "grams": 合計g} の形。grams を書くと商品名を読まずにその量で計算する
+    pins = [a if isinstance(a, dict) else {"asin": a} for a in (product.get("amazon_asins") or [])]
+    if pins:
+        time.sleep(WAIT_SEC)
+        by_asin = {pin["asin"]: pin for pin in pins}
+        try:
+            for it in api.get_items(list(by_asin)) or []:
+                x = _amazon_item(it)
+                pin = by_asin.get(_get(it, "asin"))
+                if x and pin:
+                    x["pinned"] = True
+                    for k in ("grams", "ml"):
+                        if pin.get(k):
+                            x["fixed_" + k] = pin[k]
+                    out.append(x)
+        except Exception as e:
+            if type(e).__name__ != "ItemsNotFoundError":
+                raise
     return out
 
 
@@ -317,16 +339,17 @@ def shop_coupon(it):
 
 def to_offer(product, it, stats):
     name, norm = it["name"], nfkc(it["name"])
-    if not all(nfkc(w) in norm for w in product.get("must", [])):
+    pinned = it.get("pinned")  # ASINで指定した商品は名前のチェックを省く
+    if not pinned and not all(nfkc(w) in norm for w in product.get("must", [])):
         stats["条件の言葉なし"] += 1
         return None
-    if product.get("must_any") and not any(nfkc(w) in norm for w in product["must_any"]):
+    if not pinned and product.get("must_any") and not any(nfkc(w) in norm for w in product["must_any"]):
         stats["条件の言葉なし"] += 1
         return None
-    if any(nfkc(w) in norm for w in product.get("ng", [])):
+    if not pinned and any(nfkc(w) in norm for w in product.get("ng", [])):
         stats["除外ワード"] += 1
         return None
-    if re.search(CHOICE_PATTERN, norm) or re.search(r"[×xX*]\s*\d+\s*(?:缶|本|個|袋|箱)\s*[/／]\s*\d", norm):
+    if not pinned and re.search(CHOICE_PATTERN, norm) or not pinned and re.search(r"[×xX*]\s*\d+\s*(?:缶|本|個|袋|箱)\s*[/／]\s*\d", norm):
         stats["数量を選ぶ出品"] += 1
         return None
     if not it["price"]:
@@ -334,7 +357,9 @@ def to_offer(product, it, stats):
 
     unit_number = product.get("unit_g") or product.get("unit_ml")
     count = None
-    if product.get("liquid"):
+    if it.get("fixed_ml") or it.get("fixed_grams"):
+        ml = it.get("fixed_ml") or it["fixed_grams"] / product["g_per_100ml"] * 100
+    elif product.get("liquid"):
         ml = parse_total_ml(name)
         if not ml:
             stats["内容量が読めない"] += 1
