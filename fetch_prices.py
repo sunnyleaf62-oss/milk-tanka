@@ -395,7 +395,7 @@ def to_offer(product, it, stats):
         "ml": round(ml), "per100": round(total / ml * 100, 1),
         "point_rate": pr,
         "per100_after_points": round((total - (it["price"] - coupon) * pr / 100) / ml * 100, 1),
-        "url": it["url"], "image": it["image"],
+        "url": it["url"], "image": it["image"], **({"pinned": True} if pinned else {}),
         **({"coupon": coupon, "coupon_note": coupon_note} if coupon else {}),
     }
 
@@ -411,7 +411,7 @@ def build(product, raw_items):
     elif len(offers) >= 3:
         med = statistics.median(o["per100"] for o in offers)
         before = len(offers)
-        offers = [o for o in offers if o["per100"] >= med * 0.6]
+        offers = [o for o in offers if o.get("pinned") or o["per100"] >= med * 0.6]
         stats["安すぎて除外"] += before - len(offers)
     best = {}
     for o in sorted(offers, key=lambda o: o["per100"]):
