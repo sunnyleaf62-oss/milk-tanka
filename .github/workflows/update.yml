@@ -45,8 +45,10 @@ jobs:
         run: |
           git config user.name "github-actions"
           git config user.email "actions@github.com"
+          cp data.json /tmp/data.json; [ -f debug.json ] && cp debug.json /tmp/debug.json || true
           git fetch origin main
-          git reset --soft origin/main
+          git reset --hard origin/main   # 途中で入った他のファイルの変更を消さないよう、最新に合わせてから結果だけ載せる
+          cp /tmp/data.json data.json; [ -f /tmp/debug.json ] && cp /tmp/debug.json debug.json || true
           git add data.json
           git diff --cached --quiet || git commit -m "価格を更新"
           git push origin HEAD:main
