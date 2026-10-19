@@ -68,7 +68,14 @@
   "g_per_100ml": 13,
   "min_price": 1500,
   "parse_size": true,
-  "shop_keyword": "はぐくみ"
+  "shop_keyword": "はぐくみ",
+  "amazon_asins": [
+   {
+    "asin": "B0C8NFG6ZZ",
+    "grams": 1600,
+    "memo": "はぐくみ 大缶800g×2缶パック"
+   }
+  ]
  },
  {
   "id": "e_akachan_powder",
@@ -181,7 +188,14 @@
   "g_per_100ml": 12.7,
   "min_price": 1500,
   "parse_size": true,
-  "shop_keyword": "アイクレオ バランスミルク"
+  "shop_keyword": "アイクレオ バランスミルク",
+  "amazon_asins": [
+   {
+    "asin": "B0D1K3NMLM",
+    "grams": 1600,
+    "memo": "Amazon限定 アイクレオ バランスミルク 800g×2缶（スティック付きは量に含めない）"
+   }
+  ]
  },
  {
   "id": "hohoemi_liquid",
