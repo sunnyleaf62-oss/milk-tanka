@@ -44,6 +44,20 @@ WAIT_SEC = 1.2       # APIへのアクセス間隔（どちらも1秒1回まで�
 SHIPPING_ESTIMATE = 800
 
 
+
+RAKUTEN_RTLINK = "_RTLink150939"   # 楽天アフィリエイトの計測ID（milk-tanka）
+
+
+def add_rtlink(obj):
+    """楽天のアフィリエイトリンクに計測IDを付ける（成果をサイトごとに分けて見るため）"""
+    if isinstance(obj, dict):
+        return {k: add_rtlink(v) for k, v in obj.items()}
+    if isinstance(obj, list):
+        return [add_rtlink(v) for v in obj]
+    if isinstance(obj, str) and "hb.afl.rakuten.co.jp/" in obj and "_RTLink" not in obj:
+        return re.sub(r"(hb\.afl\.rakuten\.co\.jp/(?:hgc|ichiba)/[^/?]+/)\?", r"\g<1>" + RAKUTEN_RTLINK + "?", obj, count=1)
+    return obj
+
 def env(name, required=False):
     v = os.environ.get(name, "").strip()
     if required and not v:
@@ -475,7 +489,7 @@ def main():
            "shipping_estimate": SHIPPING_ESTIMATE, "products": result,
            "events": DEALS.get("events", [])}
     with open(os.path.join(HERE, "data.json"), "w", encoding="utf-8") as f:
-        json.dump(out, f, ensure_ascii=False, indent=2)
+        json.dump(add_rtlink(out), f, ensure_ascii=False, indent=2)
     print("data.json を書き出しました")
 
 
