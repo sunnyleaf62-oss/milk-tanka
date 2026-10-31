@@ -131,6 +131,10 @@ def rakuten_items(product, cfg, shop_code=None):
 
 
 # ================= Yahoo!ショッピング =================
+VC_SID_DEFAULT = "3784952"     # バリューコマース サイトID（リンクに表示される公開の値）
+VC_PID_DEFAULT = "892737497"   # バリューコマース Yahoo!ショッピングの広告ID
+
+
 def vc_link(url, sid, pid):
     if not (sid and pid):
         return url
@@ -438,7 +442,7 @@ def build(product, raw_items):
 def main():
     rk = {"app_id": env("RAKUTEN_APP_ID"), "access_key": env("RAKUTEN_ACCESS_KEY"),
           "aff_id": env("RAKUTEN_AFFILIATE_ID"), "referer": env("RAKUTEN_REFERER")}
-    yh = {"client_id": env("YAHOO_CLIENT_ID"), "vc_sid": env("VC_SID"), "vc_pid": env("VC_PID")}
+    yh = {"client_id": env("YAHOO_CLIENT_ID"), "vc_sid": env("VC_SID") or VC_SID_DEFAULT, "vc_pid": env("VC_PID") or VC_PID_DEFAULT}
     use_rakuten = all(rk[k] for k in ("app_id", "access_key", "referer"))
     use_yahoo = bool(yh["client_id"])
     az = {"credential_id": env("AMAZON_CREDENTIAL_ID"), "credential_secret": env("AMAZON_CREDENTIAL_SECRET"),
