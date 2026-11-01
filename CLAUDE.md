@@ -34,4 +34,6 @@
 
 ## 気をつけること
 - 自動更新（Actions）が data.json を書き込むので、push の前に必ず `git pull --rebase` する。
+- コミットのメールアドレスは必ず `sunnyleaf62-oss@users.noreply.github.com` を使う（`git -c user.name="sunnyleaf62-oss" -c user.email="sunnyleaf62-oss@users.noreply.github.com" commit ...`）。個人のメールアドレスは公開の履歴に残るので使わない。
+- 2026年11月1日に履歴を書き換えた（個人情報の削除）。それより前に作ったクローンは使わず、取り直してから作業する。
 - 内容量の読み違いを見つけたら、data.json の stats（除外理由の件数）を見て、products.json の must / ng か fetch_prices.py の読み取りを直す。
