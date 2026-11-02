@@ -81,13 +81,19 @@ def rakuten_call(params, referer):
     last_err = None
     for ver in RAKUTEN_VERSIONS:
         url = RAKUTEN_BASE + ver + "?" + urllib.parse.urlencode(params)
-        try:
-            return get_json(url, headers)
-        except urllib.error.HTTPError as e:
-            last_err = f"HTTP {e.code} ({ver}): {e.read().decode('utf-8', 'replace')[:300]}"
-            if e.code == 404:
-                continue
-            break
+        for attempt in range(4):
+            try:
+                return get_json(url, headers)
+            except urllib.error.HTTPError as e:
+                last_err = f"HTTP {e.code} ({ver}): {e.read().decode('utf-8', 'replace')[:300]}"
+                # 429（混み合い）は少し待ってやり直す。ミルクとおむつの更新が重なったときなど
+                if e.code == 429 and attempt < 3:
+                    time.sleep(5 * (attempt + 1))
+                    continue
+                break
+        if last_err and "HTTP 404" in last_err:
+            continue
+        break
     raise RuntimeError(last_err)
 
 
