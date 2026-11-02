@@ -127,7 +127,8 @@
 
   function itemHtml(it) {
     const m = MALLS[it.mall];
-    const badge = it.status === "予想" ? `<span class="oc-badge">予想・未発表</span>` : "";
+    const badge = it.status === "予想" ? `<span class="oc-badge">予想・未発表</span>`
+      : it.status === "条件付き" ? `<span class="oc-badge">${it.condition || "条件しだい"}</span>` : "";
     const baby = it.baby ? `<span class="oc-badge baby">ベビー用品</span>` : "";
     const time = it.time ? `<div class="oc-time">${it.time}</div>` : "";
     return `<li class="oc-item ${m.cls}"><span class="oc-tag ${m.cls}" aria-label="${it.mall}">${m.mark}</span>
@@ -162,9 +163,9 @@
     for (let d = new Date(first); d <= last; d.setUTCDate(d.getUTCDate() + 1)) {
       const k = ymd(d), l = vis(map[k]);
       const seen = new Set(), dots = [];
-      l.forEach(it => {
+      [...l].sort((x, y) => (x.status === "予想" || x.status === "条件付き") - (y.status === "予想" || y.status === "条件付き")).forEach(it => {
         if (seen.has(it.mall)) return; seen.add(it.mall);
-        dots.push(`<span class="oc-tag ${MALLS[it.mall].cls}${it.status === "予想" ? " guess" : ""}">${MALLS[it.mall].mark}</span>`);
+        dots.push(`<span class="oc-tag ${MALLS[it.mall].cls}${it.status === "予想" || it.status === "条件付き" ? " guess" : ""}">${MALLS[it.mall].mark}</span>`);
       });
       const label = `${md(k)}${l.length ? "：" + l.map(it => it.mall + it.name).join("、") : ""}`;
       cells.push(`<button type="button" class="oc-day${k === today ? " today" : ""}${k < today ? " past" : ""}" data-day="${k}" aria-selected="${k === selected}" aria-label="${label}">
@@ -188,7 +189,7 @@
         <div class="oc-time" style="margin-bottom:6px">${md(selected)} のお得</div>
         ${sel.length ? `<ul class="oc-list">${sel.map(itemHtml).join("")}</ul>` : `<div class="oc-none">この日は対象のお得な日はありません。</div>`}
       </div>
-      <div class="oc-note">ほとんどのポイントアップは、買い物の前にエントリーが必要です。「予想・未発表」はまだ公式に発表されていない例年の日程で、変わることがあります。倍率や条件は各モールのキャンペーンページでご確認ください。</div>`;
+      <div class="oc-note">ほとんどのポイントアップは、買い物の前にエントリーが必要です。「予想・未発表」はまだ公式に発表されていない例年の日程で、変わることがあります。薄い色のマークは予想や条件付きの日です。倍率や条件は各モールのキャンペーンページでご確認ください。</div>`;
 
     root.querySelectorAll("[data-day]").forEach(b => b.onclick = () => { selected = b.dataset.day; render(); });
     root.querySelectorAll("[data-off]").forEach(b => b.onclick = () => { offset = +b.dataset.off; selected = null; render(); });
