@@ -32,6 +32,12 @@
 - 検索に出てこないセール品などは `amazon_asins` に `{"asin": "...", "grams": 合計g}` で直接指定できる。
 - セール・クーポン・キャンペーンのバナーは deals.json に書く。
 
+## お得な日カレンダー（両サイト共通）
+- `calendar.json`（データ）と `calendar.js`（表示）はこのリポジトリにあり、おむつ単価くらべも同じファイルを読む（同じ github.io なので `../milk-tanka/calendar.json`）。ここを1か所直せば両サイトに反映される。
+- 毎月の定例は `rules`、日付が決まったものは `events`。公式発表前の日程は `"status": "予想"`、発表されたら日時を直して `"確定"` にする。
+- 定例がお休みの日は `skip` に日付を足す（例：大型セールと重なるYahoo!の5のつく日）。
+- リンクには各サイトのIDが自動で付く（index.html の `data-amazon-tag` / `data-rakuten-rt`）。
+
 ## 気をつけること
 - 自動更新（Actions）が data.json を書き込むので、push の前に必ず `git pull --rebase` する。
 - コミットのメールアドレスは必ず `sunnyleaf62-oss@users.noreply.github.com` を使う（`git -c user.name="sunnyleaf62-oss" -c user.email="sunnyleaf62-oss@users.noreply.github.com" commit ...`）。個人のメールアドレスは公開の履歴に残るので使わない。

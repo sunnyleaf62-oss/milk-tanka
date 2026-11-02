@@ -163,6 +163,7 @@ footer{font-size:12px;color:var(--muted);display:flex;flex-direction:column;gap:
   </header>
 
   <div id="events" class="events"></div>
+  <section id="okcal" aria-label="お得な日カレンダー" data-src="calendar.json" data-amazon-tag="milk-tanka-22" data-rakuten-rt="_RTLink150939"></section>
 
   <section class="panel" aria-label="絞り込み">
     <div class="label">ミルクの種類</div>
@@ -363,5 +364,6 @@ fetch("data.json", {cache:"no-cache"})
   });
 render();
 </script>
+<script src="calendar.js" defer></script>
 </body>
 </html>
