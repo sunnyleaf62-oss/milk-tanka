@@ -1,5 +1,5 @@
 {
-  "updated": "2026-11-22T09:46+09:00",
+  "updated": "2026-11-23T10:13+09:00",
   "sources": [
     "楽天市場",
     "Yahoo!ショッピング",
@@ -177,12 +177,12 @@
         }
       ],
       "stats": {
-        "fetched": 215,
+        "fetched": 212,
         "除外ワード": 22,
-        "条件の言葉なし": 12,
+        "条件の言葉なし": 13,
         "内容量が読めない": 2,
         "安すぎて除外": 0,
-        "使えた件数": 58,
+        "使えた件数": 55,
         "malls": {
           "Amazon": 2,
           "楽天": 3,
@@ -202,15 +202,15 @@
           "mall": "Yahoo!",
           "shop": "エアリスショップ",
           "item_name": "明治ほほえみ らくらくキューブ 540g",
-          "price": 2125,
+          "price": 2167,
           "postage_separate": false,
           "shipping_estimate": 0,
-          "total": 2125,
+          "total": 2167,
           "count": null,
           "ml": 4000,
-          "per100": 53.1,
+          "per100": 54.2,
           "point_rate": 1,
-          "per100_after_points": 52.6,
+          "per100_after_points": 53.6,
           "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fshopearisu%2Fes2f6e8c5084.html",
           "image": "https://item-shopping.c.yimg.jp/i/g/shopearisu_es2f6e8c5084"
         },
@@ -218,15 +218,15 @@
           "mall": "Yahoo!",
           "shop": "ニシマショップ",
           "item_name": "明治ほほえみ らくらくキューブ 540g",
-          "price": 2126,
+          "price": 2168,
           "postage_separate": false,
           "shipping_estimate": 0,
-          "total": 2126,
+          "total": 2168,
           "count": null,
           "ml": 4000,
-          "per100": 53.1,
+          "per100": 54.2,
           "point_rate": 1,
-          "per100_after_points": 52.6,
+          "per100_after_points": 53.7,
           "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fnishimashop%2Fns1b2df9aeab.html",
           "image": "https://item-shopping.c.yimg.jp/i/g/nishimashop_ns1b2df9aeab"
         },
@@ -264,54 +264,6 @@
         },
         {
           "mall": "Yahoo!",
-          "shop": "食品スピリットのKichibei",
-          "item_name": "明治ほほえみ らくらくキューブ 540g (27g×20袋) 旧品 [0ヵ月~1歳頃 固形タイプの粉ミルク]",
-          "price": 2271,
-          "postage_separate": false,
-          "shipping_estimate": 0,
-          "total": 2271,
-          "count": null,
-          "ml": 4000,
-          "per100": 56.8,
-          "point_rate": 1,
-          "per100_after_points": 56.2,
-          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fkichibei-0358%2Fkichh2131-r0d-j8k.html",
-          "image": "https://item-shopping.c.yimg.jp/i/g/kichibei-0358_kichh2131-r0d-j8k"
-        },
-        {
-          "mall": "Yahoo!",
-          "shop": "Kichibei店",
-          "item_name": "明治ほほえみ らくらくキューブ 540g (27g×20袋) 旧品 [0ヵ月~1歳頃 固形タイプの粉ミルク]",
-          "price": 2272,
-          "postage_separate": false,
-          "shipping_estimate": 0,
-          "total": 2272,
-          "count": null,
-          "ml": 4000,
-          "per100": 56.8,
-          "point_rate": 1,
-          "per100_after_points": 56.2,
-          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fkichibei-2255%2Fkichibeica0ba8d0e3.html",
-          "image": "https://item-shopping.c.yimg.jp/i/g/kichibei-2255_kichibeica0ba8d0e3"
-        },
-        {
-          "mall": "Yahoo!",
-          "shop": "ポチっとお買い物",
-          "item_name": "明治ほほえみ らくらくキューブ 540g (27g×20袋) 旧品 [0ヵ月~1歳頃 固形タイプの粉ミルク]",
-          "price": 2280,
-          "postage_separate": false,
-          "shipping_estimate": 0,
-          "total": 2280,
-          "count": null,
-          "ml": 4000,
-          "per100": 57.0,
-          "point_rate": 1,
-          "per100_after_points": 56.4,
-          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fpocchi%2F1785381351-166.html",
-          "image": "https://item-shopping.c.yimg.jp/i/g/pocchi_1785381351-166"
-        },
-        {
-          "mall": "Yahoo!",
           "shop": "msk-shop",
           "item_name": "明治ほほえみ らくらくキューブ 540g (27g×20袋)[0ヵ月~1歳頃 固形タイプの粉ミルク]",
           "price": 2290,
@@ -327,18 +279,34 @@
           "image": "https://item-shopping.c.yimg.jp/i/g/mskshop371_b0cj2v4353"
         },
         {
+          "mall": "Yahoo!",
+          "shop": "Kichibei店",
+          "item_name": "明治ほほえみ らくらくキューブ 540g (27g×20袋) 旧品 [0ヵ月~1歳頃 固形タイプの粉ミルク]",
+          "price": 2319,
+          "postage_separate": false,
+          "shipping_estimate": 0,
+          "total": 2319,
+          "count": null,
+          "ml": 4000,
+          "per100": 58.0,
+          "point_rate": 1,
+          "per100_after_points": 57.4,
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fkichibei-2255%2Fkichibeica0ba8d0e3.html",
+          "image": "https://item-shopping.c.yimg.jp/i/g/kichibei-2255_kichibeica0ba8d0e3"
+        },
+        {
           "mall": "楽天",
           "shop": "EasyLifeShop",
           "item_name": "明治ほほえみ らくらくキューブ 540g (27g×20袋) 旧品 [0ヵ月~1歳頃 固形タイプの粉ミルク] 送料無料",
-          "price": 2304,
+          "price": 2352,
           "postage_separate": false,
           "shipping_estimate": 0,
-          "total": 2304,
+          "total": 2352,
           "count": null,
           "ml": 4000,
-          "per100": 57.6,
+          "per100": 58.8,
           "point_rate": 1,
-          "per100_after_points": 57.0,
+          "per100_after_points": 58.2,
           "url": "https://hb.afl.rakuten.co.jp/hgc/g00us84o.kqv98efe.g00us84o.kqv99a07/_RTLink150939?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Feasylifeshop%2Fmu755b18dd8b%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Feasylifeshop%2Fi%2F10027183%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
           "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/easylifeshop/cabinet/onesell078/mu755b18dd8b_0.jpg?_ex=128x128"
         },
@@ -357,17 +325,49 @@
           "per100_after_points": 58.6,
           "url": "https://hb.afl.rakuten.co.jp/hgc/g00usmto.kqv98228.g00usmto.kqv99a06/_RTLink150939?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fkawayamasyouten%2F20261014202831_221%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fkawayamasyouten%2Fi%2F10076757%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
           "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/kawayamasyouten/cabinet/r_2026010827/20261014202831_221_1.jpg?_ex=128x128"
+        },
+        {
+          "mall": "楽天",
+          "shop": "Ciel de neige",
+          "item_name": "明治ほほえみ らくらくキューブ 540g (27g×20袋) 旧品 [0ヵ月~1歳頃 固形タイプの粉ミルク]",
+          "price": 2451,
+          "postage_separate": false,
+          "shipping_estimate": 0,
+          "total": 2451,
+          "count": null,
+          "ml": 4000,
+          "per100": 61.3,
+          "point_rate": 1,
+          "per100_after_points": 60.7,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00uoo1o.kqv989b4.g00uoo1o.kqv993eb/_RTLink150939?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fcieldeneige%2Fcl2dee72a094%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fcieldeneige%2Fi%2F10055246%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/cieldeneige/cabinet/onesell072/cl2dee72a094_0.jpg?_ex=128x128"
+        },
+        {
+          "mall": "楽天",
+          "shop": "楽天24 ベビー館",
+          "item_name": "明治ほほえみ らくらくキューブ(27g×30袋入)【明治ほほえみ】[粉ミルク キューブ 赤ちゃん 育児]",
+          "price": 3980,
+          "postage_separate": false,
+          "shipping_estimate": 0,
+          "total": 3980,
+          "count": null,
+          "ml": 6000,
+          "per100": 66.3,
+          "point_rate": 1,
+          "per100_after_points": 65.7,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00pzd4o.kqv98fd3.g00pzd4o.kqv994da/_RTLink150939?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fnetbaby%2F4902705129511%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fnetbaby%2Fi%2F10051428%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/netbaby/cabinet/511/4902705129511.jpg?_ex=128x128"
         }
       ],
       "stats": {
-        "fetched": 230,
-        "内容量が読めない": 28,
-        "条件の言葉なし": 25,
+        "fetched": 219,
+        "内容量が読めない": 29,
+        "条件の言葉なし": 12,
         "安すぎて除外": 5,
         "使えた件数": 102,
         "malls": {
-          "Yahoo!": 8,
-          "楽天": 2
+          "Yahoo!": 6,
+          "楽天": 4
         }
       }
     },
@@ -396,22 +396,6 @@
           "image": "https://m.media-amazon.com/images/I/41CvYhNli2L._SL160_.jpg"
         },
         {
-          "mall": "Amazon",
-          "shop": "創快健美",
-          "item_name": "森永乳業 粉ミルク エコらくパック つめかえ用はぐくみ400GX2袋X12個セット",
-          "price": 29896,
-          "postage_separate": true,
-          "shipping_estimate": 800,
-          "total": 30696,
-          "count": null,
-          "ml": 73846,
-          "per100": 41.6,
-          "point_rate": 1,
-          "per100_after_points": 41.2,
-          "url": "https://www.amazon.co.jp/dp/B018217LW8?tag=milk-tanka-22&linkCode=osi&th=1&psc=1",
-          "image": "https://m.media-amazon.com/images/I/21XrLeFKxZL._SL160_.jpg"
-        },
-        {
           "mall": "Yahoo!",
           "shop": "田中企画",
           "item_name": "森永 エコらくパック つめかえ用 はぐくみ 800g (400g×2袋)新生児 赤ちゃん 0ヶ月~1歳頃 粉ミルク",
@@ -426,6 +410,22 @@
           "per100_after_points": 41.8,
           "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fpure1-shop%2F20260211004418-01178.html",
           "image": "https://item-shopping.c.yimg.jp/i/g/pure1-shop_20260211004418-01178"
+        },
+        {
+          "mall": "Yahoo!",
+          "shop": "ウェルパークヤフーショッピング店",
+          "item_name": "はぐくみ　大缶　８００ｇ",
+          "price": 2678,
+          "postage_separate": false,
+          "shipping_estimate": 0,
+          "total": 2678,
+          "count": null,
+          "ml": 6154,
+          "per100": 43.5,
+          "point_rate": 1,
+          "per100_after_points": 43.1,
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Frakuwel%2F4902720109116.html",
+          "image": "https://item-shopping.c.yimg.jp/i/g/rakuwel_4902720109116"
         },
         {
           "mall": "Yahoo!",
@@ -492,22 +492,6 @@
           "image": "https://item-shopping.c.yimg.jp/i/g/signallyjapan-y_b00jwk5ibk"
         },
         {
-          "mall": "Yahoo!",
-          "shop": "ポチっとお買い物",
-          "item_name": "森永 はぐくみ エコらくパック はじめてセット 800g (400g×2袋)【入れかえタイプの粉ミルク】[新生児 赤ちゃん 0ヶ月~1歳頃]",
-          "price": 2890,
-          "postage_separate": false,
-          "shipping_estimate": 0,
-          "total": 2890,
-          "count": null,
-          "ml": 6154,
-          "per100": 47.0,
-          "point_rate": 1,
-          "per100_after_points": 46.5,
-          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fpocchi%2F1790135315-98.html",
-          "image": "https://item-shopping.c.yimg.jp/i/g/pocchi_1790135315-98"
-        },
-        {
           "mall": "楽天",
           "shop": "楽天24 ベビー館",
           "item_name": "森永 はぐくみ(800g×8)【はぐくみ】[0ヶ月-1歳 粉ミルク ラクトフェリン オリゴ糖 ケース]",
@@ -525,8 +509,8 @@
         },
         {
           "mall": "Yahoo!",
-          "shop": "トクなるストア",
-          "item_name": "森永 はぐくみ エコらくパック はじめてセット 800g (400g×2袋)【入れかえタイプの粉ミルク】[新生児 赤ちゃん 0ヶ月~1歳頃]",
+          "shop": "通販できるみんなのお薬(みんなのお薬)",
+          "item_name": "森永はぐくみ エコらくパック つめかえ用ミルク 800g (400g×2袋入)  (1個)",
           "price": 2933,
           "postage_separate": false,
           "shipping_estimate": 0,
@@ -536,20 +520,36 @@
           "per100": 47.7,
           "point_rate": 1,
           "per100_after_points": 47.2,
-          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Ftoku00301%2Fqa45yg72ls2qytpovlvoo5ezyq.html",
-          "image": "https://item-shopping.c.yimg.jp/i/g/toku00301_qa45yg72ls2qytpovlvoo5ezyq"
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Ftsuhan-okusuri%2F1758943026-1-d.html",
+          "image": "https://item-shopping.c.yimg.jp/i/g/tsuhan-okusuri_1758943026-1-d"
+        },
+        {
+          "mall": "Yahoo!",
+          "shop": "みんなのお薬ビューティ&コスメ店(みんなのお薬)",
+          "item_name": "森永はぐくみ エコらくパック つめかえ用ミルク 800g (400g×2袋入) (1個)",
+          "price": 3010,
+          "postage_separate": false,
+          "shipping_estimate": 0,
+          "total": 3010,
+          "count": null,
+          "ml": 6154,
+          "per100": 48.9,
+          "point_rate": 1,
+          "per100_after_points": 48.4,
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fminoku-beauty%2F1758943026-1-b.html",
+          "image": "https://item-shopping.c.yimg.jp/i/g/minoku-beauty_1758943026-1-b"
         }
       ],
       "stats": {
-        "fetched": 227,
-        "除外ワード": 39,
-        "内容量が読めない": 7,
+        "fetched": 220,
+        "除外ワード": 36,
+        "内容量が読めない": 9,
         "条件の言葉なし": 8,
         "安すぎて除外": 1,
-        "使えた件数": 122,
+        "使えた件数": 118,
         "malls": {
-          "Amazon": 2,
-          "Yahoo!": 7,
+          "Amazon": 1,
+          "Yahoo!": 8,
           "楽天": 1
         },
         "amazon_asins": {
@@ -663,6 +663,22 @@
         },
         {
           "mall": "Yahoo!",
+          "shop": "コジマYahoo!店",
+          "item_name": "森永乳業　森永E赤ちゃん 800g〔ミルク〕　",
+          "price": 3630,
+          "postage_separate": true,
+          "shipping_estimate": 800,
+          "total": 4430,
+          "count": null,
+          "ml": 6154,
+          "per100": 72.0,
+          "point_rate": 1,
+          "per100_after_points": 71.4,
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fy-kojima%2F4902720109185.html",
+          "image": "https://item-shopping.c.yimg.jp/i/g/y-kojima_4902720109185"
+        },
+        {
+          "mall": "Yahoo!",
           "shop": "Vドラッグヤフー店",
           "item_name": "森永Ｅ赤ちゃん エコらくパック はじめてセット （４００ｇ×２）１セット /Ｅ赤ちゃん エコらくパック ミルク",
           "price": 3639,
@@ -708,31 +724,15 @@
           "per100_after_points": 72.2,
           "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fminoku-premium%2F1758942882-1-a.html",
           "image": "https://item-shopping.c.yimg.jp/i/g/minoku-premium_1758942882-1-a"
-        },
-        {
-          "mall": "Yahoo!",
-          "shop": "Joshin web",
-          "item_name": "森永 E赤ちゃん エコらくパック つめかえ用 800g(400g×2袋) 森永乳業 (0歳〜1歳頃まで) 返品種別B",
-          "price": 3680,
-          "postage_separate": true,
-          "shipping_estimate": 800,
-          "total": 4480,
-          "count": null,
-          "ml": 6154,
-          "per100": 72.8,
-          "point_rate": 1,
-          "per100_after_points": 72.2,
-          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fjoshin%2F4902720109178-73-30000285.html",
-          "image": "https://item-shopping.c.yimg.jp/i/g/joshin_4902720109178-73-30000285"
         }
       ],
       "stats": {
         "fetched": 219,
         "除外ワード": 48,
         "内容量が読めない": 7,
-        "条件の言葉なし": 28,
-        "安すぎて除外": 8,
-        "使えた件数": 102,
+        "条件の言葉なし": 29,
+        "安すぎて除外": 9,
+        "使えた件数": 100,
         "malls": {
           "楽天": 1,
           "Amazon": 1,
@@ -766,6 +766,22 @@
         },
         {
           "mall": "Yahoo!",
+          "shop": "爽快ドラッグ",
+          "item_name": "ビーンスタークすこやかM1 大缶 ケース販売 ( 800g×8缶入 )/ ビーンスターク すこやか",
+          "price": 23000,
+          "postage_separate": false,
+          "shipping_estimate": 0,
+          "total": 23000,
+          "count": null,
+          "ml": 49231,
+          "per100": 46.7,
+          "point_rate": 1,
+          "per100_after_points": 46.3,
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fsoukai%2F4987493000730.html",
+          "image": "https://item-shopping.c.yimg.jp/i/g/soukai_4987493000730"
+        },
+        {
+          "mall": "Yahoo!",
           "shop": "NetBabyWorld(ネットベビー)",
           "item_name": "ビーンスタークすこやかM1 大缶 ケース販売 ( 800g×8缶入 )/ ビーンスターク すこやか",
           "price": 23000,
@@ -781,20 +797,20 @@
           "image": "https://item-shopping.c.yimg.jp/i/g/netbaby_4987493000730"
         },
         {
-          "mall": "Yahoo!",
-          "shop": "爽快ドラッグ",
-          "item_name": "ビーンスタークすこやかM1 大缶 ケース販売 ( 800g×8缶入 )/ ビーンスターク すこやか",
-          "price": 23000,
-          "postage_separate": false,
-          "shipping_estimate": 0,
-          "total": 23000,
+          "mall": "楽天",
+          "shop": "NicoBase",
+          "item_name": "6〜10個セット まとめ買い ビーンスタークすこやかM1 大缶 800g",
+          "price": 28722,
+          "postage_separate": true,
+          "shipping_estimate": 800,
+          "total": 29522,
           "count": null,
-          "ml": 49231,
-          "per100": 46.7,
+          "ml": 61538,
+          "per100": 48.0,
           "point_rate": 1,
-          "per100_after_points": 46.3,
-          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fsoukai%2F4987493000730.html",
-          "image": "https://item-shopping.c.yimg.jp/i/g/soukai_4987493000730"
+          "per100_after_points": 47.5,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00u33oo.kqv980c8.g00u33oo.kqv99b07/_RTLink150939?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fnicobase%2Fnparuw6-10-01870%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fnicobase%2Fi%2F10153755%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/nicobase/cabinet/nparu003/4987493000617.jpg?_ex=128x128"
         },
         {
           "mall": "楽天",
@@ -891,26 +907,10 @@
           "per100_after_points": 52.6,
           "url": "https://hb.afl.rakuten.co.jp/hgc/g00px3so.kqv98e57.g00px3so.kqv99a08/_RTLink150939?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fenergy%2Fal-4987493000389-16set%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fenergy%2Fi%2F10073379%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
           "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/energy/cabinet/baby/4987493000389-16set.jpg?_ex=128x128"
-        },
-        {
-          "mall": "楽天",
-          "shop": "エナジープラス",
-          "item_name": "【ブラックフライデー！期間中ずっとP最大10倍】2点でP5倍！3点でP10倍！【送料無料！16個セット！】【ビーンスターク】すこやかM10歳〜1歳用800g（大缶）×16個セット【粉ミルク】雪印ビーンスターク",
-          "price": 52292,
-          "postage_separate": false,
-          "shipping_estimate": 0,
-          "total": 52292,
-          "count": null,
-          "ml": 98462,
-          "per100": 53.1,
-          "point_rate": 1,
-          "per100_after_points": 52.6,
-          "url": "https://hb.afl.rakuten.co.jp/hgc/g00r8gqo.kqv982e5.g00r8gqo.kqv99b4b/_RTLink150939?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fenergyplus%2Fal-4987493000389-16set%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fenergyplus%2Fi%2F10039507%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
-          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/energyplus/cabinet/baby-mother/4987493000389-16set.jpg?_ex=128x128"
         }
       ],
       "stats": {
-        "fetched": 135,
+        "fetched": 133,
         "除外ワード": 15,
         "内容量が読めない": 2,
         "条件の言葉なし": 2,
@@ -946,22 +946,6 @@
           "per100_after_points": 121.7,
           "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fminoku-max%2F1758983914-1-b.html",
           "image": "https://item-shopping.c.yimg.jp/i/g/minoku-max_1758983914-1-b"
-        },
-        {
-          "mall": "Yahoo!",
-          "shop": "雑貨屋pensiero",
-          "item_name": "ビーンスターク すこやかM1 スティック(13g×7本)",
-          "price": 863,
-          "postage_separate": false,
-          "shipping_estimate": 0,
-          "total": 863,
-          "count": null,
-          "ml": 700,
-          "per100": 123.3,
-          "point_rate": 1,
-          "per100_after_points": 122.1,
-          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fmuraizakkaten%2F20260917021340-01045.html",
-          "image": "https://item-shopping.c.yimg.jp/i/g/muraizakkaten_20260917021340-01045"
         },
         {
           "mall": "Yahoo!",
@@ -1010,6 +994,22 @@
           "per100_after_points": 122.1,
           "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fshopmi%2F20260915012917-01602.html",
           "image": "https://item-shopping.c.yimg.jp/i/g/shopmi_20260915012917-01602"
+        },
+        {
+          "mall": "Yahoo!",
+          "shop": "雑貨屋pensiero",
+          "item_name": "ビーンスターク すこやかM1 スティック(13g×7本)",
+          "price": 863,
+          "postage_separate": false,
+          "shipping_estimate": 0,
+          "total": 863,
+          "count": null,
+          "ml": 700,
+          "per100": 123.3,
+          "point_rate": 1,
+          "per100_after_points": 122.1,
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fmuraizakkaten%2F20260917021340-01045.html",
+          "image": "https://item-shopping.c.yimg.jp/i/g/muraizakkaten_20260917021340-01045"
         },
         {
           "mall": "楽天",
@@ -1061,22 +1061,6 @@
         },
         {
           "mall": "Yahoo!",
-          "shop": "ポチっとお買い物",
-          "item_name": "ビーンスターク すこやかM1 ミニスティック(6.5g×24本)",
-          "price": 1500,
-          "postage_separate": false,
-          "shipping_estimate": 0,
-          "total": 1500,
-          "count": null,
-          "ml": 1200,
-          "per100": 125.0,
-          "point_rate": 1,
-          "per100_after_points": 123.8,
-          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fpocchi%2F1790056832-115.html",
-          "image": "https://item-shopping.c.yimg.jp/i/g/pocchi_1790056832-115"
-        },
-        {
-          "mall": "Yahoo!",
           "shop": "食品スピリットのKichibei",
           "item_name": "ビーンスターク すこやかM1 ミニスティック(6.5g×24本)",
           "price": 1503,
@@ -1090,17 +1074,33 @@
           "per100_after_points": 124.0,
           "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fkichibei-0358%2Fkichh5enl-h0h-j8o.html",
           "image": "https://item-shopping.c.yimg.jp/i/g/kichibei-0358_kichh5enl-h0h-j8o"
+        },
+        {
+          "mall": "楽天",
+          "shop": "川山商店 楽天市場店",
+          "item_name": "ビーンスターク すこやかM1 ミニスティック(6.5g×24本)",
+          "price": 1535,
+          "postage_separate": false,
+          "shipping_estimate": 0,
+          "total": 1535,
+          "count": null,
+          "ml": 1200,
+          "per100": 127.9,
+          "point_rate": 1,
+          "per100_after_points": 126.6,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00usmto.kqv98228.g00usmto.kqv99a06/_RTLink150939?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fkawayamasyouten%2F20261121094619_221%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fkawayamasyouten%2Fi%2F10091343%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/kawayamasyouten/cabinet/r_2026030529/20261121094619_221_1.jpg?_ex=128x128"
         }
       ],
       "stats": {
         "fetched": 212,
         "内容量が読めない": 13,
         "条件の言葉なし": 20,
-        "安すぎて除外": 32,
-        "使えた件数": 62,
+        "安すぎて除外": 29,
+        "使えた件数": 61,
         "malls": {
-          "Yahoo!": 8,
-          "楽天": 2
+          "Yahoo!": 7,
+          "楽天": 3
         }
       }
     },
@@ -1114,19 +1114,67 @@
       "offers": [
         {
           "mall": "Yahoo!",
-          "shop": "LOHACO by アスクル",
-          "item_name": "（0ヵ月から）和光堂 レーベンスミルク はいはい（大缶）810g×2缶パック （おまけ付き） 1セット（2パック：4缶）アサヒグループ食品 防災 備蓄",
-          "price": 9080,
+          "shop": "爽快ドラッグ",
+          "item_name": "和光堂 レーベンスミルク はいはい ( 2缶入×3セット(1缶810g) )/ 和光堂 はいはい",
+          "price": 12585,
           "postage_separate": false,
           "shipping_estimate": 0,
-          "total": 9080,
+          "total": 12585,
           "count": null,
-          "ml": 24923,
+          "ml": 37385,
+          "per100": 33.7,
+          "point_rate": 1,
+          "per100_after_points": 33.3,
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fsoukai%2F616244.html",
+          "image": "https://item-shopping.c.yimg.jp/i/g/soukai_616244"
+        },
+        {
+          "mall": "Yahoo!",
+          "shop": "NetBabyWorld(ネットベビー)",
+          "item_name": "和光堂 レーベンスミルク はいはい ( 2缶入×3セット(1缶810g) )/ 和光堂 はいはい",
+          "price": 12585,
+          "postage_separate": false,
+          "shipping_estimate": 0,
+          "total": 12585,
+          "count": null,
+          "ml": 37385,
+          "per100": 33.7,
+          "point_rate": 1,
+          "per100_after_points": 33.3,
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fnetbaby%2F616244.html",
+          "image": "https://item-shopping.c.yimg.jp/i/g/netbaby_616244"
+        },
+        {
+          "mall": "Yahoo!",
+          "shop": "ひとみコンタクト",
+          "item_name": "送料無料 和光堂 レーベンスミルク はいはい810g×8缶（おしりふき景品付き）wakodo レーベンスミルク はいはい 0か月から 新生児期 発育サポート",
+          "price": 18148,
+          "postage_separate": false,
+          "shipping_estimate": 0,
+          "total": 18148,
+          "count": null,
+          "ml": 49846,
           "per100": 36.4,
           "point_rate": 1,
-          "per100_after_points": 36.1,
-          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Flohaco.yahoo.co.jp%2Fstore%2Fh-lohaco%2Fitem%2Fj303320%2F",
-          "image": "https://item-shopping.c.yimg.jp/i/g/rd-lohaco_j303320"
+          "per100_after_points": 36.0,
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fhitomicontact%2F1704.html",
+          "image": "https://item-shopping.c.yimg.jp/i/g/hitomicontact_1704"
+        },
+        {
+          "mall": "Yahoo!",
+          "shop": "ワールドコンタクト",
+          "item_name": "送料無料 和光堂 レーベンスミルク はいはい810g×8缶（おしりふき景品付き）wakodo レーベンスミルク はいはい 0か月から 新生児期 発育サポート",
+          "price": 18148,
+          "postage_separate": false,
+          "shipping_estimate": 0,
+          "total": 18148,
+          "count": null,
+          "ml": 49846,
+          "per100": 36.4,
+          "point_rate": 1,
+          "per100_after_points": 36.0,
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fworld-cl%2F2025547.html",
+          "image": "https://item-shopping.c.yimg.jp/i/g/world-cl_2025547"
         },
         {
           "mall": "Amazon",
@@ -1210,7 +1258,7 @@
         },
         {
           "mall": "Yahoo!",
-          "shop": "ワールドコンタクト",
+          "shop": "ノースフーズ",
           "item_name": "送料無料 和光堂 レーベンスミルク はいはい810g×4缶（おしりふき景品付き）wakodo レーベンスミルク はいはい 0か月から 新生児期 発育サポート",
           "price": 9498,
           "postage_separate": false,
@@ -1221,65 +1269,17 @@
           "per100": 38.1,
           "point_rate": 1,
           "per100_after_points": 37.7,
-          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fworld-cl%2F2025546.html",
-          "image": "https://item-shopping.c.yimg.jp/i/g/world-cl_2025546"
-        },
-        {
-          "mall": "Yahoo!",
-          "shop": "プレミアコンタクト",
-          "item_name": "送料無料 和光堂 レーベンスミルク はいはい810g×4缶（おしりふき景品付き）wakodo レーベンスミルク はいはい 0か月から 新生児期 発育サポート",
-          "price": 9498,
-          "postage_separate": false,
-          "shipping_estimate": 0,
-          "total": 9498,
-          "count": null,
-          "ml": 24923,
-          "per100": 38.1,
-          "point_rate": 1,
-          "per100_after_points": 37.7,
-          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fpremiercontact%2F1829.html",
-          "image": "https://item-shopping.c.yimg.jp/i/g/premiercontact_1829"
-        },
-        {
-          "mall": "Yahoo!",
-          "shop": "ひとみコンタクト",
-          "item_name": "送料無料 和光堂 レーベンスミルク はいはい810g×4缶（おしりふき景品付き）wakodo レーベンスミルク はいはい 0か月から 新生児期 発育サポート",
-          "price": 9498,
-          "postage_separate": false,
-          "shipping_estimate": 0,
-          "total": 9498,
-          "count": null,
-          "ml": 24923,
-          "per100": 38.1,
-          "point_rate": 1,
-          "per100_after_points": 37.7,
-          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fhitomicontact%2F1703.html",
-          "image": "https://item-shopping.c.yimg.jp/i/g/hitomicontact_1703"
-        },
-        {
-          "mall": "Yahoo!",
-          "shop": "ひかりコンタクト",
-          "item_name": "送料無料 和光堂 レーベンスミルク はいはい810g×4缶（おしりふき景品付き 粉ミルク）",
-          "price": 9498,
-          "postage_separate": false,
-          "shipping_estimate": 0,
-          "total": 9498,
-          "count": null,
-          "ml": 24923,
-          "per100": 38.1,
-          "point_rate": 1,
-          "per100_after_points": 37.7,
-          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fcontacthiroba%2Fyh-004299.html",
-          "image": "https://item-shopping.c.yimg.jp/i/g/contacthiroba_yh-004299"
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fnorthfoods%2F1259.html",
+          "image": "https://item-shopping.c.yimg.jp/i/g/northfoods_1259"
         }
       ],
       "stats": {
-        "fetched": 207,
+        "fetched": 206,
         "内容量が読めない": 1,
-        "条件の言葉なし": 5,
         "除外ワード": 3,
+        "条件の言葉なし": 4,
         "安すぎて除外": 2,
-        "使えた件数": 123,
+        "使えた件数": 118,
         "malls": {
           "Yahoo!": 5,
           "Amazon": 1,
@@ -1459,10 +1459,10 @@
       ],
       "stats": {
         "fetched": 217,
-        "除外ワード": 76,
+        "除外ワード": 77,
         "条件の言葉なし": 8,
         "安すぎて除外": 1,
-        "使えた件数": 94,
+        "使えた件数": 93,
         "malls": {
           "楽天": 2,
           "Amazon": 2,
@@ -1625,33 +1625,33 @@
           "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/bloomgreen/cabinet/bg12362479/rr.jpg?_ex=128x128"
         },
         {
-          "mall": "Yahoo!",
-          "shop": "LOHACO by アスクル",
-          "item_name": "（0ヵ月から）明治 ほほえみ らくらくミルク 1セット（1本（240ml）×6）液体ミルク（哺乳瓶に注ぐだけ）お出かけ 防災 備蓄",
-          "price": 1830,
+          "mall": "楽天",
+          "shop": "NicoBase",
+          "item_name": "6〜10個セット まとめ買い ほほえみ らくらくミルク 液体タイプ 明治 240mL",
+          "price": 3576,
           "postage_separate": true,
           "shipping_estimate": 800,
-          "total": 2630,
+          "total": 4376,
           "count": null,
-          "ml": 1440,
-          "per100": 182.6,
+          "ml": 2400,
+          "per100": 182.3,
           "point_rate": 1,
-          "per100_after_points": 181.4,
-          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Flohaco.yahoo.co.jp%2Fstore%2Fh-lohaco%2Fitem%2Fwwp2023%2F",
-          "image": "https://item-shopping.c.yimg.jp/i/g/rd-lohaco_wwp2023"
+          "per100_after_points": 180.8,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00u33oo.kqv980c8.g00u33oo.kqv99b07/_RTLink150939?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fnicobase%2Fnparuw6-10-00275%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fnicobase%2Fi%2F10152356%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/nicobase/cabinet/nparu001/4902705130678.jpg?_ex=128x128"
         }
       ],
       "stats": {
         "fetched": 216,
-        "除外ワード": 75,
+        "除外ワード": 74,
         "内容量が読めない": 11,
-        "条件の言葉なし": 80,
+        "条件の言葉なし": 81,
         "安すぎて除外": 0,
         "使えた件数": 27,
         "malls": {
           "Amazon": 1,
-          "楽天": 6,
-          "Yahoo!": 3
+          "楽天": 7,
+          "Yahoo!": 2
         }
       }
     },
@@ -1860,22 +1860,6 @@
         },
         {
           "mall": "楽天",
-          "shop": "シグナリージャパン 楽天市場店",
-          "item_name": "【送料無料】雪印ビーンスターク ビーンスターク液体ミルクすこやかM1 200MLx6本パック",
-          "price": 2263,
-          "postage_separate": false,
-          "shipping_estimate": 0,
-          "total": 2263,
-          "count": null,
-          "ml": 1200,
-          "per100": 188.6,
-          "point_rate": 1,
-          "per100_after_points": 186.7,
-          "url": "https://hb.afl.rakuten.co.jp/hgc/g00utuso.kqv98163.g00utuso.kqv9908e/_RTLink150939?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fsignally-japan%2Fb08bfj3hs5%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fsignally-japan%2Fi%2F10020564%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
-          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/signally-japan/cabinet/rakus169_0021/b08bfj3hs500.jpg?_ex=128x128"
-        },
-        {
-          "mall": "楽天",
           "shop": "HIdaCURT",
           "item_name": "【送料無料】雪印ビーンスターク ビーンスターク液体ミルクすこやかM1 200MLx6本パック",
           "price": 2263,
@@ -1988,6 +1972,22 @@
         },
         {
           "mall": "楽天",
+          "shop": "フォーディア虹むすび",
+          "item_name": "【送料無料】雪印ビーンスターク ビーンスターク液体ミルクすこやかM1 200MLx6本パック",
+          "price": 2463,
+          "postage_separate": false,
+          "shipping_estimate": 0,
+          "total": 2463,
+          "count": null,
+          "ml": 1200,
+          "per100": 205.3,
+          "point_rate": 1,
+          "per100_after_points": 203.2,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00utjjo.kqv98160.g00utjjo.kqv99f9e/_RTLink150939?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Ffordear-nizimusubi%2Fb08bfj3hs5%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Ffordear-nizimusubi%2Fi%2F10175804%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/fordear-nizimusubi/cabinet/rakus169_0021/b08bfj3hs500.jpg?_ex=128x128"
+        },
+        {
+          "mall": "楽天",
           "shop": "windaruma",
           "item_name": "【送料無料】雪印ビーンスターク ビーンスターク液体ミルクすこやかM1 200MLx6本パック",
           "price": 2463,
@@ -2004,11 +2004,11 @@
         }
       ],
       "stats": {
-        "fetched": 101,
+        "fetched": 116,
         "内容量が読めない": 4,
-        "条件の言葉なし": 60,
+        "条件の言葉なし": 63,
         "安すぎて除外": 0,
-        "使えた件数": 31,
+        "使えた件数": 33,
         "malls": {
           "Yahoo!": 1,
           "楽天": 9
@@ -2056,8 +2056,8 @@
         }
       ],
       "stats": {
-        "fetched": 39,
-        "条件の言葉なし": 32,
+        "fetched": 38,
+        "条件の言葉なし": 31,
         "安すぎて除外": 0,
         "使えた件数": 2,
         "malls": {
@@ -2077,7 +2077,7 @@
         {
           "mall": "Yahoo!",
           "shop": "エナジードラッグ2号店",
-          "item_name": "明治ステップ 2缶パック 1600g（800g（大缶）×2缶） 粉ミルク フォローアップミルク 1歳〜3歳 送料無料 11月20日発送予定 賞味期限2027年3月まで",
+          "item_name": "明治ステップ 2缶パック 1600g（800g（大缶）×2缶） 粉ミルク フォローアップミルク 1歳〜3歳 送料無料 賞味期限2027年3月まで",
           "price": 3980,
           "postage_separate": false,
           "shipping_estimate": 0,
@@ -2091,25 +2091,9 @@
           "image": "https://item-shopping.c.yimg.jp/i/g/denergy2_z-4902705005624-ymo-ha"
         },
         {
-          "mall": "Amazon",
-          "shop": "Amazon.co.jp",
-          "item_name": "明治ステップ 780g 粉末 [1歳~3歳頃 フォローアップミルク]",
-          "price": 1944,
-          "postage_separate": false,
-          "shipping_estimate": 0,
-          "total": 1944,
-          "count": null,
-          "ml": 5571,
-          "per100": 34.9,
-          "point_rate": 1,
-          "per100_after_points": 34.5,
-          "url": "https://www.amazon.co.jp/dp/B0GR5LXLBF?tag=milk-tanka-22&linkCode=osi&th=1&psc=1",
-          "image": "https://m.media-amazon.com/images/I/41ghcTXaCuL._SL160_.jpg"
-        },
-        {
           "mall": "Yahoo!",
           "shop": "エナジードラッグ1号店",
-          "item_name": "明治ステップ 2缶パック 1600g（800g（大缶）×2缶） 粉ミルク 栄養サポート フォローアップミルク 1歳〜3歳 明治 11月20日発送予定 期限2027年3月",
+          "item_name": "明治ステップ 2缶パック 1600g（800g（大缶）×2缶） 粉ミルク 栄養サポート フォローアップミルク 1歳〜3歳 明治 期限2027年3月",
           "price": 3470,
           "postage_separate": true,
           "shipping_estimate": 800,
@@ -2187,6 +2171,22 @@
           "image": "https://item-shopping.c.yimg.jp/i/g/tsuhan-okusuri_1758980205-10-d"
         },
         {
+          "mall": "Amazon",
+          "shop": "「即日配送」東海オンラインショップ",
+          "item_name": "明治ステップ 780g×8缶 粉末 [1歳~3歳頃 フォローアップミルク]",
+          "price": 19200,
+          "postage_separate": true,
+          "shipping_estimate": 800,
+          "total": 20000,
+          "count": null,
+          "ml": 44571,
+          "per100": 44.9,
+          "point_rate": 1,
+          "per100_after_points": 44.4,
+          "url": "https://www.amazon.co.jp/dp/B0GR5HMZ3T?tag=milk-tanka-22&linkCode=osi&th=1&psc=1",
+          "image": "https://m.media-amazon.com/images/I/51EC4mcjH6L._SL160_.jpg"
+        },
+        {
           "mall": "Yahoo!",
           "shop": "リコメン堂",
           "item_name": "単品12個セット 明治 ステップ 780g 大缶 フォローアップミルク 1~3歳",
@@ -2236,12 +2236,12 @@
         }
       ],
       "stats": {
-        "fetched": 166,
+        "fetched": 167,
         "条件の言葉なし": 18,
         "内容量が読めない": 13,
-        "除外ワード": 7,
+        "除外ワード": 9,
         "安すぎて除外": 0,
-        "使えた件数": 35,
+        "使えた件数": 34,
         "malls": {
           "Yahoo!": 7,
           "Amazon": 2,
@@ -2354,38 +2354,6 @@
           "image": "https://item-shopping.c.yimg.jp/i/g/recommendo_d4-4902705129634"
         },
         {
-          "mall": "Yahoo!",
-          "shop": "ポチっとお買い物",
-          "item_name": "明治ステップ らくらくキューブ 560g (28g×20袋)旧品[1歳~3歳頃 フォローアップミルク]",
-          "price": 2380,
-          "postage_separate": false,
-          "shipping_estimate": 0,
-          "total": 2380,
-          "count": null,
-          "ml": 4000,
-          "per100": 59.5,
-          "point_rate": 1,
-          "per100_after_points": 58.9,
-          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fpocchi%2F1790135318-175.html",
-          "image": "https://item-shopping.c.yimg.jp/i/g/pocchi_1790135318-175"
-        },
-        {
-          "mall": "Yahoo!",
-          "shop": "トクなるストア",
-          "item_name": "明治ステップ らくらくキューブ 560g (28g×20袋)旧品[1歳~3歳頃 フォローアップミルク]",
-          "price": 2413,
-          "postage_separate": false,
-          "shipping_estimate": 0,
-          "total": 2413,
-          "count": null,
-          "ml": 4000,
-          "per100": 60.3,
-          "point_rate": 1,
-          "per100_after_points": 59.7,
-          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Ftoku00301%2Fwcdr2r3kcpdr4fqi224zvjk25q.html",
-          "image": "https://item-shopping.c.yimg.jp/i/g/toku00301_wcdr2r3kcpdr4fqi224zvjk25q"
-        },
-        {
           "mall": "楽天",
           "shop": "川山商店 楽天市場店",
           "item_name": "明治ステップ らくらくキューブ 560g (28g×20袋)1歳~3歳頃 フォローアップミルク",
@@ -2416,6 +2384,38 @@
           "per100_after_points": 60.9,
           "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Fg--shop%2Fb0cj2vmgqd.html",
           "image": "https://item-shopping.c.yimg.jp/i/g/g--shop_b0cj2vmgqd"
+        },
+        {
+          "mall": "Yahoo!",
+          "shop": "通販できるみんなのお薬(みんなのお薬)",
+          "item_name": "明治ステップ らくらくキューブ 幼児用 粉ミルク 840g (28g×30袋入)  (1個)",
+          "price": 3687,
+          "postage_separate": false,
+          "shipping_estimate": 0,
+          "total": 3687,
+          "count": null,
+          "ml": 6000,
+          "per100": 61.5,
+          "point_rate": 1,
+          "per100_after_points": 60.8,
+          "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Ftsuhan-okusuri%2F1758980203-1-d.html",
+          "image": "https://item-shopping.c.yimg.jp/i/g/tsuhan-okusuri_1758980203-1-d"
+        },
+        {
+          "mall": "楽天",
+          "shop": "エナジードラッグ",
+          "item_name": "【数量限定！特別価格！】【明治】明治ステップ らくらくキューブ 560g (28g×20袋入)キューブタイプ 粉ミルク 明治ステップ乳児用 1歳〜3歳赤ちゃん 乳児 ミルク フォローアップミルク",
+          "price": 1695,
+          "postage_separate": true,
+          "shipping_estimate": 800,
+          "total": 2495,
+          "count": null,
+          "ml": 4000,
+          "per100": 62.4,
+          "point_rate": 1,
+          "per100_after_points": 62.0,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00px3so.kqv98e57.g00px3so.kqv99a08/_RTLink150939?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fenergy%2Fal-4902705129627-ymo-ha%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fenergy%2Fi%2F10097050%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/energy/cabinet/01976132/baby/4902705129627.jpg?_ex=128x128"
         }
       ],
       "stats": {
@@ -2423,11 +2423,11 @@
         "内容量が読めない": 21,
         "条件の言葉なし": 24,
         "安すぎて除外": 2,
-        "使えた件数": 102,
+        "使えた件数": 100,
         "malls": {
-          "楽天": 4,
+          "楽天": 5,
           "Amazon": 1,
-          "Yahoo!": 5
+          "Yahoo!": 4
         }
       }
     },
@@ -2442,18 +2442,18 @@
         {
           "mall": "Amazon",
           "shop": "Amazon.co.jp",
-          "item_name": "【和光堂】 フォローアップミルク ぐんぐん 830g 粉ミルク粉末 [満9か月頃から3歳頃] ベビーミルク 鉄・カルシウム・DHA配合 (× 5)",
-          "price": 8135,
+          "item_name": "【和光堂】 フォローアップミルク ぐんぐん 830g 粉ミルク粉末 [満9か月頃から3歳頃] ベビーミルク 鉄・カルシウム・DHA配合",
+          "price": 1627,
           "postage_separate": false,
           "shipping_estimate": 0,
-          "total": 8135,
+          "total": 1627,
           "count": null,
-          "ml": 29643,
+          "ml": 5929,
           "per100": 27.4,
           "point_rate": 1,
           "per100_after_points": 27.2,
-          "url": "https://www.amazon.co.jp/dp/B0GTYPB5BC?tag=milk-tanka-22&linkCode=osi&th=1&psc=1",
-          "image": "https://m.media-amazon.com/images/I/41zPbX-Kl1L._SL160_.jpg"
+          "url": "https://www.amazon.co.jp/dp/B09S5SVQXS?tag=milk-tanka-22&linkCode=osi&th=1&psc=1",
+          "image": "https://m.media-amazon.com/images/I/41RTPXNhKRL._SL160_.jpg"
         },
         {
           "mall": "Yahoo!",
@@ -2601,12 +2601,12 @@
         }
       ],
       "stats": {
-        "fetched": 212,
-        "条件の言葉なし": 5,
+        "fetched": 211,
+        "条件の言葉なし": 4,
         "内容量が読めない": 13,
-        "除外ワード": 4,
+        "除外ワード": 3,
         "安すぎて除外": 0,
-        "使えた件数": 135,
+        "使えた件数": 132,
         "malls": {
           "Amazon": 1,
           "Yahoo!": 9
@@ -2642,15 +2642,15 @@
           "mall": "Yahoo!",
           "shop": "てのりんた",
           "item_name": "森永 フォローアップミルク チルミル エコらくパック つめかえ用 800g(400g×2袋) 粉末 [1歳頃から3歳頃(満9ヶ月頃からでもご使用",
-          "price": 1949,
+          "price": 1969,
           "postage_separate": false,
           "shipping_estimate": 0,
-          "total": 1949,
+          "total": 1969,
           "count": null,
           "ml": 5714,
-          "per100": 34.1,
+          "per100": 34.5,
           "point_rate": 1,
-          "per100_after_points": 33.8,
+          "per100_after_points": 34.1,
           "url": "https://ck.jp.ap.valuecommerce.com/servlet/referral?sid=3784952&pid=892737497&vc_url=https%3A%2F%2Fstore.shopping.yahoo.co.jp%2Ftenorinta%2Ftrb758ad0d4b.html",
           "image": "https://item-shopping.c.yimg.jp/i/g/tenorinta_trb758ad0d4b"
         },
@@ -2785,7 +2785,7 @@
       ],
       "stats": {
         "fetched": 218,
-        "除外ワード": 23,
+        "除外ワード": 28,
         "内容量が読めない": 22,
         "条件の言葉なし": 9,
         "安すぎて除外": 0,
@@ -2806,6 +2806,22 @@
       "g_per_100ml": 14,
       "g_note": "すりきり1さじ約5.6gで40ml（パッケージ表示）",
       "offers": [
+        {
+          "mall": "楽天",
+          "shop": "NicoBase",
+          "item_name": "6〜10個セット まとめ買い ビーンスタークつよいこ 大缶 800g",
+          "price": 20303,
+          "postage_separate": true,
+          "shipping_estimate": 800,
+          "total": 21103,
+          "count": null,
+          "ml": 57143,
+          "per100": 36.9,
+          "point_rate": 1,
+          "per100_after_points": 36.6,
+          "url": "https://hb.afl.rakuten.co.jp/hgc/g00u33oo.kqv980c8.g00u33oo.kqv99b07/_RTLink150939?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fnicobase%2Fnparuw6-10-01799%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fnicobase%2Fi%2F10153903%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
+          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/nicobase/cabinet/nparu003/4987493001492.jpg?_ex=128x128"
+        },
         {
           "mall": "Yahoo!",
           "shop": "クスリのアオキhappy ヤフー店",
@@ -2949,33 +2965,17 @@
           "per100_after_points": 39.7,
           "url": "https://hb.afl.rakuten.co.jp/hgc/g00ty7vo.kqv98245.g00ty7vo.kqv990bd/_RTLink150939?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fkusuriaoki-r%2F60000000019272%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fkusuriaoki-r%2Fi%2F10056290%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
           "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/kusuriaoki-r/cabinet/pic2823/60000000019272_1.jpg?_ex=128x128"
-        },
-        {
-          "mall": "楽天",
-          "shop": "NicoBase",
-          "item_name": "6〜10個セット まとめ買い ビーンスタークつよいこ 大缶 800g",
-          "price": 22559,
-          "postage_separate": true,
-          "shipping_estimate": 800,
-          "total": 23359,
-          "count": null,
-          "ml": 57143,
-          "per100": 40.9,
-          "point_rate": 1,
-          "per100_after_points": 40.5,
-          "url": "https://hb.afl.rakuten.co.jp/hgc/g00u33oo.kqv980c8.g00u33oo.kqv99b07/_RTLink150939?pc=https%3A%2F%2Fitem.rakuten.co.jp%2Fnicobase%2Fnparuw6-10-01799%2F&m=http%3A%2F%2Fm.rakuten.co.jp%2Fnicobase%2Fi%2F10153903%2F&rafcid=wsc_i_is_1887390d-49e9-41c9-ba20-547b227f2509",
-          "image": "https://thumbnail.image.rakuten.co.jp/@0_mall/nicobase/cabinet/nparu003/4987493001492.jpg?_ex=128x128"
         }
       ],
       "stats": {
-        "fetched": 169,
-        "除外ワード": 24,
+        "fetched": 166,
+        "除外ワード": 25,
         "内容量が読めない": 2,
         "安すぎて除外": 0,
-        "使えた件数": 59,
+        "使えた件数": 55,
         "malls": {
-          "Yahoo!": 4,
-          "楽天": 6
+          "楽天": 6,
+          "Yahoo!": 4
         }
       }
     },
@@ -3149,12 +3149,12 @@
         }
       ],
       "stats": {
-        "fetched": 209,
+        "fetched": 208,
         "除外ワード": 58,
         "内容量が読めない": 3,
-        "条件の言葉なし": 6,
+        "条件の言葉なし": 5,
         "安すぎて除外": 0,
-        "使えた件数": 112,
+        "使えた件数": 111,
         "malls": {
           "Amazon": 2,
           "楽天": 2,
@@ -3331,9 +3331,9 @@
         }
       ],
       "stats": {
-        "fetched": 218,
+        "fetched": 207,
         "内容量が読めない": 5,
-        "条件の言葉なし": 82,
+        "条件の言葉なし": 71,
         "安すぎて除外": 0,
         "使えた件数": 42,
         "malls": {
