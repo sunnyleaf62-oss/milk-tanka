@@ -19,25 +19,15 @@
  ],
  "events": [
   {
-   "start": "2026-10-18T10:00+09:00",
-   "end": "2026-10-21T09:59+09:00",
-   "title": "楽天「育児の日」開催中",
-   "text": "エントリーでベビー用品のポイントアップ（楽天24 ベビー館など対象ショップ限定）。",
-   "note": "買い物の前にエントリーが必要です（楽天24 ベビー館など対象ショップ限定）",
-   "image": "img/192-banner.jpg",
-   "url": "https://hb.afl.rakuten.co.jp/hgc/589314bc.bddfa8b8.589314bd.ed2be359/?pc=https%3A%2F%2Fevent.rakuten.co.jp%2Fbaby%2F192campaign%2F&m=https%3A%2F%2Fevent.rakuten.co.jp%2Fbaby%2F192campaign%2F",
-   "short": "要エントリー"
-  },
-  {
-   "start": "2026-10-16T00:00+09:00",
-   "end": "2026-10-19T23:59+09:00",
-   "title": "Amazon プライム感謝祭",
-   "text": "10/16（金）〜10/19（月）。ポイントアップキャンペーン同時開催。",
+   "start": "2026-11-26T10:00+09:00",
+   "end": "2026-12-07T23:59+09:00",
+   "title": "Amazon ブラックフライデー",
+   "text": "先行セール11/27（金）〜11/29（日）、本番11/30（月）〜12/7（月）。エントリーして合計1万円以上でポイントアップ。",
    "note": "Amazonのセール・ポイントアップの条件は特設ページでご確認ください",
-   "url": "https://www.amazon.co.jp/primeappreciation?tag=milk-tanka-22",
-   "image": "img/prime-banner.jpg",
-   "w": 1200,
-   "h": 552,
+   "url": "https://www.amazon.co.jp/blackfriday?tag=milk-tanka-22",
+   "image": "img/blackfriday-banner.jpg",
+   "w": 640,
+   "h": 360,
    "short": "Amazon"
   }
  ]
